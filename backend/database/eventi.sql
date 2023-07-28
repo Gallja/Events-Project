@@ -100,3 +100,21 @@ BEGIN
     WHERE e.nome_evento = nome_in;
 END;
 $$ LANGUAGE plpgsql;
+
+-- Funzione di verifica dell'autenticazione:
+CREATE OR REPLACE FUNCTION eventi.autenticazione (
+    email_in text,
+    pw_in text
+) 
+RETURNS SETOF eventi.utenti AS $$
+DECLARE
+    verificato eventi.utenti%ROWTYPE;
+BEGIN
+    SELECT u.email
+    INTO verificato
+    FROM eventi.utenti AS u
+    WHERE u.email = email_in AND u.pw = pw_in;
+
+    RETURN NEXT verificato;
+END;
+$$ LANGUAGE plpgsql;
