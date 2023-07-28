@@ -8,6 +8,10 @@ CALL eventi.insert_evento('Evento prova', '2023-05-11', 'Casalpusterlengo', 'Eve
 SELECT TO_CHAR(eventi.data_evento, 'DD/MM/YYYY') AS new_data
 FROM eventi.eventi;
 
--- Query di verifica:
+-- Query di verifica utenti:
+SELECT *
+FROM eventi.utenti;
+
+-- Query di verifica eventi:
 SELECT *
 FROM eventi.eventi;
