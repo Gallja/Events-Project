@@ -8,10 +8,11 @@
                         $_SESSION['registrazione_fallita'] = 'La password inserita deve contenere almeno 7 caratteri';
                         header('Location: ../pagine/registrazione.php');
                     } else {
+                        $pw_enc = password_hash($_POST['pw'], PASSWORD_DEFAULT);
                         include_once('../script/connection.php');
                         $query = "CALL eventi.insert_utente($1, $2)";
                         $res = pg_prepare($connection, "esito", $query);
-                        $res = pg_execute($connection, "esito", array($_POST['email'], $_POST['pw']));
+                        $res = pg_execute($connection, "esito", array($_POST['email'], $pw_enc));
 
                         pg_close($connection);
                         

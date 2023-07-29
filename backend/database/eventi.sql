@@ -103,8 +103,7 @@ $$ LANGUAGE plpgsql;
 
 -- Funzione di verifica dell'autenticazione:
 CREATE OR REPLACE FUNCTION eventi.autenticazione (
-    email_in text,
-    pw_in text
+    email_in text
 ) 
 RETURNS SETOF eventi.utenti AS $$
 DECLARE
@@ -113,7 +112,7 @@ BEGIN
     SELECT u.email
     INTO verificato
     FROM eventi.utenti AS u
-    WHERE u.email = email_in AND u.pw = pw_in;
+    WHERE u.email = email_in;
 
     RETURN NEXT verificato;
 END;

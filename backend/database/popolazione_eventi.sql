@@ -1,6 +1,3 @@
--- Inserimento utente:
-CALL eventi.insert_utente('gallia4729@gmail.com', 'ProvaPass');
-
 -- Inserimento evento di prova:
 CALL eventi.insert_evento('Evento prova', '2023-05-11', 'Casalpusterlengo', 'Evento di prova a Casalpusterlengo.');
 
