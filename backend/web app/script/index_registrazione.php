@@ -14,9 +14,9 @@
 
         $pw = $_POST['pw'];
 
-        // validate password (7+ characters, one letter, one number, one special char)
-        if (!preg_match("^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{7,}$", $pw)) {
-            $_SESSION['registrazione_fallita'] = 'La password inserita deve contenere almeno 7 caratteri, una lettera, un numero ed un carattere speciale';
+        // validate password (7+ characters)
+        if (strlen($pw) < 8) {
+            $_SESSION['registrazione_fallita'] = 'La password inserita deve contenere almeno 7 caratteri';
             header('Location: ../pagine/registrazione.php');
             exit();
         }
