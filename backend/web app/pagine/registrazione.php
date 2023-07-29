@@ -5,6 +5,9 @@
         
     </head>
     <body>
+
+        <h1>Registrazione</h1>
+
         <?php
             session_start();
             if (isset($_SESSION['registrazione_fallita'])) {
@@ -16,7 +19,7 @@
             <input type = "text" id = "email" name = "email" placeholder = "Inserisci la mail" required>
             <input type = "password" id = "pw" name = "pw" placeholder = "Inserisci la password" required>
             <br>
-            <input type = "submit" placeholder = "Registrati">
+            <input type = "submit" value = "Registrati">
         </form> 
 
         <br>

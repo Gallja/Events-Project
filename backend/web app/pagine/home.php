@@ -5,6 +5,9 @@
         
     </head>
     <body>
+
+        <h1>Login</h1>
+
         <?php
             include_once("../script/check_not_login.php");
 
@@ -22,7 +25,7 @@
             <input type = "text" id = "email" name = "email" placeholder = "Inserisci la mail" required>
             <input type = "password" id = "pw" name = "pw" placeholder = "Inserisci la password" required>
             <br>
-            <input type = "submit" placeholder = "Log In">
+            <input type = "submit" value = "Log In">
         </form> 
 
         <br>
