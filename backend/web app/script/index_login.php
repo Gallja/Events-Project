@@ -14,6 +14,7 @@
         if ($row["email"] === null) {
             $_SESSION['autenticazione_fallita'] = "Credenziali non corrette, riprova ".$pw_enc;
             header('Location: ../pagine/home.php');
+            exit();
         } else {
             $query = "SELECT pw FROM eventi.utenti WHERE email = $1";
             $res2 = pg_prepare($connection, "", $query);
@@ -30,13 +31,16 @@
                 $_SESSION['isLogin'] = true;
 
                 header('Location: ../pagine/home_admin.php');
+                exit();
             } else {
                 $_SESSION['autenticazione_fallita'] = "Password inserita non corretta, riprova";
                 header('Location: ../pagine/home.php');
+                exit();
             }
         }
     } else {
         $_SESSION['autenticazione_fallita'] = "Login errato, devi compilare tutti i campi";
         header('Location: ../pagine/home.php');
+        exit();
     }
 ?>

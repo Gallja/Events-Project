@@ -9,6 +9,7 @@
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $_SESSION['registrazione_fallita'] = 'Email inserita non valida, inseriscila nuovamente';
             header('Location: ../pagine/registrazione.php');
+            exit();
         }
 
         $pw = $_POST['pw'];
@@ -17,6 +18,7 @@
         if (!preg_match("^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{7,}$", $pw)) {
             $_SESSION['registrazione_fallita'] = 'La password inserita deve contenere almeno 7 caratteri, una lettera, un numero ed un carattere speciale';
             header('Location: ../pagine/registrazione.php');
+            exit();
         }
 
         // password and mail well-formed
@@ -34,9 +36,11 @@
         if (!$res) {
             $_SESSION['registrazione_fallita'] = 'Email già registrata nel sistema.';
             header('Location: ../pagine/registrazione.php');
+            exit();
         } else {
             $_SESSION['registrato'] = 'Registrazione avvenuta con successo!';
             header('Location: ../pagine/home.php');   
+            exit();
         }
     }
 ?>
