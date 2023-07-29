@@ -22,7 +22,7 @@ CREATE OR REPLACE PROCEDURE eventi.insert_utente (
 ) AS $$
 BEGIN 
     INSERT INTO eventi.utenti(email, pw)
-    VALUES (email, md5(pw));
+    VALUES (email, pw);
 END;
 $$ LANGUAGE plpgsql;
 
@@ -113,7 +113,7 @@ BEGIN
     SELECT u.email
     INTO verificato
     FROM eventi.utenti AS u
-    WHERE u.email = email_in AND u.pw = md5(pw_in);
+    WHERE u.email = email_in AND u.pw = pw_in;
 
     RETURN NEXT verificato;
 END;

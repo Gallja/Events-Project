@@ -21,5 +21,6 @@
         }
     } else {
         $_SESSION['autenticazione_fallita'] = "Login errato, devi compilare tutti i campi";
+        header('Location: ../pagine/home.php');
     }
 ?>
