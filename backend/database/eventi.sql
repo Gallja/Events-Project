@@ -12,6 +12,7 @@ CREATE TABLE eventi.eventi (
     nome_evento varchar NOT NULL CHECK (nome_evento <> ''),
     data_evento date NOT NULL,
     luogo varchar NOT NULL CHECK (luogo <> ''),
+    immagine bytea NOT NULL,
     descrizione varchar NOT NULL CHECK (descrizione <> '')
 );
 
@@ -34,11 +35,12 @@ CREATE OR REPLACE PROCEDURE eventi.insert_evento (
     nome_evento varchar,
     data_evento date,
     luogo varchar,
+    immagine bytea,
     descrizione varchar
 ) AS $$
 BEGIN
-    INSERT INTO eventi.eventi(nome_evento, data_evento, luogo, descrizione)
-    VALUES (nome_evento, data_evento, luogo, descrizione);
+    INSERT INTO eventi.eventi(nome_evento, data_evento, luogo, immagine, descrizione)
+    VALUES (nome_evento, data_evento, luogo, immagine, descrizione);
 END;
 $$ LANGUAGE plpgsql;
 
@@ -48,6 +50,7 @@ CREATE OR REPLACE PROCEDURE eventi.aggiorna_evento (
     nome_evento_in varchar,
     data_evento_in date,
     luogo_in varchar,
+    immagine_in bytea,
     descrizione_in varchar
 ) AS $$
 BEGIN
@@ -55,6 +58,7 @@ BEGIN
     SET e.nome_evento = nome_evento_in,
         e.data_evento = data_evento_in,
         e.luogo = luogo_in,
+        e.immagine = immagine_in,
         e.descrizione = descrizione_in
     WHERE e.codice = codice_in;
 END;
