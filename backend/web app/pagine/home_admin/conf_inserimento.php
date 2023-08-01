@@ -6,7 +6,7 @@
     </head>
     <body>
         <?php
-            include_once('../script/check_login.php');
+            include_once('../../script/check_login.php');
 
             echo "<h2>".$_SESSION['inserimento']."<h2>";
 

@@ -21,18 +21,17 @@
         pg_close($connection);
 
         if (!$res) {
-            // $error = pg_last_error($connection);
             $_SESSION['inserimento'] = "Errore nell'inserimento dell'evento ";
-            header('Location: ../../pagine/conf_inserimento.php');
+            header('Location: ../../pagine/home_admin/conf_inserimento.php');
             exit();
         } else {
             $_SESSION['inserimento'] = "Inserimento dell'evento avvenuto con successo!";
-            header('Location: ../../pagine/conf_inserimento.php');
+            header('Location: ../../pagine/home_admin/conf_inserimento.php');
             exit();
         }
     } else {
         $_SESSION['inserimento'] = "Errore nell'inserimento dell'evento, devi compilare tutti i campi";
-        header('Location: ../../pagine/conf_inserimento.php');
+        header('Location: ../../pagine/home_admin/conf_inserimento.php');
         exit();
     }
 ?>
