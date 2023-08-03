@@ -9,9 +9,11 @@
     <link rel = "stylesheet" href = "../../style/style.css">
 </head>
 <body>
+
     <?php
         include_once('../../script/check_login.php');
     ?>
+
     <div class = "container d-flex align-items-center centrato">
         <div class = "text-center">
             <h1>BENVENUTO!</h1>
@@ -58,30 +60,52 @@
                                 echo strtoupper($campi_chiave[0])." ".strtoupper($campi_chiave[1]).": ".$value;
                                 echo "</li>";
                             } else {
-                                if ($key != "immagine") {
-                                    echo "<li class='"."list-group-item"."'>";
-                                    echo strtoupper($key).": ".$value;
-                                    echo "</li>";
-                                } else {
-                                    $sql = "SELECT encode(immagine, 'base64') AS img FROM eventi.eventi AS e WHERE e.codice = $1";
-                                    $res2 = pg_prepare($connection, "", $sql);
-                                    $res2 = pg_execute($connection, "", array($codice));
-                                    $row2 = pg_fetch_assoc($res2);
+                                switch ($key) {
+                                    case 'luogo':
+                                        echo "<li class='"."list-group-item"."'>";
+                                        echo strtoupper($key).": ".$value;
 
-                                    echo "<li class='"."list-group-item"."'>";
+                                        echo "<button onclick='mostra_mod(\"luogo\")' class = 'btn btn-secondary'>Modifica</button><br>";
+                                        echo "<form class = 'form-group' method = 'POST' id = 'myForm_luogo' action = '../../script/gestione_eventi/modifica_evento.php'>"; // Form da far comparire dopo aver premuto il bottone
+                                        echo "<input type = 'text' class = 'form-control' id = 'luogo' name = 'luogo' placeholder = 'Inserisci il luogo' required/>";
+                                        echo "</form>";
 
-                                    echo '<img src="data:image/jpg;base64,'.$row2["img"].'">';
+                                        echo "</li>";
+                                        break;
 
-                                    echo "</li>";
-                                }
+                                    case 'descrizione':
+                                        echo "<li class='"."list-group-item"."'>";
+                                        echo strtoupper($key).": ".$value;
+
+                                        echo "<button onclick='"."mostra_mod(\"descrizione\")"."' class = 'btn btn-secondary'>Modifica</button><br>";
+                                        echo "<form class = 'form-group' method = 'POST' id = 'myForm_descrizione' action = '../../script/gestione_eventi/modifica_evento.php'>"; // Form da far comparire dopo aver premuto il bottone
+                                        echo "<input type = 'text' class = 'form-control' id = 'descrizione' name = 'descrizione' placeholder = 'Inserisci la descrizione' required/>";
+                                        echo "</form>";
+
+                                        echo "</li>";
+                                        break;
+                                    
+                                    case 'immagine':
+                                        $sql = "SELECT encode(immagine, 'base64') AS img FROM eventi.eventi AS e WHERE e.codice = $1";
+                                        $res2 = pg_prepare($connection, "", $sql);
+                                        $res2 = pg_execute($connection, "", array($codice));
+                                        $row2 = pg_fetch_assoc($res2);
+    
+                                        echo "<li class='"."list-group-item"."'>";
+    
+                                        echo '<img src="data:image/jpg;base64,'.$row2["img"].'">';
+    
+                                        echo "</li>";
+                                        break;
                             }
                         }
                         echo "<br><br>";
                     }
                     echo "</ul>";
-                }
+                }  
+            }
 
-                pg_close($connection);
+            pg_close($connection);
             ?>
 
             <br>
@@ -91,7 +115,24 @@
                 <button type = "submit" class="btn btn-primary" >LOGOUT</button>
             </form>
 
+            <br>
+
         </div>
     </div>
+
+    <script>
+        function mostra_mod(contenuto) {
+            var form_completo = "myForm_" + contenuto;
+            // console.log(form_completo);
+            var form = document.getElementById(form_completo);
+            
+            if (form.style.display === "none" || form.style.display === "") {
+                form.style.display = "block";
+            } else {
+                form.style.display = "none";
+            }
+        }
+    </script>
+
 </body>
 </html>
