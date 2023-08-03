@@ -15,6 +15,7 @@
                     <div class = "text-center">
 
                         <h1>Login</h1>
+                        <br>
 
                         <?php
                             include_once("../script/check_not_login.php");
@@ -32,8 +33,8 @@
 
                             <form class = "form-group" method = "POST" action = "../script/index_login.php">
                                 <div class = "form-centrato">
-                                    <input type = "text" class = "form-control col-md-10"  id = "email" name = "email" placeholder = "Inserisci la mail" required>
-                                    <input type = "password" class = "form-control col-md-10"  id = "pw" name = "pw" placeholder = "Inserisci la password" required>
+                                    <input type = "text" class = "form-control col-md-9"  id = "email" name = "email" placeholder = "Inserisci la mail" required>
+                                    <input type = "password" class = "form-control col-md-9"  id = "pw" name = "pw" placeholder = "Inserisci la password" required>
                                 </div>
                                 <br>
                                 <input type = "submit" class="btn btn-primary" value = "Log In">

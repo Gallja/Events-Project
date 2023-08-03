@@ -26,6 +26,7 @@
                 <input type = "luogo" class = "form-control" id = "luogo" name = "luogo" placeholder = "Inserisci il luogo" required>
                 <input type = "file" class = "form-control" id = "img" name = "img" required>
                 <input type = "text" class = "form-control" id = "descrizione" name = "descrizione" placeholder = "Inserisci la descrizione" required>
+                <br>
                 <input type = "submit" class="btn btn-primary" value = "INSERISCI">
             </form>
 
@@ -86,7 +87,7 @@
             <br>
             <br>
 
-            <form action = "../script/logout.php" method = "GET">
+            <form action = "../../script/logout.php" method = "GET">
                 <button type = "submit" class="btn btn-primary" >LOGOUT</button>
             </form>
 

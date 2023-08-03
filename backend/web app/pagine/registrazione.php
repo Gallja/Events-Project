@@ -10,11 +10,12 @@
     </head>
     <body>
         <div class = "container">
-            <div class = "row">
-                <div cclass = "col-md-6 mx-auto">
+            <div class = "row align-items-start">
+                <div class = "col-md-6 mx-auto">
                     <div class = "text-center">
 
-                        <h1>Registrazione</h1>
+                        <h1 id = "reg">Registrazione</h1>
+                        <br>
 
                         <?php
                             session_start();
