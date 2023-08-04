@@ -51,8 +51,6 @@
                     while ($row = pg_fetch_assoc($res)) {
                         $codice = $row['codice'];
 
-                        $img_bytea = $row['immagine'];
-                        $img_b64 = base64_encode($img_bytea);
                         foreach ($row as $key => $value) {
                             if (str_contains($key, '_')) {
                                 $campi_chiave = explode('_', $key);
@@ -63,7 +61,8 @@
                                         echo strtoupper($campi_chiave[0])." ".strtoupper($campi_chiave[1]).": ".$value;
                                         echo "<br><br><button onclick='mostra_mod(\"nome_evento\")' class = 'btn btn-secondary'>Modifica</button><br><br>";
                                         echo "<form class = 'form-group' method = 'POST' id = 'myForm_nome_evento' name = 'myForm_nome_evento' action = '../../script/gestione_eventi/modifica_evento.php'>"; // Form da far comparire dopo aver premuto il bottone
-                                        echo "<input type = 'text' class = 'form-control' id = 'nome_evento' name = 'nome_evento' placeholder = 'Reinserisci il nome' required/>";
+                                        echo "<input type = 'text' class = 'form-control' id = 'nome_evento' name = 'nome_evento' placeholder = 'Reinserisci il nome' required />";
+                                        echo "<input type = 'hidden' id = 'codice' name = 'codice' value = '".$codice."' />";
                                         echo "<br><input type = 'submit' class = 'btn btn-success' value = 'Conferma'/>";
                                         echo "</form>";
                                         echo "</li>";
@@ -74,7 +73,8 @@
                                         echo strtoupper($campi_chiave[0])." ".strtoupper($campi_chiave[1]).": ".$value;
                                         echo "<br><br><button onclick='mostra_mod(\"data_evento\")' class = 'btn btn-secondary'>Modifica</button><br><br>";
                                         echo "<form class = 'form-group' method = 'POST' id = 'myForm_data_evento' name = 'myForm_data_evento' action = '../../script/gestione_eventi/modifica_evento.php'>"; // Form da far comparire dopo aver premuto il bottone
-                                        echo "<input type = 'date' class = 'form-control' id = 'data_evento' name = 'nome_evento' placeholder = 'Reinserisci la data' required/>";
+                                        echo "<input type = 'date' class = 'form-control' id = 'data_evento' name = 'nome_evento' placeholder = 'Reinserisci la data' required />";
+                                        echo "<input type = 'hidden' id = 'codice' name = 'codice' value = '".$codice."' />";
                                         echo "<br><input type = 'submit' class = 'btn btn-success' value = 'Conferma'/>";
                                         echo "</form>";
                                         echo "</li>";
@@ -91,6 +91,7 @@
                                         echo "<br><br><button onclick='mostra_mod(\"luogo\")' class = 'btn btn-secondary'>Modifica</button><br><br>";
                                         echo "<form class = 'form-group' method = 'POST' id = 'myForm_luogo' action = '../../script/gestione_eventi/modifica_evento.php'>"; // Form da far comparire dopo aver premuto il bottone
                                         echo "<input type = 'text' class = 'form-control' id = 'luogo' name = 'luogo' placeholder = 'Reinserisci il luogo' required/>";
+                                        echo "<input type = 'hidden' id = 'codice' name = 'codice' value = '".$codice."' />";
                                         echo "<br><input type = 'submit' class = 'btn btn-success' value = 'Conferma'/>";
                                         echo "</form>";
 
@@ -104,6 +105,7 @@
                                         echo "<br><br><button onclick='"."mostra_mod(\"descrizione\")"."' class = 'btn btn-secondary'>Modifica</button><br><br>";
                                         echo "<form class = 'form-group' method = 'POST' id = 'myForm_descrizione' action = '../../script/gestione_eventi/modifica_evento.php'>"; // Form da far comparire dopo aver premuto il bottone
                                         echo "<input type = 'text' class = 'form-control' id = 'descrizione' name = 'descrizione' placeholder = 'Reinserisci la descrizione' required/>";
+                                        echo "<input type = 'hidden' id = 'codice' name = 'codice' value = '".$codice."' />";
                                         echo "<br><input type = 'submit' class = 'btn btn-success' value = 'Conferma'/>";
                                         echo "</form>";
 
@@ -122,7 +124,8 @@
 
                                         echo "<br><br><button onclick='"."mostra_mod(\"immagine\")"."' class = 'btn btn-secondary'>Modifica</button><br><br>";
                                         echo "<form class = 'form-group' method = 'POST' id = 'myForm_immagine' action = '../../script/gestione_eventi/modifica_evento.php'>"; // Form da far comparire dopo aver premuto il bottone
-                                        echo "<input type = 'text' class = 'form-control' id = 'immagine' name = 'immagine' placeholder = 'Reinserisci immagine' required/>";
+                                        echo "<input type = 'file' class = 'form-control' id = 'immagine' name = 'immagine' placeholder = 'Reinserisci immagine' required/>";
+                                        echo "<input type = 'hidden' id = 'codice' name = 'codice' value = '".$codice."' />";
                                         echo "<br><input type = 'submit' class = 'btn btn-success' value = 'Conferma'/>";
                                         echo "</form>";
     
@@ -130,9 +133,15 @@
                                         break;
                             }
                         }
-                        echo "<br><br>";
                     }
-                    echo "</ul>";
+                    echo "</ul><br>";
+
+                    echo "<form action = 'conferma_eliminazione.php' method = 'POST'>";
+                    echo "<input type = 'hidden' id = 'codice' name = 'codice' value = '".$codice."' />";
+                    echo "<input type = 'submit' class = 'btn btn-danger' value = 'Elimina evento' />";
+                    echo "</form>";
+
+                    echo "<br><hr><br>";
                 }  
             }
 

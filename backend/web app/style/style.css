@@ -39,11 +39,6 @@ body {
     display: none;
 }
 
-ul.list-group {
-    margin: 0;
-    padding: 0;
-}
-
 ul.list-group li {
     margin: 0;
     padding: 0;
