@@ -12,11 +12,41 @@ body {
 
 .text-center {
     padding-top: 0;
-    padding-left: 20%;
+    padding-left: 35%;
 }
 
 .form-centrato {
     padding-left: 20%;
+}
+
+#myForm_nome_evento {
+    display: none;
+}
+
+#myForm_data_evento {
+    display: none;
+}
+
+#myForm_luogo {
+    display: none;
+}
+
+#myForm_immagine {
+    display: none;
+}
+
+#myForm_descrizione {
+    display: none;
+}
+
+ul.list-group {
+    margin: 0;
+    padding: 0;
+}
+
+ul.list-group li {
+    margin: 0;
+    padding: 0;
 }
 
 img {
