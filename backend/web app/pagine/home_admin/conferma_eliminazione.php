@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html lang = ita>
 <html>
 <head>
     <title>Home Admin</title>

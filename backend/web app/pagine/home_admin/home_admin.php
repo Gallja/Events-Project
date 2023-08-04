@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html lang = ita>
 <html>
 <head>
     <title>Home Admin</title>
@@ -40,7 +41,7 @@
             <?php
                 include_once('../../script/connection.php');
 
-                $query = "SELECT * FROM eventi.eventi";
+                $query = "SELECT * FROM eventi.eventi AS e ORDER BY e.data_evento";
                 $res = pg_prepare($connection, "", $query);
                 $res = pg_execute($connection, "", array());
 
@@ -73,7 +74,7 @@
                                         echo strtoupper($campi_chiave[0])." ".strtoupper($campi_chiave[1]).": ".$value;
                                         echo "<br><br><button onclick='mostra_mod(\"data_evento\")' class = 'btn btn-secondary'>Modifica</button><br><br>";
                                         echo "<form class = 'form-group' method = 'POST' id = 'myForm_data_evento' name = 'myForm_data_evento' action = '../../script/gestione_eventi/modifica_evento.php'>"; // Form da far comparire dopo aver premuto il bottone
-                                        echo "<input type = 'date' class = 'form-control' id = 'data_evento' name = 'nome_evento' placeholder = 'Reinserisci la data' required />";
+                                        echo "<input type = 'date' class = 'form-control' id = 'data_evento' name = 'data_evento' placeholder = 'Reinserisci la data' required />";
                                         echo "<input type = 'hidden' id = 'codice' name = 'codice' value = '".$codice."' />";
                                         echo "<br><input type = 'submit' class = 'btn btn-success' value = 'Conferma'/>";
                                         echo "</form>";
@@ -123,7 +124,7 @@
                                         echo '<img src="data:image/jpg;base64,'.$row2["img"].'">';
 
                                         echo "<br><br><button onclick='"."mostra_mod(\"immagine\")"."' class = 'btn btn-secondary'>Modifica</button><br><br>";
-                                        echo "<form class = 'form-group' method = 'POST' id = 'myForm_immagine' action = '../../script/gestione_eventi/modifica_evento.php'>"; // Form da far comparire dopo aver premuto il bottone
+                                        echo "<form class = 'form-group' method = 'POST' id = 'myForm_immagine' action = '../../script/gestione_eventi/modifica_evento.php' enctype = 'multipart/form-data'>"; // Form da far comparire dopo aver premuto il bottone
                                         echo "<input type = 'file' class = 'form-control' id = 'immagine' name = 'immagine' placeholder = 'Reinserisci immagine' required/>";
                                         echo "<input type = 'hidden' id = 'codice' name = 'codice' value = '".$codice."' />";
                                         echo "<br><input type = 'submit' class = 'btn btn-success' value = 'Conferma'/>";

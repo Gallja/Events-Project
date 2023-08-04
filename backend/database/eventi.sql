@@ -44,26 +44,6 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
--- Funzione di modifica/aggiornamento di un evento esistente:
-CREATE OR REPLACE PROCEDURE eventi.aggiorna_evento (
-    codice_in integer,
-    nome_evento_in varchar,
-    data_evento_in date,
-    luogo_in varchar,
-    immagine_in bytea,
-    descrizione_in varchar
-) AS $$
-BEGIN
-    UPDATE eventi.eventi AS e
-    SET e.nome_evento = nome_evento_in,
-        e.data_evento = data_evento_in,
-        e.luogo = luogo_in,
-        e.immagine = immagine_in,
-        e.descrizione = descrizione_in
-    WHERE e.codice = codice_in;
-END;
-$$ LANGUAGE plpgsql;
-
 -- Funzione di modifica della password per un utente:
 CREATE OR REPLACE FUNCTION eventi.cambio_pw (
     email_in text,
@@ -96,12 +76,12 @@ $$ LANGUAGE plpgsql;
 
 -- Funzione di eliminazione di un evento esistente:
 CREATE OR REPLACE PROCEDURE eventi.elimina_evento (
-    nome_in varchar
+    codice_in varchar
 )
 AS $$
 BEGIN
     DELETE FROM eventi.eventi AS e
-    WHERE e.nome_evento = nome_in;
+    WHERE e.codice = codice_in;
 END;
 $$ LANGUAGE plpgsql;
 
@@ -119,5 +99,65 @@ BEGIN
     WHERE u.email = email_in;
 
     RETURN NEXT verificato;
+END;
+$$ LANGUAGE plpgsql;
+
+-- Funzione di modifica/aggiornamento del nome di un evento:
+CREATE OR REPLACE PROCEDURE eventi.aggiorna_evento_nome (
+    codice_in integer,
+    nome_evento_in varchar
+) AS $$
+BEGIN
+    UPDATE eventi.eventi AS e
+    SET nome_evento = nome_evento_in
+    WHERE e.codice = codice_in;
+END;
+$$ LANGUAGE plpgsql;
+
+-- Funzione di modifica/aggiornamento della data di un evento:
+CREATE OR REPLACE PROCEDURE eventi.aggiorna_evento_data (
+    codice_in integer,
+    data_in date
+) AS $$
+BEGIN
+    UPDATE eventi.eventi AS e
+    SET data_evento = data_in
+    WHERE e.codice = codice_in;
+END;
+$$ LANGUAGE plpgsql;
+
+-- Funzione di modifica/aggiornamento del luogo di un evento:
+CREATE OR REPLACE PROCEDURE eventi.aggiorna_evento_luogo (
+    codice_in integer,
+    luogo_in varchar
+) AS $$
+BEGIN
+    UPDATE eventi.eventi AS e
+    SET luogo = luogo_in
+    WHERE e.codice = codice_in;
+END;
+$$ LANGUAGE plpgsql;
+
+-- Funzione di modifica/aggiornamento dell'immagine di un evento:
+CREATE OR REPLACE PROCEDURE eventi.aggiorna_evento_imm (
+    codice_in integer,
+    immagine_in bytea
+) AS $$
+BEGIN
+    UPDATE eventi.eventi AS e
+    SET immagine = immagine_in
+    WHERE e.codice = codice_in;
+END;
+$$ LANGUAGE plpgsql;
+
+-- Funzione di modifica/aggiornamento della descrizione di un evento:
+CREATE OR REPLACE PROCEDURE eventi.aggiorna_evento_desc (
+    codice_in integer,
+    descrizione_in varchar
+) AS $$
+BEGIN
+    UPDATE eventi.eventi AS e
+    SET descrizione = descrizione_in
+    WHERE e.codice = codice_in;
 END;
 $$ LANGUAGE plpgsql;
