@@ -28,7 +28,7 @@
                 <input type = "date" class = "form-control" id = "data" name = "data" placeholder = "Inserisci la data" required>
                 <input type = "luogo" class = "form-control" id = "luogo" name = "luogo" placeholder = "Inserisci il luogo" required>
                 <input type = "file" class = "form-control" id = "img" name = "img" required>
-                <input type = "text" class = "form-control" id = "descrizione" name = "descrizione" placeholder = "Inserisci la descrizione" required>
+                <textarea class = "form-control" id = "descrizione" name = "descrizione" placeholder = "Inserisci la descrizione" required></textarea>
                 <br>
                 <input type = "submit" class="btn btn-primary" value = "INSERISCI">
             </form>
@@ -105,7 +105,7 @@
 
                                         echo "<br><br><button onclick='"."mostra_mod(\"descrizione\", \"".$codice."\")"."' class = 'btn btn-secondary'>Modifica</button><br><br>";
                                         echo "<form class = 'form-group' method = 'POST' id = 'myForm_descrizione_".$codice."' action = '../../script/gestione_eventi/modifica_evento.php' style = 'display: none;'>"; // Form da far comparire dopo aver premuto il bottone
-                                        echo "<input type = 'text' class = 'form-control' id = 'descrizione' name = 'descrizione' placeholder = 'Reinserisci la descrizione' required/>";
+                                        echo "<textarea class = 'form-control' id = 'descrizione' name = 'descrizione' placeholder = 'Reinserisci la descrizione' required></textarea>";
                                         echo "<input type = 'hidden' id = 'codice' name = 'codice' value = '".$codice."' />";
                                         echo "<br><input type = 'submit' class = 'btn btn-success' value = 'Conferma'/>";
                                         echo "</form>";
