@@ -19,7 +19,10 @@
                 unset($_SESSION['inserimento']);
             ?>
 
+            <br>
+
             <h4>Torna alla pagina precedente:</h4>
+            <br>
             <form action = "home_admin.php">
                 <input type = "submit" class = "btn btn-primary" value = "Torna alla Home" />
             </form>
