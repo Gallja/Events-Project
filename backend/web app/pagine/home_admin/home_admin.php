@@ -152,9 +152,17 @@
             <br>
             <br>
 
-            <form action = "../../script/logout.php" method = "GET">
-                <button type = "submit" class="btn btn-primary" >LOGOUT</button>
-            </form>
+            <div id = "div_bottoni">
+
+                <form action = "cambio_pw.php" method = "POST">
+                    <button type = "submit" class="btn btn-primary" >CAMBIA PASSWORD</button>
+                </form>
+
+                <form action = "../../script/logout.php" method = "GET">
+                    <button type = "submit" class="btn btn-primary" >LOGOUT</button>
+                </form>
+
+            </div>
 
             <br>
 
