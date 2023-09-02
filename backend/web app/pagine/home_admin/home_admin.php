@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang = ita>
-<html>
 <head>
     <title>Home Admin</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -17,7 +16,33 @@
 
     <div class = "container d-flex align-items-center centrato">
         <div class = "text-center">
-            <h1>BENVENUTO!</h1>
+
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <a class="navbar-brand"">Benvenuto nella tua area riservata!</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="home_admin.php">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="cambio_pw.php">Cambia password</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../../script/logout.php">Loguot</a>
+                        </li>
+                    </ul>
+                    <div class="row justify-content-center align-items-center">
+                        <form class="form-inline my-2 my-lg-0 search-bar">
+                            <input class="form-control mr-sm-2" type="search" placeholder="Cerca" aria-label="Search">
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Cerca</button>
+                        </form>
+                    </div>
+                </div>
+            </nav>
 
             <br>
             <br>
@@ -152,6 +177,7 @@
             <br>
             <br>
 
+            <!---
             <div id = "div_bottoni">
 
                 <form action = "cambio_pw.php" method = "POST">
@@ -165,6 +191,7 @@
             </div>
 
             <br>
+            --->
 
         </div>
     </div>
