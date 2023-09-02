@@ -38,9 +38,24 @@
 
             <div id = "centro">
 
-                <h4>Compila il seguente modulo per cambiare la password:</h4>
+                <?php
+                    if (isset($_SESSION['cambiamento_fallito'])) {
+                        echo "<p>".$_SESSION['cambiamento_fallito']."</p>";
+                        unset($_SESSION['cambiamento_fallito']);
+                    } else {
+                        if (isset($_SESSION['cambiamento_avvenuto'])) {
+                            echo "<p>".$_SESSION['cambiamento_avvenuto']."</p>";
+                            unset($_SESSION['cambiamento_avvenuto']);
+                        }
+                    }
+                ?>
+
+                <h4>Compila il seguente modulo per cambiare la password:</h4><br>
 
                 <form class = "form-group" method = "POST" action = "../../script/check_change_pw.php" id = "form-change">
+                    <input type = "text" id = "mail" name = "mail" placeholder = "Indirizzo email" required />
+                    <br>
+                    <br>
                     <input type = "password" id = "old_pw" name = "old_pw" placeholder = "Password attuale" required />
                     <br>
                     <br>
@@ -55,10 +70,6 @@
                 
                 <hr>
                 <br>
-
-                <form action = "home_admin.php" method = "GET">
-                    <button type = "submit" class = "btn btn-primary">TORNA ALLA HOME</button>
-                </form>
             </div>
 
 

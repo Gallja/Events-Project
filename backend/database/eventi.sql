@@ -60,9 +60,9 @@ BEGIN
         WHERE u.pw = old_pw
     ) THEN 
         UPDATE eventi.utenti
-        SET u.pw = new_pw
-        WHERE u.email = email_in
-        RETURNING u.email INTO aggiornato;
+        SET pw = new_pw
+        WHERE email = email_in
+        RETURNING email INTO aggiornato;
     END IF;
 
     IF aggiornato IS NOT NULL

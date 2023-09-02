@@ -8,15 +8,3 @@
     margin-left: calc(50% - 150px);
     flex-direction: column;
 }
-
-#old_pw {
-    border-radius: 5px;
-}
-
-#new_pw {
-    border-radius: 5px;
-}
-
-#conf_new_pw {
-    border-radius: 5px;
-}
