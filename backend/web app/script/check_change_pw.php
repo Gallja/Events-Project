@@ -50,16 +50,16 @@
         // valid password
         $new_pw_cript = password_hash($new_pw, PASSWORD_DEFAULT);
 
-        $query_change = "SELECT * FROM eventi.cambio_pw($1, $2, $3)";
-        $res3 = pg_prepare($connection, "", $query_change);
-        $res3 = pg_execute($connection, "", array($email, $old_pw, $new_pw_cript));
+        $query_change = "CALL eventi.aggiorna_pw($1, $2)";
+        $res3 = pg_prepare($connection, "update_pw", $query_change);
+        $res3 = pg_execute($connection, "update_pw", array($email, $new_pw_cript));
 
         $row3 = pg_fetch_assoc($res3);
 
-        pg_close('connection.php');
+        // pg_close($connection);
 
         // unsuccessful change
-        if ($row3['change_pw'] == '0') {
+        if ($row3['aggiorna_pw'] === null) {
             $_SESSION['cambiamento_fallito'] = "Errore nel cambiamento della password, riprova...";
             header('Location: ../pagine/home_admin/cambio_pw.php');
             exit();

@@ -74,6 +74,18 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
+CREATE OR REPLACE PROCEDURE eventi.aggiorna_pw (
+    email_in text,
+    new_pw text
+)
+AS $$
+BEGIN
+    UPDATE eventi.utenti AS u
+    SET pw = new_pw
+    WHERE u.email = email_in;
+END;
+$$ LANGUAGE plpgsql;
+
 -- Funzione di eliminazione di un evento esistente:
 CREATE OR REPLACE PROCEDURE eventi.elimina_evento (
     codice_in varchar
