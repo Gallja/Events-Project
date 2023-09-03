@@ -7,6 +7,7 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <link rel = "stylesheet" href = "../../style/style.css">
+    <script src = "../../js/script.js"></script>
 </head>
 <body>
 
@@ -37,8 +38,8 @@
                     </ul>
                     <div class="row justify-content-center align-items-center">
                         <form class="form-inline my-2 my-lg-0 search-bar">
-                            <input class="form-control mr-sm-2" type="search" placeholder="Cerca" aria-label="Search">
-                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Cerca</button>
+                            <input id = "input_ricerca" class="form-control mr-sm-2" type="search" placeholder="Cerca" aria-label="Search">
+                            <button onclick = "ricerca()" id = "input_bottone" class="btn btn-outline-success my-2 my-sm-0" type="submit">Cerca</button>
                         </form>
                     </div>
                 </div>
@@ -146,7 +147,7 @@
     
                                         echo "<li class='"."list-group-item"."'>";
     
-                                        echo '<img src="data:image/jpg;base64,'.$row2["img"].'">';
+                                        echo '<br><img src="data:image/jpg;base64,'.$row2["img"].'">';
 
                                         echo "<br><br><button onclick='"."mostra_mod(\"immagine\", \"".$codice."\")"."' class = 'btn btn-secondary'>Modifica</button><br><br>";
                                         echo "<form class = 'form-group' method = 'POST' id = 'myForm_immagine_".$codice."' action = '../../script/gestione_eventi/modifica_evento.php' enctype = 'multipart/form-data' style = 'display: none;'>"; // Form da far comparire dopo aver premuto il bottone
@@ -177,38 +178,8 @@
             <br>
             <br>
 
-            <!---
-            <div id = "div_bottoni">
-
-                <form action = "cambio_pw.php" method = "POST">
-                    <button type = "submit" class="btn btn-primary" >CAMBIA PASSWORD</button>
-                </form>
-
-                <form action = "../../script/logout.php" method = "GET">
-                    <button type = "submit" class="btn btn-primary" >LOGOUT</button>
-                </form>
-
-            </div>
-
-            <br>
-            --->
-
         </div>
     </div>
-
-    <script>
-        function mostra_mod(contenuto, codice) {
-            var form_completo = "myForm_" + contenuto + "_" + codice;
-            // console.log(form_completo);
-            var form = document.getElementById(form_completo);
-            
-            if (form.style.display === "none") {
-                form.style.display = "block";
-            } else {
-                form.style.display = "none";
-            }
-        }
-    </script>
 
 </body>
 </html>
