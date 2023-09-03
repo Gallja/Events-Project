@@ -56,14 +56,7 @@
 
         $row3 = pg_fetch_assoc($res3);
 
-        // pg_close($connection);
-
-        // unsuccessful change
-        if ($row3['aggiorna_pw'] === null) {
-            $_SESSION['cambiamento_fallito'] = "Errore nel cambiamento della password, riprova...";
-            header('Location: ../pagine/home_admin/cambio_pw.php');
-            exit();
-        }
+        pg_close($connection);
         
         $_SESSION['cambiamento_avvenuto'] = "Cambiamento della password avvenuto con successo!";
         header('Location: ../pagine/home_admin/cambio_pw.php');
