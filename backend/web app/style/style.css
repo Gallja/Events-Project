@@ -67,3 +67,27 @@ img {
 #div_search > .form-control {
     width: auto !important;
 }
+
+input#nome_evento {
+    width: 250px;
+    text-align: center;
+    margin: auto;
+}
+
+input#data_evento {
+    width: 250px;
+    text-align: center;
+    margin: auto;
+}
+
+input#luogo {
+    width: 250px;
+    text-align: center;
+    margin: auto;
+}
+
+input#immagine {
+    width: 250px;
+    text-align: center;
+    margin: auto;
+}

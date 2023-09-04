@@ -48,9 +48,9 @@
 
             <h3>Inserisci un nuovo evento:</h3>
             <form class = "form-group" method = "POST" action = "../../script/gestione_eventi/insert_evento.php" enctype = "multipart/form-data">
-                <input type = "text" class = "form-control" id = "nome_evento" name = "nome_evento" placeholder = "Inserisci il nome dell'evento" required>
+                <input type = "text" class = "form-control" id = "nome_evento1" name = "nome_evento" placeholder = "Inserisci il nome dell'evento" required>
                 <input type = "date" class = "form-control" id = "data" name = "data" placeholder = "Inserisci la data" required>
-                <input type = "luogo" class = "form-control" id = "luogo" name = "luogo" placeholder = "Inserisci il luogo" required>
+                <input type = "luogo" class = "form-control" id = "luogo1" name = "luogo" placeholder = "Inserisci il luogo" required>
                 <input type = "file" class = "form-control" id = "img" name = "img" required>
                 <textarea class = "form-control" id = "descrizione" name = "descrizione" placeholder = "Inserisci la descrizione" required></textarea>
                 <br>
@@ -166,7 +166,7 @@
                     echo "<input type = 'submit' class = 'btn btn-danger' value = 'Elimina evento' />";
                     echo "</form>";
 
-                    echo "<br><hr><br>";
+                    echo "<br><hr><br><br>";
                 }  
             }
 
