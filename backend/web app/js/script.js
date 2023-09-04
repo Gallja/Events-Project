@@ -11,21 +11,19 @@ function mostra_mod(contenuto, codice) {
 }
 
 function ricerca() {
-    console.log("debug");
     var input_ricerca = document.getElementById('input_ricerca');
-    var input_bottone = document.getElementById('input_bottone');
+    var testo = input_ricerca.value.toLowerCase();
+    var elementi_da_cercare = document.querySelectorAll('p, h1, h2, h3, h4, h5, h6, li, a, span');
 
-    input_bottone.addEventListener('click', function() {
-        var testo = input_ricerca.value.toLowerCase();
-        var elementi_da_cercare = document.querySelectorAll('p, h1, h2, h3, h4, h5, h6, li, a, span');
-
-        elementi_da_cercare.forEach(function (elemento) {
-            var testo_elemento = elemento.textContent.toLowerCase();
-            if (testo_elemento.includes(testo)) {
-                elemento.style.display = 'block';
-            } else {
-                elemento.style.display = 'none';
-            }
-        });
+    elementi_da_cercare.forEach(function (elemento) {
+        var testo_elemento = elemento.textContent.toLowerCase();
+        // console.log(elemento);
+        if (testo_elemento.includes(testo)) {
+            var elDistanceToTop = window.pageYOffset + elemento.getBoundingClientRect().top
+            window.scrollTo({
+                top: elDistanceToTop,
+                behavior: 'smooth'
+            });
+        }
     });
 }

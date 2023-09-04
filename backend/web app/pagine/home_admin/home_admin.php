@@ -19,7 +19,7 @@
         <div class = "text-center">
 
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand"">Benvenuto nella tua area riservata!</a>
+                <a class="navbar-brand">Benvenuto nella tua area riservata!</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -37,10 +37,8 @@
                         </li>
                     </ul>
                     <div class="row justify-content-center align-items-center">
-                        <form class="form-inline my-2 my-lg-0 search-bar">
-                            <input id = "input_ricerca" class="form-control mr-sm-2" type="search" placeholder="Cerca" aria-label="Search">
-                            <button onclick = "ricerca()" id = "input_bottone" class="btn btn-outline-success my-2 my-sm-0" type="submit">Cerca</button>
-                        </form>
+                        <input id = "input_ricerca" class="form-control mr-sm-2" type="search" placeholder="Cerca" aria-label="Search">
+                        <button onclick = "ricerca()" id = "input_bottone" class="btn btn-outline-success my-2 my-sm-0">Cerca</button>
                     </div>
                 </div>
             </nav>
