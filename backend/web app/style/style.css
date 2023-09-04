@@ -59,3 +59,11 @@ img {
     margin-right: auto;
     text-align: center;
 }
+
+#div_search {
+    flex-direction: row;
+}
+
+#div_search > .form-control {
+    width: auto !important;
+}

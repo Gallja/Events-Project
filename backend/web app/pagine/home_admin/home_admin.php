@@ -36,7 +36,7 @@
                             <a class="nav-link" href="../../script/logout.php">Loguot</a>
                         </li>
                     </ul>
-                    <div class="row justify-content-center align-items-center">
+                    <div class="row justify-content-center align-items-center" id = "div_search">
                         <input id = "input_ricerca" class="form-control mr-sm-2" type="search" placeholder="Cerca" aria-label="Search">
                         <button onclick = "ricerca()" id = "input_bottone" class="btn btn-outline-success my-2 my-sm-0">Cerca</button>
                     </div>
