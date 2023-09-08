@@ -23,8 +23,8 @@ CREATE TABLE eventi.comici (
     id serial PRIMARY KEY,
     nome_comico varchar NOT NULL CHECK (nome_comico <> ''),
     cognome_comico varchar NOT NULL CHECK (cognome_comico <> ''),
-    foto_profilo bytea NOT NULL,
-    bio_comico varchar NOT NULL CHECK (bio_comico <> '')
+    profilo bytea NOT NULL,
+    bio varchar NOT NULL CHECK (bio <> '')
 );
 
 -- Tabella di associazione tra eventi e comici:
@@ -77,12 +77,12 @@ $$ LANGUAGE plpgsql;
 CREATE OR REPLACE PROCEDURE eventi.insert_comico (
     nome_comico varchar,
     cognome_comico varchar,
-    foto_profilo bytea,
-    bio_comico varchar
+    profilo bytea,
+    bio varchar
 ) AS $$
 BEGIN
-    INSERT INTO eventi.comici(nome_comico, cognome_comico, foto_profilo, bio_comico)
-    VALUES(nome_comico, cognome_comico, foto_profilo, bio_comico);
+    INSERT INTO eventi.comici(nome_comico, cognome_comico, profilo, bio)
+    VALUES(nome_comico, cognome_comico, profilo, bio);
 END;
 $$ LANGUAGE plpgsql;
 
