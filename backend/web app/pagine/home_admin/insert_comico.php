@@ -131,7 +131,7 @@
                                         echo strtoupper($key).": ".$value;
 
                                         echo "<br><br><button onclick='"."mostra_mod(\"bio\", \"".$id."\")"."' class = 'btn btn-secondary'>Modifica</button><br><br>";
-                                        echo "<form class = 'form-group' method = 'POST' id = 'myForm_bio".$id."' action = '../../script/gestione_comici/modifica_comico.php' style = 'display: none;'>"; // Form da far comparire dopo aver premuto il bottone
+                                        echo "<form class = 'form-group' method = 'POST' id = 'myForm_bio_".$id."' action = '../../script/gestione_comici/modifica_comico.php' style = 'display: none;'>"; // Form da far comparire dopo aver premuto il bottone
                                         echo "<textarea class = 'form-control' id = 'bio' name = 'bio' placeholder = 'Reinserisci la bio' required></textarea>";
                                         echo "<input type = 'hidden' id = 'id' name = 'id' value = '".$id."' />";
                                         echo "<br><input type = 'submit' class = 'btn btn-success' value = 'Conferma'/>";
