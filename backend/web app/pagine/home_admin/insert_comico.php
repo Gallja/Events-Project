@@ -61,7 +61,101 @@
             <br>
             <hr>
 
-            
+            <h3>Tutti i comici affiliati:</h3>
+
+            <?php
+                include_once('../../script/connection.php');
+
+                $query = "SELECT * FROM eventi.comici AS c ORDER BY c.cognome_comico";
+                $res = pg_prepare($connection, "ris", $query);
+                $res = pg_execute($connection, "ris", array());
+
+                if (!$res) {
+                    echo "<h4>Errore nella visualizzazione dei comici nel sistema.</h4>";
+                } else {
+                    echo "<ul class='"."list-group"."'>";
+                    while ($row = pg_fetch_assoc($res)) {
+                        $id = $row['id'];
+
+                        foreach ($row as $key => $value) {
+                            if (str_contains($key, '_')) {
+                                $campi_chiave = explode('_', $key);
+
+                                switch ($key) {
+                                    case 'nome_comico':
+                                        echo "<li class='"."list-group-item"."'>";
+                                        echo strtoupper($campi_chiave[0])." ".strtoupper($campi_chiave[1]).": ".$value;
+                                        echo "<br><br><button onclick='mostra_mod(\"nome_comico\", \"".$id."\")' class = 'btn btn-secondary'>Modifica</button><br><br>";
+                                        echo "<form class = 'form-group' method = 'POST' id = 'myForm_nome_comico_".$id."' name = 'myForm_nome_comico_".$id."' action = '../../script/gestione_comici/modifica_comico.php' style = 'display: none;'>"; // Form da far comparire dopo aver premuto il bottone
+                                        echo "<input type = 'text' class = 'form-control' id = 'nome_comico' name = 'nome_comico' placeholder = 'Reinserisci il nome' required />";
+                                        echo "<input type = 'hidden' id = 'id' name = 'id' value = '".$id."' />";
+                                        echo "<br><input type = 'submit' class = 'btn btn-success' value = 'Conferma' />";
+                                        echo "</form>";
+                                        echo "</li>";
+                                        break;
+                                    case 'cognome_comico':
+                                        echo "<li class='"."list-group-item"."'>";
+                                        echo strtoupper($campi_chiave[0])." ".strtoupper($campi_chiave[1]).": ".$value;
+                                        echo "<br><br><button onclick='mostra_mod(\"cognome_comico\", \"".$id."\")' class = 'btn btn-secondary'>Modifica</button><br><br>";
+                                        echo "<form class = 'form-group' method = 'POST' id = 'myForm_cognome_comico_".$id."' name = 'myForm_cognome_comico_".$id."' action = '../../script/gestione_comici/modifica_comico.php' style = 'display: none;'>"; // Form da far comparire dopo aver premuto il bottone
+                                        echo "<input type = 'text' class = 'form-control' id = 'cognome_comico' name = 'cognome_comico' placeholder = 'Reinserisci il cognome' required />";
+                                        echo "<input type = 'hidden' id = 'id' name = 'id' value = '".$id."' />";
+                                        echo "<br><input type = 'submit' class = 'btn btn-success' value = 'Conferma' />";
+                                        echo "</form>";
+                                        echo "</li>";
+                                        break;
+                                }
+                            } else {
+                                switch ($key) {
+                                    case 'profilo':
+                                        $sql = "SELECT encode(immagine, 'base64') AS img FROM eventi.comici AS e WHERE e.id = $1";
+                                        $res2 = pg_prepare($connection, "", $sql);
+                                        $res2 = pg_execute($connection, "", array($id));
+                                        $row2 = pg_fetch_assoc($res2);
+    
+                                        echo "<li class='"."list-group-item"."'>";
+    
+                                        echo '<br><img src="data:image/jpg;base64,'.$row2["img"].'">';
+
+                                        echo "<br><br><button onclick='"."mostra_mod(\"profilo\", \"".$id."\")"."' class = 'btn btn-secondary'>Modifica</button><br><br>";
+                                        echo "<form class = 'form-group' method = 'POST' id = 'myForm_profilo_".$id."' action = '../../script/gestione_comici/modifica_comico.php' enctype = 'multipart/form-data' style = 'display: none;'>"; // Form da far comparire dopo aver premuto il bottone
+                                        echo "<input type = 'file' class = 'form-control' id = 'profilo' name = 'profilo' placeholder = 'Reinserisci immagine profilo' required/>";
+                                        echo "<input type = 'hidden' id = 'codice' name = 'codice' value = '".$id."' />";
+                                        echo "<br><input type = 'submit' class = 'btn btn-success' value = 'Conferma'/>";
+                                        echo "</form>";
+    
+                                        echo "</li>";
+                                        break;
+                                    case 'bio':
+                                        echo "<li class='"."list-group-item"."'>";
+                                        echo strtoupper($key).": ".$value;
+
+                                        echo "<br><br><button onclick='"."mostra_mod(\"bio\", \"".$id."\")"."' class = 'btn btn-secondary'>Modifica</button><br><br>";
+                                        echo "<form class = 'form-group' method = 'POST' id = 'myForm_bio_".$id."' action = '../../script/gestione_comici/modifica_comico.php' style = 'display: none;'>"; // Form da far comparire dopo aver premuto il bottone
+                                        echo "<textarea class = 'form-control' id = 'bio' name = 'bio' placeholder = 'Reinserisci la bio' required></textarea>";
+                                        echo "<input type = 'hidden' id = 'id' name = 'id' value = '".$id."' />";
+                                        echo "<br><input type = 'submit' class = 'btn btn-success' value = 'Conferma'/>";
+                                        echo "</form>";
+
+                                        echo "</li>";
+                                        break;
+                                        break;
+                                }
+                            }
+                        }
+                        echo "</ul><br>";
+
+                        echo "<form action = 'conferma_eliminazione_comico.php' method = 'POST'>";
+                        echo "<input type = 'hidden' id = 'id' name = 'id' value = '".$id."' />";
+                        echo "<input type = 'submit' class = 'btn btn-danger' value = 'Elimina comico' />";
+                        echo "</form>";
+
+                        echo "<br><hr><br><br>";
+                    }
+                }
+
+                pg_close($connection);
+            ?>
         </div>
     </div>
     
