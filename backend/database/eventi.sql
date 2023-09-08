@@ -81,7 +81,7 @@ CREATE OR REPLACE PROCEDURE eventi.insert_comico (
     bio_comico varchar
 ) AS $$
 BEGIN
-    INSERT INTO eventi.insert_comico(nome_comico, cognome_comico, foto_profilo, bio_comico)
+    INSERT INTO eventi.comici(nome_comico, cognome_comico, foto_profilo, bio_comico)
     VALUES(nome_comico, cognome_comico, foto_profilo, bio_comico);
 END;
 $$ LANGUAGE plpgsql;

@@ -17,6 +17,8 @@
         $res = pg_prepare($connection, "", $query);
         $res = pg_execute($connection, "", array($nome_comico, $cognome_comico, $img_escape, $bio));
 
+        echo "<p>".pg_last_error($connection)."</p>";
+
         pg_close($connection);
 
         if (!$res) {
