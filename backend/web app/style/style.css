@@ -91,3 +91,27 @@ input#immagine {
     text-align: center;
     margin: auto;
 }
+
+input#nome_comico1 {
+    width: 250px;
+    text-align: center;
+    margin: auto;
+}
+
+input#cognome_comico1 {
+    width: 250px;
+    text-align: center;
+    margin: auto;
+}
+
+input#profilo {
+    width: 250px;
+    text-align: center;
+    margin: auto;
+}
+
+textarea#bio {
+    width: 250px;
+    text-align: center;
+    margin: auto;
+}
