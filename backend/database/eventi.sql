@@ -2,11 +2,13 @@ DROP SCHEMA IF EXISTS eventi CASCADE;
 
 CREATE SCHEMA eventi;
 
+-- Tabella utenti ammessi nel sistema:
 CREATE TABLE eventi.utenti (
     email varchar PRIMARY KEY,
     pw varchar NOT NULL CHECK (pw <> '')
 );
 
+-- Tabella degli eventi:
 CREATE TABLE eventi.eventi (
     codice serial PRIMARY KEY,
     nome_evento varchar NOT NULL CHECK (nome_evento <> ''),
@@ -15,6 +17,33 @@ CREATE TABLE eventi.eventi (
     immagine bytea NOT NULL,
     descrizione varchar NOT NULL CHECK (descrizione <> '')
 );
+
+-- Tabella dei comici:
+CREATE TABLE eventi.comici (
+    id serial PRIMARY KEY,
+    nome_comico varchar NOT NULL CHECK (nome_comico <> ''),
+    cognome_comico varchar NOT NULL CHECK (cognome_comico <> ''),
+    foto_profilo bytea NOT NULL,
+    bio_comico varchar NOT NULL CHECK (bio_comico <> '')
+);
+
+-- Tabella di associazione tra eventi e comici:
+CREATE TABLE eventi.eventi_comici (
+    evento integer NOT NULL,
+        FOREIGN KEY (evento) REFERENCES eventi.eventi ON DELETE CASCADE,
+    comico integer NOT NULL,
+        FOREIGN KEY (comico) REFERENCES eventi.comici ON DELETE CASCADE,
+    PRIMARY KEY (evento, comico)    
+);
+
+-- Vista materializzata che mette in relazione eventi e comici:
+CREATE OR REPLACE VIEW eventi.vista_eventi_completi AS
+    SELECT e.*, c.*
+    FROM eventi.eventi AS e 
+    JOIN eventi.eventi_comici AS ec 
+    ON e.codice = ec.evento 
+    JOIN eventi.comici AS c 
+    ON ec.comico = c.id;
 
 -- Procedura di inserimento di un nuovo utente:
 CREATE OR REPLACE PROCEDURE eventi.insert_utente (
@@ -41,6 +70,19 @@ CREATE OR REPLACE PROCEDURE eventi.insert_evento (
 BEGIN
     INSERT INTO eventi.eventi(nome_evento, data_evento, luogo, immagine, descrizione)
     VALUES (nome_evento, data_evento, luogo, immagine, descrizione);
+END;
+$$ LANGUAGE plpgsql;
+
+-- Procedura di inserimento di un nuovo comico:
+CREATE OR REPLACE PROCEDURE eventi.insert_comico (
+    nome_comico varchar,
+    cognome_comico varchar,
+    foto_profilo bytea,
+    bio_comico varchar
+) AS $$
+BEGIN
+    INSERT INTO eventi.insert_comico(nome_comico, cognome_comico, foto_profilo, bio_comico)
+    VALUES(nome_comico, cognome_comico, foto_profilo, bio_comico);
 END;
 $$ LANGUAGE plpgsql;
 
