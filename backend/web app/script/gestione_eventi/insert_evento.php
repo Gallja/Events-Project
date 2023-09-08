@@ -21,7 +21,7 @@
         pg_close($connection);
 
         if (!$res) {
-            $_SESSION['inserimento'] = "Errore nell'inserimento dell'evento ";
+            $_SESSION['inserimento'] = "Errore nell'inserimento dell'evento. ";
             header('Location: ../../pagine/home_admin/conf_inserimento.php');
             exit();
         } else {
@@ -30,7 +30,7 @@
             exit();
         }
     } else {
-        $_SESSION['inserimento'] = "Errore nell'inserimento dell'evento, devi compilare tutti i campi";
+        $_SESSION['inserimento'] = "Errore nell'inserimento dell'evento, devi compilare tutti i campi.";
         header('Location: ../../pagine/home_admin/conf_inserimento.php');
         exit();
     }
