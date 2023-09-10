@@ -2,7 +2,7 @@
 <html lang = ita>
 <html>
 <head>
-    <title>Elimina evento</title>
+    <title>Rimuovi Comico</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
@@ -21,19 +21,19 @@
             <hr>
 
             <?php
-                if (isset($_POST['codice'])) {
-                    $codice = $_POST['codice'];
+                if (isset($_POST['id'])) {
+                    $id = $_POST['id'];
 
-                    echo "<h3>Clicca su 'Conferma cancellazione' per confermare l'eliminazione dell'evento (TUTTI i dati e le modifiche andranno persi). Se vuoi tornare alla pagina precedente clicca su 'Indietro'</h3><br>";
-                    echo "<form class = 'form-group' action = '../../script/gestione_eventi/elimina_evento.php' method = 'POST'>";
-                    echo "<input type = 'hidden' id = 'codice' name = 'codice' value = '".$codice."' />";
+                    echo "<h3>Clicca su 'Conferma cancellazione' per confermare la rimozione del comico dal sistema (TUTTI i dati e le modifiche andranno persi). Se vuoi tornare alla pagina precedente clicca su 'Indietro'</h3><br>";
+                    echo "<form class = 'form-group' action = '../../script/gestione_comici/elimina_comico.php' method = 'POST'>";
+                    echo "<input type = 'hidden' id = 'codice' name = 'codice' value = '".$id."' />";
                     echo "<input type = 'submit' class = 'btn btn-danger' value = 'Conferma cancellazione' />";
                     echo "</form>";
-                    echo "<form class = 'form-group' action = 'home_admin.php'>";
+                    echo "<form class = 'form-group' action = 'insert_comico.php'>";
                     echo "<input type = 'submit' class = 'btn btn-success' value = 'Indietro' />";
                     echo "</form>";
                 } else {
-                    echo "<h3>Errore nella ricerca dell'evento da eliminare</h3><br>";
+                    echo "<h3>Errore nella ricerca del comico da rimuovere</h3><br>";
                     echo "<form class = 'form-group' action = 'home_admin.php'>";
                     echo "<input type = 'submit' class = 'btn btn-success' value = 'Indietro' />";
                     echo "</form>";

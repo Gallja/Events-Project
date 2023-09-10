@@ -145,7 +145,7 @@
                         }
                         echo "</ul><br>";
 
-                        echo "<form action = 'conferma_eliminazione_comico.php' method = 'POST'>";
+                        echo "<form action = 'conf_elim_comico.php' method = 'POST'>";
                         echo "<input type = 'hidden' id = 'id' name = 'id' value = '".$id."' />";
                         echo "<input type = 'submit' class = 'btn btn-danger' value = 'Elimina comico' />";
                         echo "</form>";
