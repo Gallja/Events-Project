@@ -27,3 +27,13 @@ function ricerca() {
         }
     });
 }
+
+function mostraFoto() {
+    var pannelloFoto = document.getElementById("pannelloFoto");
+    pannelloFoto.style.display = "block";
+}
+
+function chiudiFoto() {
+    var pannelloFoto = document.getElementById("pannelloFoto");
+    pannelloFoto.style.display = "none";
+}
