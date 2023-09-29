@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang = ita>
 <head>
-    <title>Inserisci comico</title>
+    <title>Modifica comico</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
@@ -47,7 +47,7 @@
 
         <br>
         <h3>Comico da modificare:</h3>
-        <br><hr>
+        <br>
 
         <?php
             if (isset($_POST['id'])) {
@@ -75,7 +75,7 @@
                                     echo "<li class='"."list-group-item"."'>";
                                     echo strtoupper($campi_chiave[0])." ".strtoupper($campi_chiave[1]).": ".$value;
                                     echo "<br><br><button onclick='mostra_mod(\"nome_comico\", \"".$id."\")' class = 'btn btn-secondary'>Modifica</button><br><br>";
-                                    echo "<form class = 'form-group' method = 'POST' id = 'myForm_nome_comico_".$id."' name = 'myForm_nome_comico_".$id."' action = '../../script/gestione_comici/modifica_comico.php' style = 'display: none;'>"; // Form da far comparire dopo aver premuto il bottone
+                                    echo "<form class = 'form-group' method = 'POST' id = 'myForm_nome_comico_".$id."' name = 'myForm_nome_comico_".$id."' action = '../../script/gestione_comici/script_modifica_comico.php' style = 'display: none;'>"; // Form da far comparire dopo aver premuto il bottone
                                     echo "<input type = 'text' class = 'form-control' id = 'nome_comico' name = 'nome_comico' placeholder = 'Reinserisci il nome' required />";
                                     echo "<input type = 'hidden' id = 'id' name = 'id' value = '".$id."' />";
                                     echo "<br><input type = 'submit' class = 'btn btn-success' value = 'Conferma' />";
@@ -86,7 +86,7 @@
                                     echo "<li class='"."list-group-item"."'>";
                                     echo strtoupper($campi_chiave[0])." ".strtoupper($campi_chiave[1]).": ".$value;
                                     echo "<br><br><button onclick='mostra_mod(\"cognome_comico\", \"".$id."\")' class = 'btn btn-secondary'>Modifica</button><br><br>";
-                                    echo "<form class = 'form-group' method = 'POST' id = 'myForm_cognome_comico_".$id."' name = 'myForm_cognome_comico_".$id."' action = '../../script/gestione_comici/modifica_comico.php' style = 'display: none;'>"; // Form da far comparire dopo aver premuto il bottone
+                                    echo "<form class = 'form-group' method = 'POST' id = 'myForm_cognome_comico_".$id."' name = 'myForm_cognome_comico_".$id."' action = '../../script/gestione_comici/script_modifica_comico.php' style = 'display: none;'>"; // Form da far comparire dopo aver premuto il bottone
                                     echo "<input type = 'text' class = 'form-control' id = 'cognome_comico' name = 'cognome_comico' placeholder = 'Reinserisci il cognome' required />";
                                     echo "<input type = 'hidden' id = 'id' name = 'id' value = '".$id."' />";
                                     echo "<br><input type = 'submit' class = 'btn btn-success' value = 'Conferma' />";
@@ -107,7 +107,7 @@
                                     echo '<br><img src="data:image/jpg;base64,'.$row2["img"].'">';
 
                                     echo "<br><br><button onclick='"."mostra_mod(\"profilo\", \"".$id."\")"."' class = 'btn btn-secondary'>Modifica</button><br><br>";
-                                    echo "<form class = 'form-group' method = 'POST' id = 'myForm_profilo_".$id."' action = '../../script/gestione_comici/modifica_comico.php' enctype = 'multipart/form-data' style = 'display: none;'>"; // Form da far comparire dopo aver premuto il bottone
+                                    echo "<form class = 'form-group' method = 'POST' id = 'myForm_profilo_".$id."' action = '../../script/gestione_comici/script_modifica_comico.php' enctype = 'multipart/form-data' style = 'display: none;'>"; // Form da far comparire dopo aver premuto il bottone
                                     echo "<input type = 'file' class = 'form-control' id = 'profilo' name = 'profilo' placeholder = 'Reinserisci immagine profilo' required/>";
                                     echo "<input type = 'hidden' id = 'codice' name = 'codice' value = '".$id."' />";
                                     echo "<br><input type = 'submit' class = 'btn btn-success' value = 'Conferma'/>";
@@ -120,7 +120,7 @@
                                     echo strtoupper($key).": ".$value;
 
                                     echo "<br><br><button onclick='"."mostra_mod(\"bio\", \"".$id."\")"."' class = 'btn btn-secondary'>Modifica</button><br><br>";
-                                    echo "<form class = 'form-group' method = 'POST' id = 'myForm_bio_".$id."' action = '../../script/gestione_comici/modifica_comico.php' style = 'display: none;'>"; // Form da far comparire dopo aver premuto il bottone
+                                    echo "<form class = 'form-group' method = 'POST' id = 'myForm_bio_".$id."' action = '../../script/gestione_comici/script_modifica_comico.php' style = 'display: none;'>"; // Form da far comparire dopo aver premuto il bottone
                                     echo "<textarea class = 'form-control' id = 'bio' name = 'bio' placeholder = 'Reinserisci la bio' required></textarea>";
                                     echo "<input type = 'hidden' id = 'id' name = 'id' value = '".$id."' />";
                                     echo "<br><input type = 'submit' class = 'btn btn-success' value = 'Conferma'/>";
