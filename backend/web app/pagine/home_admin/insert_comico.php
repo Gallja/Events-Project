@@ -93,6 +93,8 @@
                         echo "<tr>";
 
                         foreach($row as $key => $value) {
+                            // echo $row[$key];
+                            // echo "<br>";
                             if (str_contains($key, '_')) {
                                 $campi_chiave = explode('_', $key);
 
@@ -124,14 +126,14 @@
                                         $row2 = pg_fetch_assoc($res2);
 
                                         echo "<td class = 'table-".$tipo[$conta]."'>";
-                                        echo "<button type='button' class = 'btn btn-info' onclick='mostraFoto()'>";
+                                        echo "<button type='button' class = 'btn btn-info' onclick='mostraFoto(".$id.")'>";
                                         echo "Mostra";
                                         echo "</button>";
                                         echo "</td>";
 
-                                        echo "<div id = 'pannelloFoto' class = 'pannelloFoto'>";
+                                        echo "<div id = 'pannelloFoto".$id."' class = 'pannelloFoto' data-pannello='false'>";
                                         echo '<img src="data:image/jpg;base64,'.$row2["img"].'"><br><br>';
-                                        echo "<button type = 'button' class = 'btn btn-info' onclick='chiudiFoto()'>";
+                                        echo "<button type = 'button' class = 'btn btn-info' onclick='chiudiFoto(".$id.")'>";
                                         echo "Chiudi";
                                         echo "</button>";
                                         echo "</div>";
@@ -139,15 +141,15 @@
                                         break;
                                     case 'bio':
                                         echo "<td class = 'table-".$tipo[$conta]."'>";
-                                        echo "<button type='button' class = 'btn btn-primary' onclick = 'mostraDesc()'>";
+                                        echo "<button type='button' class = 'btn btn-primary' onclick = 'mostraDesc(".$id.")'>";
                                         echo "Mostra";
                                         echo "</button>";
                                         echo "</td>";
 
-                                        echo "<div id = 'pannelloDesc' class = 'pannelloDesc'>";
+                                        echo "<div id = 'pannelloDesc".$id."' class = 'pannelloDesc' data-pannello='false'>";
                                         echo $value;
                                         echo "<br><br>";
-                                        echo "<button type = 'button' class = 'btn btn-primary' onclick='chiudiDesc()'>";
+                                        echo "<button type = 'button' class = 'btn btn-primary' onclick='chiudiDesc(".$id.")'>";
                                         echo "Chiudi";
                                         echo "</button>";
                                         echo "</div>";
@@ -155,7 +157,6 @@
                                         break;
                                 }
                             }
-                            $conta2++;
                         }
 
                         echo "<td class = 'table-".$tipo[$conta]."'>";
@@ -179,6 +180,7 @@
                         }
                         
                         echo "</tr>";
+                        $conta2++;
                     }
                     echo "</table>";
                 }

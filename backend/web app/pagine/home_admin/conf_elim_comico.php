@@ -26,7 +26,7 @@
 
                     echo "<h3>Clicca su 'Conferma cancellazione' per confermare la rimozione del comico dal sistema (TUTTI i dati e le modifiche andranno persi). Se vuoi tornare alla pagina precedente clicca su 'Indietro'</h3><br>";
                     echo "<form class = 'form-group' action = '../../script/gestione_comici/elimina_comico.php' method = 'POST'>";
-                    echo "<input type = 'hidden' id = 'codice' name = 'codice' value = '".$id."' />";
+                    echo "<input type = 'hidden' id = 'id' name = 'id' value = '".$id."' />";
                     echo "<input type = 'submit' class = 'btn btn-danger' value = 'Conferma cancellazione' />";
                     echo "</form>";
                     echo "<form class = 'form-group' action = 'insert_comico.php'>";

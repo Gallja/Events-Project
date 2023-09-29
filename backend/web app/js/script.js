@@ -28,34 +28,55 @@ function ricerca() {
     });
 }
 
-function mostraFoto() {
-    var pannelloFoto = document.getElementById("pannelloFoto");
-    var pannelloDesc = document.getElementById("pannelloDesc");
+function mostraFoto(id) {
+    firstStr = "pannelloFoto";
+    idString = id.toString();
+    idDiv = firstStr.concat(idString);
+    var pannelloFoto = document.getElementById(idDiv);
 
-    if (pannelloDesc.style.display == "block") {
-        pannelloDesc.style.display = "none";
+    var pannelliAperti = document.querySelectorAll('[data-pannello="true"]');
+
+    for (var i = 0; i < pannelliAperti.length; i++) {
+        pannelliAperti[i].style.display = "none";
+        pannelliAperti[i].setAttribute('data-pannello', 'false');
     }
 
     pannelloFoto.style.display = "block";
+    pannelloFoto.setAttribute('data-pannello', 'true');
 }
 
-function chiudiFoto() {
-    var pannelloFoto = document.getElementById("pannelloFoto");
+function chiudiFoto(id) {
+    firstStr = "pannelloFoto";
+    idString = id.toString();
+    idDiv = firstStr.concat(idString);
+    var pannelloFoto = document.getElementById(idDiv);
+
     pannelloFoto.style.display = "none";
+    pannelloFoto.setAttribute('data-pannello', 'false');
 }
 
-function mostraDesc() {
-    var pannelloDesc = document.getElementById("pannelloDesc");
-    var pannelloFoto = document.getElementById("pannelloFoto");
+function mostraDesc(id) {
+    firstStr = "pannelloDesc";
+    idString = id.toString();
+    idDiv = firstStr.concat(idString);
+    var pannelloDesc = document.getElementById(idDiv);
 
-    if (pannelloFoto.style.display == "block") {
-        pannelloFoto.style.display = "none";
+    var pannelliAperti = document.querySelectorAll('[data-pannello="true"]');
+
+    for (var i = 0; i < pannelliAperti.length; i++) {
+        pannelliAperti[i].style.display = "none";
+        pannelliAperti[i].setAttribute('data-pannello', 'false');
     }
 
     pannelloDesc.style.display = "block";
+    pannelloDesc.setAttribute('data-pannello', 'true');
 }
 
-function chiudiDesc() {
-    var pannelloDesc = document.getElementById("pannelloDesc");
+function chiudiDesc(id) {
+    firstStr = "pannelloDesc";
+    idString = id.toString();
+    idDiv = firstStr.concat(idString);
+    var pannelloDesc = document.getElementById(idDiv);
     pannelloDesc.style.display = "none";
+    pannelloDesc.setAttribute('data-pannello', 'false');
 }
