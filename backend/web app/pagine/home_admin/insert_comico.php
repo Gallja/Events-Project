@@ -109,7 +109,6 @@
                                         echo $value;
                                         echo "</td>";
                                         break;
-                                        break;
                                     
                                 }
                             } else {
