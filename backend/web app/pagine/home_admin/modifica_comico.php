@@ -109,7 +109,7 @@
                                     echo "<br><br><button onclick='"."mostra_mod(\"profilo\", \"".$id."\")"."' class = 'btn btn-secondary'>Modifica</button><br><br>";
                                     echo "<form class = 'form-group' method = 'POST' id = 'myForm_profilo_".$id."' action = '../../script/gestione_comici/script_modifica_comico.php' enctype = 'multipart/form-data' style = 'display: none;'>"; // Form da far comparire dopo aver premuto il bottone
                                     echo "<input type = 'file' class = 'form-control' id = 'profilo' name = 'profilo' placeholder = 'Reinserisci immagine profilo' required/>";
-                                    echo "<input type = 'hidden' id = 'codice' name = 'codice' value = '".$id."' />";
+                                    echo "<input type = 'hidden' id = 'id' name = 'id' value = '".$id."' />";
                                     echo "<br><input type = 'submit' class = 'btn btn-success' value = 'Conferma'/>";
                                     echo "</form>";
 

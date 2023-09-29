@@ -36,11 +36,16 @@
                     exit();
                 }
             } else {
-                if (isset($_POST['profilo'])) {
+                if (isset($_FILES['profilo'])) {
+                    // validate image:
+                    $img_path = $_FILES['profilo']['tmp_name'];
+                    $img = file_get_contents($img_path);
+                    $immagine = pg_escape_bytea($img);
+
                     $profilo = $_POST['profilo'];
                     $query3 = "CALL eventi.aggiorna_comico_foto($1, $2)";
                     $res3 = pg_prepare($connection, "", $query3);
-                    $res3 = pg_execute($connection, "", array($id, $profilo));
+                    $res3 = pg_execute($connection, "", array($id, $immagine));
 
                     if (!$res3) {
                         $_SESSION['modifica_foto_com'] = "Errore nella modifica della foto profilo del comico";
@@ -48,7 +53,7 @@
                         exit();
                     } else {
                         $_SESSION['modifica_foto_com'] = "Modifica della foto profilo del comico avvenuta con successo!";
-                        header('Location: ../../pagine/home_admin/conf_modifica.php');
+                        header('Location: ../../pagine/home_admin/conf_modifica_com.php');
                         exit();
                     }
                 } else {
@@ -76,7 +81,7 @@
             }
         }
     } else {
-        $_SESSION['errore_mod_com'] = "Errore del sistema";
+        $_SESSION['errore_mod_com'] = "Errore del sistema. Comico non trovato.";
         header('Location: ../../pagine/home_admin/conf_modifica_com.php');
         exit();
     }
