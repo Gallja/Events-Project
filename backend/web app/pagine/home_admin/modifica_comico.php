@@ -146,7 +146,7 @@
             <br><br><br>
 
             <a href = "insert_comico.php">
-                <button class = "btn btn-primary" href = "insert_comico.php">Indietro</button>
+                <button class = "btn btn-primary">Indietro</button>
             </a>
 
             <br><br>
