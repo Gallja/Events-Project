@@ -131,17 +131,27 @@
 
                                         echo "<div id = 'pannelloFoto' class = 'pannelloFoto'>";
                                         echo '<img src="data:image/jpg;base64,'.$row2["img"].'"><br><br>';
-                                        echo "<button type = 'button' class = 'btn btn-primary' onclick='chiudiFoto()'>";
+                                        echo "<button type = 'button' class = 'btn btn-info' onclick='chiudiFoto()'>";
                                         echo "Chiudi";
                                         echo "</button>";
                                         echo "</div>";
+
                                         break;
                                     case 'bio':
                                         echo "<td class = 'table-".$tipo[$conta]."'>";
-                                        echo "<button type='button' class = 'btn btn-primary'>";
+                                        echo "<button type='button' class = 'btn btn-primary' onclick = 'mostraDesc()'>";
                                         echo "Mostra";
                                         echo "</button>";
                                         echo "</td>";
+
+                                        echo "<div id = 'pannelloDesc' class = 'pannelloDesc'>";
+                                        echo $value;
+                                        echo "<br><br>";
+                                        echo "<button type = 'button' class = 'btn btn-primary' onclick='chiudiDesc()'>";
+                                        echo "Chiudi";
+                                        echo "</button>";
+                                        echo "</div>";
+
                                         break;
                                 }
                             }
@@ -149,15 +159,17 @@
                         }
 
                         echo "<td class = 'table-".$tipo[$conta]."'>";
-                        echo "<button type = 'button' class= 'btn btn-warning'>";
-                        echo "Modifica";
-                        echo "</button>";
+                        echo "<form action = 'modifica_comico.php' method = 'POST'>";
+                        echo "<input type = 'hidden' id = 'id' name = 'id' value = '".$id."' />";
+                        echo "<input type = 'submit' class = 'btn btn-warning' value = 'Modifica' />";
+                        echo "</form>";
                         echo "</td>";
 
                         echo "<td class = 'table-".$tipo[$conta]."'>";
-                        echo "<button type = 'button' class= 'btn btn-danger'>";
-                        echo "Elimina";
-                        echo "</button>";
+                        echo "<form action = 'conf_elim_comico.php' method = 'POST'>";
+                        echo "<input type = 'hidden' id = 'id' name = 'id' value = '".$id."' />";
+                        echo "<input type = 'submit' class = 'btn btn-danger' value = 'Elimina' />";
+                        echo "</form>";
                         echo "</td>";
 
                         $conta++;

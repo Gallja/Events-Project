@@ -140,3 +140,15 @@ textarea#bio {
 .pannelloFoto button {
     margin-top: 10px;
 }
+
+.pannelloDesc {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+}

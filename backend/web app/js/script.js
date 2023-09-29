@@ -30,10 +30,32 @@ function ricerca() {
 
 function mostraFoto() {
     var pannelloFoto = document.getElementById("pannelloFoto");
+    var pannelloDesc = document.getElementById("pannelloDesc");
+
+    if (pannelloDesc.style.display == "block") {
+        pannelloDesc.style.display = "none";
+    }
+
     pannelloFoto.style.display = "block";
 }
 
 function chiudiFoto() {
     var pannelloFoto = document.getElementById("pannelloFoto");
     pannelloFoto.style.display = "none";
+}
+
+function mostraDesc() {
+    var pannelloDesc = document.getElementById("pannelloDesc");
+    var pannelloFoto = document.getElementById("pannelloFoto");
+
+    if (pannelloFoto.style.display == "block") {
+        pannelloFoto.style.display = "none";
+    }
+
+    pannelloDesc.style.display = "block";
+}
+
+function chiudiDesc() {
+    var pannelloDesc = document.getElementById("pannelloDesc");
+    pannelloDesc.style.display = "none";
 }
