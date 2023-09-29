@@ -65,7 +65,7 @@
             <hr>
 
             <h3>Tutti gli eventi creati:</h3>
-
+            <!---
             <?php
                 include_once('../../script/connection.php');
 
@@ -188,7 +188,7 @@
                     echo "</table>";
                 }
             ?>
-
+            -->
 
             <!--
             <?php
