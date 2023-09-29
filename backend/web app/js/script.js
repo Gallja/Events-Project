@@ -10,6 +10,16 @@ function mostra_mod(contenuto, codice) {
     }
 }
 
+function mostraP() {
+    const pwInput = document.getElementById('pw');
+
+    if (pwInput.type === 'password') {
+        pwInput.type = 'text';
+    } else {
+        pwInput.type = 'password';
+    }
+}
+
 function ricerca() {
     var input_ricerca = document.getElementById('input_ricerca');
     var testo = input_ricerca.value.toLowerCase();
