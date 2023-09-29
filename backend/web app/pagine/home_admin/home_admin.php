@@ -111,7 +111,6 @@
                                         echo $value;
                                         echo "</td>";
                                         break;
-                                    
                                 }
                             } else {
                                 switch ($key) {
@@ -167,7 +166,7 @@
 
                         echo "<td class = 'table-".$tipo[$conta]."'>";
                         echo "<form action = 'modifica_evento_page.php' method = 'POST'>";
-                        echo "<input type = 'hidden' id = 'id' name = 'id' value = '".$codice."' />";
+                        echo "<input type = 'hidden' id = 'codice' name = 'codice' value = '".$codice."' />";
                         echo "<input type = 'submit' class = 'btn btn-warning' value = 'Modifica' />";
                         echo "</form>";
                         echo "</td>";
