@@ -27,6 +27,9 @@
                             <a class="nav-link" href="home_admin.php">Home</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" href="insert_comico.php">Inserisci nuovo comico</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="cambio_pw.php">Cambia password</a>
                         </li>
                         <li class="nav-item">
