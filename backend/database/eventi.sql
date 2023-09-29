@@ -235,7 +235,7 @@ CREATE OR REPLACE PROCEDURE eventi.aggiorna_comico_cognome (
 ) AS $$
 BEGIN
     UPDATE eventi.comici AS c
-    SET cognome = cognome_in
+    SET cognome_comico = cognome_in
     WHERE c.id = id_in;
 END;
 $$ LANGUAGE plpgsql;
