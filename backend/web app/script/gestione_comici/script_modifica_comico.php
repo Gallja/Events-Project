@@ -63,8 +63,8 @@
                             header('Location: ../../pagine/home_admin/conf_modifica_com.php');
                             exit();
                         } else {
-                            $_SESSION['modifica_foto_com'] = "Modifica della descrizione del comico avvenuta con successo!";
-                            header('Location: ../../pagine/home_admin/conf_modifica.php');
+                            $_SESSION['modifica_bio_com'] = "Modifica della descrizione del comico avvenuta con successo!";
+                            header('Location: ../../pagine/home_admin/conf_modifica_com.php');
                             exit();
                         }
                     } else {
