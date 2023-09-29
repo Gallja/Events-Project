@@ -215,3 +215,51 @@ BEGIN
     WHERE e.codice = codice_in;
 END;
 $$ LANGUAGE plpgsql;
+
+-- Funzione di modifica/aggiornamento del nome di un comico:
+CREATE OR REPLACE PROCEDURE eventi.aggiorna_comico_nome (
+    id_in integer,
+    nome_in varchar
+) AS $$
+BEGIN
+    UPDATE eventi.comici AS c
+    SET nome_comico = nome_in
+    WHERE c.id = id_in;
+END;
+$$ LANGUAGE plpgsql;
+
+-- Funzione di modifica/aggiornamento del cognome di un comico:
+CREATE OR REPLACE PROCEDURE eventi.aggiorna_comico_cognome (
+    id_in integer,
+    cognome_in varchar
+) AS $$
+BEGIN
+    UPDATE eventi.comici AS c
+    SET cognome = cognome_in
+    WHERE c.id = id_in;
+END;
+$$ LANGUAGE plpgsql;
+
+-- Funzione di modifica/aggiornamento della foto profilo di un comico:
+CREATE OR REPLACE PROCEDURE eventi.aggiorna_comico_foto (
+    id_in integer,
+    foto_in bytea
+) AS $$
+BEGIN
+    UPDATE eventi.comici AS c
+    SET profilo = foto_in
+    WHERE c.id = id_in;
+END;
+$$ LANGUAGE plpgsql;
+
+-- Funzione di modifica/aggiornamento della bio di un comico:
+CREATE OR REPLACE PROCEDURE eventi.aggiorna_comico_bio (
+    id_in integer,
+    desc_in varchar
+) AS $$
+BEGIN
+    UPDATE eventi.comici AS c  
+    SET bio = desc_in
+    WHERE c.id = id_in;
+END;
+$$ LANGUAGE plpgsql;
