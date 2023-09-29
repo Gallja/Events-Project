@@ -70,6 +70,116 @@
                 $res = pg_prepare($connection, "ris", $query);
                 $res = pg_execute($connection, "ris", array());
 
+                $tipo = ['danger', 'warning', 'secondary', 'primary', 'success', 'light', 'info'];
+                $conta = 0;
+                $conta2 = 1;
+
+                if (!$res) {
+                    echo "<h4>Errore nella visualizzazione dei comici del sistema.</h4>";
+                } else {
+                    echo "<table class='table'>";
+
+                    echo "<th>";
+                    echo "<td class='int'>Nome</td>";
+                    echo "<td class='int'>Cognome</td>";
+                    echo "<td class='int'>Foto Profilo</td>";
+                    echo "<td class='int'>Descrizione</td>";
+                    echo "<td class='int'>Modifica Comico</td>";
+                    echo "<td class='int'>Elimina Comico</td>";
+                    echo "</th>";
+                    
+                    while ($row = pg_fetch_assoc($res)) {
+                        $id = $row['id'];
+                        echo "<tr>";
+
+                        foreach($row as $key => $value) {
+                            if (str_contains($key, '_')) {
+                                $campi_chiave = explode('_', $key);
+
+                                switch ($key) {
+                                    case 'nome_comico':
+                                        echo "<td class = 'table-".$tipo[$conta]."'>";
+                                        echo $value;
+                                        echo "</td>";
+                                        break;
+                                    case 'cognome_comico':
+                                        echo "<td class = 'table-".$tipo[$conta]."'>";
+                                        echo $value;
+                                        echo "</td>";
+                                        break;
+                                        break;
+                                    
+                                }
+                            } else {
+                                switch ($key) {
+                                    case 'id':
+                                        echo "<td class = 'table-".$tipo[$conta]."'>";
+                                        echo $conta2;
+                                        echo "</td>";
+                                        break;
+                                    case 'profilo':
+                                        $sql = "SELECT encode(profilo, 'base64') AS img FROM eventi.comici AS c WHERE c.id = $1";
+                                        $res2 = pg_prepare($connection, "", $sql);
+                                        $res2 = pg_execute($connection, "", array($id));
+                                        $row2 = pg_fetch_assoc($res2);
+
+                                        echo "<td class = 'table-".$tipo[$conta]."'>";
+                                        echo "<button type='button' class = 'btn btn-info' onclick='mostraFoto()'>";
+                                        echo "Mostra";
+                                        echo "</button>";
+                                        echo "</td>";
+
+                                        echo "<div id = 'pannelloFoto' class = 'pannelloFoto'>";
+                                        echo '<img src="data:image/jpg;base64,'.$row2["img"].'"><br><br>';
+                                        echo "<button type = 'button' class = 'btn btn-primary' onclick='chiudiFoto()'>";
+                                        echo "Chiudi";
+                                        echo "</button>";
+                                        echo "</div>";
+                                        break;
+                                    case 'bio':
+                                        echo "<td class = 'table-".$tipo[$conta]."'>";
+                                        echo "<button type='button' class = 'btn btn-primary'>";
+                                        echo "Mostra";
+                                        echo "</button>";
+                                        echo "</td>";
+                                        break;
+                                }
+                            }
+                            $conta2++;
+                        }
+
+                        echo "<td class = 'table-".$tipo[$conta]."'>";
+                        echo "<button type = 'button' class= 'btn btn-warning'>";
+                        echo "Modifica";
+                        echo "</button>";
+                        echo "</td>";
+
+                        echo "<td class = 'table-".$tipo[$conta]."'>";
+                        echo "<button type = 'button' class= 'btn btn-danger'>";
+                        echo "Elimina";
+                        echo "</button>";
+                        echo "</td>";
+
+                        $conta++;
+
+                        if ($conta > 6) {
+                            $conta = 0;
+                        }
+                        
+                        echo "</tr>";
+                    }
+                    echo "</table>";
+                }
+            ?>
+
+            <!---
+            <?php
+                include_once('../../script/connection.php');
+
+                $query = "SELECT * FROM eventi.comici AS c ORDER BY c.cognome_comico";
+                $res = pg_prepare($connection, "ris", $query);
+                $res = pg_execute($connection, "ris", array());
+
                 if (!$res) {
                     echo "<h4>Errore nella visualizzazione dei comici nel sistema.</h4>";
                 } else {
@@ -156,6 +266,7 @@
 
                 pg_close($connection);
             ?>
+            -->
         </div>
     </div>
     
