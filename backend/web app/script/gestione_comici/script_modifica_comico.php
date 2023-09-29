@@ -26,7 +26,6 @@
                 $res2 = pg_prepare($connection, "", $query2);
                 $res2 = pg_execute($connection, "", array($id, $cognome));
 
-                /**
                 if (!$res2) {
                     $_SESSION['modifica_cognome_com'] = "Errore nella modifica del cognome del comico";
                     header('Location: ../../pagine/home_admin/conf_modifica_com.php');
@@ -36,7 +35,6 @@
                     header('Location: ../../pagine/home_admin/conf_modifica_com.php');
                     exit();
                 }
-                */
             } else {
                 if (isset($_POST['profilo'])) {
                     $profilo = $_POST['profilo'];
