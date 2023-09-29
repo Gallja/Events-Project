@@ -20,6 +20,16 @@ function mostraP() {
     }
 }
 
+function mostraPassChange(str) {
+    const pwInput = document.getElementById(str);
+
+    if (pwInput.type === 'password') {
+        pwInput.type = 'text';
+    } else {
+        pwInput.type = 'password';
+    }
+}
+
 function ricerca() {
     var input_ricerca = document.getElementById('input_ricerca');
     var testo = input_ricerca.value.toLowerCase();
