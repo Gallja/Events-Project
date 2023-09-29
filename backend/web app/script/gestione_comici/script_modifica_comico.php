@@ -56,7 +56,7 @@
                         $bio = $_POST['bio'];
                         $query4 = "CALL eventi.aggiorna_comico_bio($1, $2)";
                         $res4 = pg_prepare($connection, "", $query4);
-                        $res4 = pg_execute($connection, "", array($id, $profilo));
+                        $res4 = pg_execute($connection, "", array($id, $bio));
 
                         if (!$res4) {
                             $_SESSION['modifica_bio_com'] = "Errore nella modifica della descrizione del comico";
