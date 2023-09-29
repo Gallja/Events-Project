@@ -65,6 +65,132 @@
             <hr>
 
             <h3>Tutti gli eventi creati:</h3>
+
+            <?php
+                include_once('../../script/connection.php');
+
+                $query = "SELECT * FROM eventi.eventi AS e ORDER BY e.data_evento";
+                $res = pg_prepare($connection, "ris", $query);
+                $res = pg_execute($connection, "ris", array());
+
+                $tipo = ['danger', 'warning', 'secondary', 'primary', 'success', 'light', 'info'];
+                $conta = 0;
+                $conta2 = 1;
+
+                if (!$res) {
+                    echo "<h4>Errore nella visualizzazione dei comici del sistema.</h4>";
+                } else {
+                    echo "<table class='table'>";
+
+                    echo "<th>";
+                    echo "<td class='int'>Nome</td>";
+                    echo "<td class='int'>Cognome</td>";
+                    echo "<td class='int'>Foto Profilo</td>";
+                    echo "<td class='int'>Descrizione</td>";
+                    echo "<td class='int'>Modifica Comico</td>";
+                    echo "<td class='int'>Elimina Comico</td>";
+                    echo "</th>";
+                    
+                    while ($row = pg_fetch_assoc($res)) {
+                        $id = $row['id'];
+                        echo "<tr>";
+
+                        foreach($row as $key => $value) {
+                            // echo $row[$key];
+                            // echo "<br>";
+                            if (str_contains($key, '_')) {
+                                $campi_chiave = explode('_', $key);
+
+                                switch ($key) {
+                                    case 'nome_comico':
+                                        echo "<td class = 'table-".$tipo[$conta]."'>";
+                                        echo $value;
+                                        echo "</td>";
+                                        break;
+                                    case 'cognome_comico':
+                                        echo "<td class = 'table-".$tipo[$conta]."'>";
+                                        echo $value;
+                                        echo "</td>";
+                                        break;
+                                        break;
+                                    
+                                }
+                            } else {
+                                switch ($key) {
+                                    case 'id':
+                                        echo "<td class = 'table-".$tipo[$conta]."'>";
+                                        echo $conta2;
+                                        echo "</td>";
+                                        break;
+                                    case 'profilo':
+                                        $sql = "SELECT encode(profilo, 'base64') AS img FROM eventi.comici AS c WHERE c.id = $1";
+                                        $res2 = pg_prepare($connection, "", $sql);
+                                        $res2 = pg_execute($connection, "", array($id));
+                                        $row2 = pg_fetch_assoc($res2);
+
+                                        echo "<td class = 'table-".$tipo[$conta]."'>";
+                                        echo "<button type='button' class = 'btn btn-info' onclick='mostraFoto(".$id.")'>";
+                                        echo "Mostra";
+                                        echo "</button>";
+                                        echo "</td>";
+
+                                        echo "<div id = 'pannelloFoto".$id."' class = 'pannelloFoto' data-pannello='false'>";
+                                        echo '<img src="data:image/jpg;base64,'.$row2["img"].'"><br><br>';
+                                        echo "<button type = 'button' class = 'btn btn-info' onclick='chiudiFoto(".$id.")'>";
+                                        echo "Chiudi";
+                                        echo "</button>";
+                                        echo "</div>";
+
+                                        break;
+                                    case 'bio':
+                                        echo "<td class = 'table-".$tipo[$conta]."'>";
+                                        echo "<button type='button' class = 'btn btn-primary' onclick = 'mostraDesc(".$id.")'>";
+                                        echo "Mostra";
+                                        echo "</button>";
+                                        echo "</td>";
+
+                                        echo "<div id = 'pannelloDesc".$id."' class = 'pannelloDesc' data-pannello='false'>";
+                                        echo $value;
+                                        echo "<br><br>";
+                                        echo "<button type = 'button' class = 'btn btn-primary' onclick='chiudiDesc(".$id.")'>";
+                                        echo "Chiudi";
+                                        echo "</button>";
+                                        echo "</div>";
+
+                                        break;
+                                }
+                            }
+                        }
+
+                        echo "<td class = 'table-".$tipo[$conta]."'>";
+                        echo "<form action = 'modifica_comico.php' method = 'POST'>";
+                        echo "<input type = 'hidden' id = 'id' name = 'id' value = '".$id."' />";
+                        echo "<input type = 'submit' class = 'btn btn-warning' value = 'Modifica' />";
+                        echo "</form>";
+                        echo "</td>";
+
+                        echo "<td class = 'table-".$tipo[$conta]."'>";
+                        echo "<form action = 'conf_elim_comico.php' method = 'POST'>";
+                        echo "<input type = 'hidden' id = 'id' name = 'id' value = '".$id."' />";
+                        echo "<input type = 'submit' class = 'btn btn-danger' value = 'Elimina' />";
+                        echo "</form>";
+                        echo "</td>";
+
+                        $conta++;
+
+                        if ($conta > 6) {
+                            $conta = 0;
+                        }
+                        
+                        echo "</tr>";
+                        $conta2++;
+                    }
+                    echo "</table>";
+                }
+            ?>
+
+
+            <!--
             <?php
                 include_once('../../script/connection.php');
 
@@ -175,7 +301,7 @@
 
             pg_close($connection);
             ?>
-
+            -->
             <br>
             <br>
 
