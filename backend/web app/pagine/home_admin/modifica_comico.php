@@ -76,7 +76,7 @@
                                     echo strtoupper($campi_chiave[0])." ".strtoupper($campi_chiave[1]).": ".$value;
                                     echo "<br><br><button onclick='mostra_mod(\"nome_comico\", \"".$id."\")' class = 'btn btn-secondary'>Modifica</button><br><br>";
                                     echo "<form class = 'form-group' method = 'POST' id = 'myForm_nome_comico_".$id."' name = 'myForm_nome_comico_".$id."' action = '../../script/gestione_comici/script_modifica_comico.php' style = 'display: none;'>"; // Form da far comparire dopo aver premuto il bottone
-                                    echo "<input type = 'text' class = 'form-control' id = 'nome_comico' name = 'nome_comico' placeholder = 'Reinserisci il nome' required />";
+                                    echo "<input type = 'text' class = 'form-control' id = 'nome_comico1' name = 'nome_comico' placeholder = 'Reinserisci il nome' required />";
                                     echo "<input type = 'hidden' id = 'id' name = 'id' value = '".$id."' />";
                                     echo "<br><input type = 'submit' class = 'btn btn-success' value = 'Conferma' />";
                                     echo "</form>";
@@ -87,7 +87,7 @@
                                     echo strtoupper($campi_chiave[0])." ".strtoupper($campi_chiave[1]).": ".$value;
                                     echo "<br><br><button onclick='mostra_mod(\"cognome_comico\", \"".$id."\")' class = 'btn btn-secondary'>Modifica</button><br><br>";
                                     echo "<form class = 'form-group' method = 'POST' id = 'myForm_cognome_comico_".$id."' name = 'myForm_cognome_comico_".$id."' action = '../../script/gestione_comici/script_modifica_comico.php' style = 'display: none;'>"; // Form da far comparire dopo aver premuto il bottone
-                                    echo "<input type = 'text' class = 'form-control' id = 'cognome_comico' name = 'cognome_comico' placeholder = 'Reinserisci il cognome' required />";
+                                    echo "<input type = 'text' class = 'form-control' id = 'cognome_comico1' name = 'cognome_comico' placeholder = 'Reinserisci il cognome' required />";
                                     echo "<input type = 'hidden' id = 'id' name = 'id' value = '".$id."' />";
                                     echo "<br><input type = 'submit' class = 'btn btn-success' value = 'Conferma' />";
                                     echo "</form>";
