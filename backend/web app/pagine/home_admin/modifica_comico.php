@@ -143,6 +143,13 @@
             }
         ?>
 
+            <br><br><br>
+
+            <a href = "insert_comico.php">
+                <button class = "btn btn-primary" href = "insert_comico.php">Indietro</button>
+            </a>
+
+            <br><br>
         </div>
     </div>
 </body>
