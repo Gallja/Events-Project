@@ -108,7 +108,8 @@
                                         break;
                                     case 'data_evento':
                                         echo "<td class = 'table-".$tipo[$conta]."'>";
-                                        echo $value;
+                                        $newData = date('d-m-Y', strtotime($value));
+                                        echo $newData;
                                         echo "</td>";
                                         break;
                                 }
