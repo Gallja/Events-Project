@@ -28,7 +28,7 @@
                         <a class="nav-link" href="insert_comico.php">Comici</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="insert_musicista.php">Musicisti</a>
+                        <a class="nav-link" href="musicisti/insert_musicista.php">Musicisti</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="cambio_pw.php">Cambia password</a>
