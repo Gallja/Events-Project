@@ -42,7 +42,7 @@
                                     <input type="text" class="form-control col-md-9" id="email" name="email" placeholder="Inserisci la mail" required>
                                 </div>
                                 
-                                <div class="input-group">
+                                <div class="input-group" id="sPw">
                                     <span class="input-group-text" onclick = "mostraP()">
                                         <i class="fa fa-eye" id="showP"></i>
                                     </span>
