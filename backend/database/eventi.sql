@@ -27,6 +27,14 @@ CREATE TABLE eventi.comici (
     bio varchar NOT NULL CHECK (bio <> '')
 );
 
+-- Tabella dei musicisti:
+CREATE TABLE eventi.musicisti (
+    id serial PRIMARY KEY,
+    nome_musicista varchar NOT NULL CHECK (nome_musicista <> ''),
+    profilo_musicista bytea NOT NULL,
+    bio_musicista varchar NOT NULL CHECK (bio_musicista)
+);
+
 -- Tabella di associazione tra eventi e comici:
 CREATE TABLE eventi.eventi_comici (
     evento integer NOT NULL,
@@ -34,6 +42,15 @@ CREATE TABLE eventi.eventi_comici (
     comico integer NOT NULL,
         FOREIGN KEY (comico) REFERENCES eventi.comici ON DELETE CASCADE,
     PRIMARY KEY (evento, comico)    
+);
+
+-- Tabella di associazione tra eventi e musicisti:
+CREATE TABLE eventi.eventi_musicisti (
+    evento integer NOT NULL,
+        FOREIGN KEY (evento) REFERENCES eventi.eventi ON DELETE CASCADE,
+    musicista integer NOT NULL,
+        FOREIGN KEY (musicista) REFERENCES eventi.musicisti ON DELETE CASCADE,
+    PRIMARY KEY (evento, musicista)
 );
 
 -- Vista materializzata che mette in relazione eventi e comici:
