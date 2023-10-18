@@ -25,7 +25,10 @@
                         <a class="nav-link" href="home_admin.php">Home <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="insert_comico.php">Inserisci nuovo comico</a>
+                        <a class="nav-link" href="insert_comico.php">Comici</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="insert_musicista.php">Musicisti</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="cambio_pw.php">Cambia password</a>
