@@ -32,7 +32,7 @@ CREATE TABLE eventi.musicisti (
     id_musicista serial PRIMARY KEY,
     nome_musicista varchar NOT NULL CHECK (nome_musicista <> ''),
     profilo_musicista bytea NOT NULL,
-    bio_musicista varchar NOT NULL CHECK (bio_musicista)
+    bio_musicista varchar NOT NULL CHECK (bio_musicista <> '')
 );
 
 -- Tabella di associazione tra eventi e comici:
