@@ -110,3 +110,12 @@ function chiudiDesc(id) {
     pannelloDesc.style.display = "none";
     pannelloDesc.setAttribute('data-pannello', 'false');
 }
+
+function clonaArtista(id) {
+    const selectContainer = document.getElementById(id);    const selectClone = selectContainer.cloneNode(true);
+    const submitButton = document.querySelector('input[type="submit"]');
+    const br = document.createElement('br');
+
+    selectContainer.parentNode.insertBefore(selectClone, submitButton);
+    selectContainer.parentNode.insertBefore(br, submitButton);
+}
