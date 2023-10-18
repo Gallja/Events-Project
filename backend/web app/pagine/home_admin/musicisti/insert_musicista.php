@@ -66,7 +66,7 @@
             <h3>Tutti i musicisti affiliati:</h3>
 
             <?php
-                include_once('../../script/connection.php');
+                include_once('../../../script/connection.php');
 
                 $query = "SELECT * FROM eventi.musicisti";
                 $res = pg_prepare($connection, "ris", $query);
@@ -85,8 +85,8 @@
                     echo "<td class='int'>Nome d'arte</td>";
                     echo "<td class='int'>Foto Profilo</td>";
                     echo "<td class='int'>Descrizione</td>";
-                    echo "<td class='int'>Modifica Comico</td>";
-                    echo "<td class='int'>Elimina Comico</td>";
+                    echo "<td class='int'>Modifica Musicista</td>";
+                    echo "<td class='int'>Elimina Musicista</td>";
                     echo "</th>";
                     
                     while ($row = pg_fetch_assoc($res)) {
