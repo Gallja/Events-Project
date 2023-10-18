@@ -29,7 +29,7 @@ CREATE TABLE eventi.comici (
 
 -- Tabella dei musicisti:
 CREATE TABLE eventi.musicisti (
-    id serial PRIMARY KEY,
+    id_musicista serial PRIMARY KEY,
     nome_musicista varchar NOT NULL CHECK (nome_musicista <> ''),
     profilo_musicista bytea NOT NULL,
     bio_musicista varchar NOT NULL CHECK (bio_musicista)
@@ -278,5 +278,53 @@ BEGIN
     UPDATE eventi.comici AS c  
     SET bio = desc_in
     WHERE c.id = id_in;
+END;
+$$ LANGUAGE plpgsql;
+
+-- Procedura di inserimento di un nuovo musicista:
+CREATE OR REPLACE PROCEDURE eventi.insert_musicista (
+    nome_musicista varchar,
+    profilo_musicista bytea,
+    bio_musicista varchar
+) AS $$
+BEGIN
+    INSERT INTO eventi.comici(nome_musicista, profilo_musicista, bio_musicista)
+    VALUES(nome_musicista, profilo_musicista, bio_musicista);
+END;
+$$ LANGUAGE plpgsql;
+
+-- Funzione di modifica/aggiornamento del nome di un musicista:
+CREATE OR REPLACE PROCEDURE eventi.aggiorna_musicista_nome (
+    id_in integer,
+    nome_in varchar
+) AS $$
+BEGIN
+    UPDATE eventi.musicisti AS m
+    SET nome_musicista = nome_in
+    WHERE m.id_musicista = id_in;
+END;
+$$ LANGUAGE plpgsql;
+
+-- Funzione di modifica/aggiornamento della foto profilo di un musicista:
+CREATE OR REPLACE PROCEDURE eventi.aggiorna_musicista_foto (
+    id_in integer,
+    foto_in bytea
+) AS $$
+BEGIN
+    UPDATE eventi.musicisti AS m
+    SET profilo_musicista = foto_in
+    WHERE m.id_musicista = id_in;
+END;
+$$ LANGUAGE plpgsql;
+
+-- Funzione di modifica/aggiornamento della bio di un musicista:
+CREATE OR REPLACE PROCEDURE eventi.aggiorna_musicista_desc (
+    id_in integer,
+    desc_in varchar
+) AS $$
+BEGIN
+    UPDATE eventi.musicisti AS m
+    SET bio_musicista = desc_in
+    WHERE m.id_musicista = id_in;
 END;
 $$ LANGUAGE plpgsql;

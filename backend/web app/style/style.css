@@ -116,6 +116,12 @@ textarea#bio {
     margin: auto;
 }
 
+input#nome_mus1 {
+    width: 250px;
+    text-align: center;
+    margin: auto;
+}
+
 .int {
     font-weight: bold;
 }
