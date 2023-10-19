@@ -164,3 +164,7 @@ input#nome_mus1 {
     transition: background-color 0.5s ease;
     transform: scale(1.1);
 }
+
+#aggiungi-artista {
+    margin-top: 6px;
+}
