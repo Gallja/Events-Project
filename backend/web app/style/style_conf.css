@@ -8,3 +8,7 @@
     margin-left: calc(50% - 150px);
     flex-direction: column;
 }
+
+div#isPw {
+    cursor: pointer;
+}

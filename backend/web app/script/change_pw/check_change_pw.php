@@ -11,13 +11,13 @@
 
         if (strcmp($new_pw, $conf_new_pw)) {
             $_SESSION['cambiamento_fallito'] = "La nuova password e la sua conferma non coincidono, riprova...";
-            header('Location: ../pagine/home_admin/cambio_pw.php');
+            header('Location: ../../pagine/home_admin/pw/cambio_pw.php');
             exit();
         }
 
         // check old password & update
 
-        include_once('connection.php');
+        include_once('../connection.php');
 
         $test = "SELECT * FROM eventi.autenticazione($1)";
         $res1 = pg_prepare($connection, "get_all", $test);
@@ -27,7 +27,7 @@
         // user email not found
         if ($row['email'] === null) {
             $_SESSION['cambiamento_fallito'] = "Hai inserito un indirizzo email non valido, riprova...";
-            header('Location: ../pagine/home_admin/cambio_pw.php');
+            header('Location: ../../pagine/home_admin/pw/cambio_pw.php');
             exit();
         }
 
@@ -43,7 +43,7 @@
         // wrong password
         if (!$pw_bool) {
             $_SESSION['cambiamento_fallito'] = "La password attuale che hai inserito non è corretta, riprova...";
-            header('Location: ../pagine/home_admin/cambio_pw.php');
+            header('Location: ../../pagine/home_admin/pw/cambio_pw.php');
             exit();
         }
 
@@ -59,12 +59,12 @@
         pg_close($connection);
         
         $_SESSION['cambiamento_avvenuto'] = "Cambiamento della password avvenuto con successo!";
-        header('Location: ../pagine/home_admin/cambio_pw.php');
+        header('Location: ../../pagine/home_admin/pw/cambio_pw.php');
         exit();
 
     } else {
         $_SESSION['cambiamento_fallito'] = "Errore nel cambiamento della password.";
-        header('Location: ../pagine/home_admin/cambio_pw.php');
+        header('Location: ../../pagine/home_admin/pw/cambio_pw.php');
         exit();
     }
 ?>

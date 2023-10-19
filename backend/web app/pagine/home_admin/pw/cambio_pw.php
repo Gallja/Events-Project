@@ -7,7 +7,7 @@
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <script src = "../../js/script.js"></script>
+        <script src = "../../../js/script.js"></script>
         <link rel = "stylesheet" href = "../../../style/style_conf.css">
     </head>
     <body>
@@ -61,7 +61,7 @@
 
                 <h4>Compila il seguente modulo per cambiare la password:</h4><br>
 
-                <form class = "form-group" method = "POST" action = "../../../script/check_change_pw.php" id = "form-change">
+                <form class = "form-group" method = "POST" action = "../../../script/change_pw/check_change_pw.php" id = "form-change">
                     <div class = "input-group">
                         <span class = "input-group-text">
                             <i class = "fa fa-user fa-lg"></i>
@@ -70,7 +70,7 @@
                     </div>
                     <br>
                     <br>
-                    <div class = "input-group">
+                    <div class = "input-group" id = "isPw">
                         <span class = "input-group-text" onclick = "mostraPassChange('old_pw')">
                             <i class = "fa fa-eye"></i>
                         </span>
@@ -78,7 +78,7 @@
                     </div>
                     <br>
                     <br>
-                    <div class = "input-group">
+                    <div class = "input-group" id = "isPw">
                         <span class = "input-group-text" onclick = "mostraPassChange('new_pw')">
                             <i class = "fa fa-eye"></i>
                         </span>
@@ -86,7 +86,7 @@
                     </div>
                     <br>
                     <br>
-                    <div class = "input-group">
+                    <div class = "input-group" id = "isPw">
                         <span class = "input-group-text" onclick = "mostraPassChange('conf_new_pw')">
                             <i class = "fa fa-eye"></i>
                         </span>
