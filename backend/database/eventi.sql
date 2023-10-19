@@ -328,3 +328,25 @@ BEGIN
     WHERE m.id_musicista = id_in;
 END;
 $$ LANGUAGE plpgsql;
+
+-- Funzione di inserimento nella tabella 'eventi_comici':
+CREATE OR REPLACE PROCEDURE eventi.ins_eventi_comici (
+    evento integer,
+    comico integer
+) AS $$
+BEGIN
+    INSERT INTO eventi.eventi_comici(evento, comico)
+    VALUES(evento, comico);
+END;
+$$ LANGUAGE plpgsql;
+
+-- Funzione di inserimento nella tabella 'eventi_musicisti':
+CREATE OR REPLACE PROCEDURE eventi.ins_eventi_musicisti (
+    evento integer,
+    musicista integer
+) AS $$
+BEGIN
+    INSERT INTO eventi.eventi_musicisti(evento, musicista)
+    VALUES(evento, musicista);
+END;
+$$ LANGUAGE plpgsql;

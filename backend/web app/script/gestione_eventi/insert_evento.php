@@ -1,7 +1,7 @@
 <?php
     session_start();
 
-    if (isset($_POST['nome_evento']) && isset($_POST['data']) && isset($_POST['luogo']) && isset($_FILES['img']) && isset($_POST['descrizione'])) {
+    if (isset($_POST['nome_evento']) && isset($_POST['data']) && isset($_POST['luogo']) && isset($_FILES['img']) && isset($_POST['descrizione']) && isset($_POST['artisti'])) {
         $nome_evento = $_POST['nome_evento'];
         $data = $_POST['data'];
         $luogo = $_POST['luogo'];
@@ -17,6 +17,40 @@
         $query = "CALL eventi.insert_evento($1, $2, $3, $4, $5)";
         $res = pg_prepare($connection, "", $query);
         $res = pg_execute($connection, "", array($nome_evento, $data, $luogo, $img_escape, $descrizione));
+
+        $conta_sel = count($_POST['artisti']);
+        for ($i = 0; $i < $conta_sel; $i++) {
+            $artista = $_POST['artisti'][$i];
+
+            if ($artista == "empty") {
+                break;
+            } else {
+                // check 'comico' or 'musicista'
+                if ($artista.contains('comico')) {
+                    // select codice 'evento'
+                    $query2 = "SELECT e.codice FROM evento AS e WHERE e.nome_evento = $1";
+                    $res2 = pg_prepare($connection, "", $query2);
+                    $res2 = pg_execute($connection, "", array($nome_evento));
+                    $row2 = pg_fetch_assoc($res2);
+                    $cod_new_ev = $row2['codice'];
+
+                    // select 'comico' id
+                    $campo = explode($artista, '-');
+                    $id_comico = $campo[1];
+
+                    // call insert procedure
+                    $query3 = "CALL eventi.ins_eventi_comici($1, $2)";
+                    $res3 = pg_prepare($connection, "", $query3);
+                    $res3 = pg_execute($connection, "", array($cod_new_ev, $id_comico));
+                } else {
+                    // select codice 'evento'
+
+                    // select 'musicista' id
+
+                    // call insert procedure
+                }
+            }
+        }
 
         pg_close($connection);
 

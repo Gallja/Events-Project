@@ -60,9 +60,9 @@
                 <input type = "file" class = "form-control" id = "img" name = "img" required>
                 <textarea class = "form-control" id = "descrizione" name = "descrizione" placeholder = "Inserisci la descrizione" required></textarea>
                 <br />
+                <label>Seleziona un artista per questo evento:</label>
                 <div id = "artisti-container">
-                    <label for = "artista">Seleziona un artista per questo evento:</label>
-                    <select class = "form-control" id = "artisti" name = "artisti[]" required>
+                    <select class = "form-control" id = "artisti" name = "artisti" required>
                         <?php
                             include_once('../../../script/management/connection.php');
 
@@ -73,15 +73,20 @@
                             if (!$ris) {
                                 echo "<option>Errore nella visualizzazione dei comici</option>";
                             } else {
+                                echo "<option value = 'empty'>Scegli un artista</option>";
                                 while ($row = pg_fetch_assoc($ris)) {
-                                    echo "<option>";
+                                    echo "<option value = 'comico-";
                                     foreach ($row as $key => $value) {
                                         switch ($key) {
+                                            case 'id':
+                                                echo $value."' >";
+                                                break;
                                             case "nome_comico":
                                                 echo $value." ";
                                                 break;
                                             case "cognome_comico":
                                                 echo $value;
+                                                break;
                                         }
                                     }
                                     echo "</option>";
@@ -96,15 +101,24 @@
                                 echo "<option>Errore nella visualizzazione dei musicisti</option>";
                             } else {
                                 while ($row2 = pg_fetch_assoc($ris2)) {
-                                    echo "<option>";
-                                    echo $row2['nome_musicista'];
+                                    echo "<option value = 'musicista-";
+                                    foreach ($row2 as $key => $value) {
+                                        switch ($key) {
+                                            case 'id_musicista':
+                                                echo $value."' >";
+                                                break;
+                                            case 'nome_musicista':
+                                                echo $row2['nome_musicista'];
+                                                break;
+                                        }
+                                    }
+                                    echo "</option>";
                                 }
-                                echo "</option>";
                             }
                         ?>
                     </select>
+                    <input type = "button" class = "btn btn-secondary btn-sm" id = "aggiungi-artista" onclick = "clonaArtista('artisti-container')" value = "Aggiungi Artista" />
                 </div>
-                <input type = "button" class = "btn btn-secondary btn-sm" id = "aggiungi-artista" onclick = "clonaArtista('artisti-container')" value = "Aggiungi Artista" />
                 <br />
                 <br />
                 <input type = "submit" class="btn btn-primary" value = "INSERISCI">
