@@ -8,11 +8,11 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src = "../../js/script.js"></script>
-        <link rel = "stylesheet" href = "../../style/style_conf.css">
+        <link rel = "stylesheet" href = "../../../style/style_conf.css">
     </head>
     <body>
         <?php
-            include_once('../../script/check_login.php');
+            include_once('../../../script/check_login.php');
         ?>
         <div class = "container">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -24,19 +24,19 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item active">
-                            <a class="nav-link" href="home_admin.php">Home</a>
+                            <a class="nav-link" href="../home_admin.php">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="insert_comico.php">Comici</a>
+                            <a class="nav-link" href="../comici/insert_comico.php">Comici</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="musicisti/insert_musicista.php">Musicisti</a>
+                            <a class="nav-link" href="../musicisti/insert_musicista.php">Musicisti</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="cambio_pw.php">Cambia password</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../../script/logout.php">Loguot</a>
+                            <a class="nav-link" href="../../../script/logout.php">Loguot</a>
                         </li>
                     </ul>
                 </div>
@@ -61,7 +61,7 @@
 
                 <h4>Compila il seguente modulo per cambiare la password:</h4><br>
 
-                <form class = "form-group" method = "POST" action = "../../script/check_change_pw.php" id = "form-change">
+                <form class = "form-group" method = "POST" action = "../../../script/check_change_pw.php" id = "form-change">
                     <div class = "input-group">
                         <span class = "input-group-text">
                             <i class = "fa fa-user fa-lg"></i>
