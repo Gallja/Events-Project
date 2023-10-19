@@ -1,6 +1,5 @@
 function mostra_mod(contenuto, codice) {
     var form_completo = "myForm_" + contenuto + "_" + codice;
-    // console.log(form_completo);
     var form = document.getElementById(form_completo);
     
     if (form.style.display === "none") {
@@ -112,7 +111,8 @@ function chiudiDesc(id) {
 }
 
 function clonaArtista(id) {
-    const selectContainer = document.getElementById(id);    const selectClone = selectContainer.cloneNode(true);
+    const selectContainer = document.getElementById(id);
+    const selectClone = selectContainer.cloneNode(true);
     const submitButton = document.querySelector('input[type="submit"]');
     const br = document.createElement('br');
 

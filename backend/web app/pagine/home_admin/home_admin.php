@@ -62,7 +62,7 @@
                 <br />
                 <div id = "artisti-container">
                     <label for = "artista">Seleziona un artista per questo evento:</label>
-                    <select class = "form-control" id = "artisti" name = "artisti" required>
+                    <select class = "form-control" id = "artisti" name = "artisti[]" required>
                         <?php
                             include_once('../../script/connection.php');
 
