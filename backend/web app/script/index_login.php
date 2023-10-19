@@ -44,6 +44,6 @@
     
     // valid password
     $_SESSION['isLogin'] = true;
-    header('Location: ../pagine/eventi/home_admin/home_admin.php');
+    header('Location: ../pagine/home_admin/eventi/home_admin.php');
     exit();
 ?>
