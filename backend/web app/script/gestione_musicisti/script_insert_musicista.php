@@ -16,19 +16,23 @@
         $res = pg_prepare($connection, "", $query);
         $res = pg_execute($connection, "", array($nome_mus, $img_escape, $bio));
 
-        pg_close($connection);
+        // pg_close($connection);
 
         if (!$res) {
             $_SESSION['inserimento_musicista'] = "Errore nell'inserimento del musicista.";
+
+            // $err = pg_last_error($connection);
+            // echo $err;
+            
             header('Location: ../../pagine/home_admin/musicisti/conf_ins_mus.php');
             exit();
         } else {
-            $_SESSION['inserimento_musicista'] = "Inserimento del comico avvenuto con successo!";
+            $_SESSION['inserimento_musicista'] = "Inserimento del musicista avvenuto con successo!";
             header('Location: ../../pagine/home_admin/musicisti/conf_ins_mus.php');
             exit();
         }
     } else {
-        $_SESSION['inserimento_musicista'] = "Errore nell'inserimento del comico, compilare tutti i campi.";
+        $_SESSION['inserimento_musicista'] = "Errore nell'inserimento del musicista, compilare tutti i campi.";
         header('Location: ../../pagine/home_admin/musicisti/conf_ins_mus.php');
         exit();
     }

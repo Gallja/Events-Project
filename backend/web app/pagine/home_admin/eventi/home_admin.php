@@ -89,7 +89,7 @@
                             }
 
                             $sql2 = "SELECT * FROM eventi.musicisti";
-                            $ris2 = pg_prepare($connection, "", $sql);
+                            $ris2 = pg_prepare($connection, "", $sql2);
                             $ris2 = pg_execute($connection, "", array());
 
                             if (!$ris2) {
@@ -97,15 +97,9 @@
                             } else {
                                 while ($row2 = pg_fetch_assoc($ris2)) {
                                     echo "<option>";
-                                    foreach ($row as $key => $value) {
-                                        switch ($key) {
-                                            case "nome_musicista":
-                                                echo $value;
-                                                break;
-                                        }
-                                    }
-                                    echo "</option>";
+                                    echo $row2['nome_musicista'];
                                 }
+                                echo "</option>";
                             }
                         ?>
                     </select>

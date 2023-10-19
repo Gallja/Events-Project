@@ -26,16 +26,16 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="../home_admin.php">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="../eventi/home_admin.php">Home <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="insert_comico.php">Comici</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="musicisti/insert_musicista.php">Musicisti</a>
+                        <a class="nav-link" href="../musicisti/insert_musicista.php">Musicisti</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="cambio_pw.php">Cambia password</a>
+                        <a class="nav-link" href="../pw/cambio_pw.php">Cambia password</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="../../../script/logout.php">Loguot</a>
@@ -78,7 +78,7 @@
                                     echo "<li class='"."list-group-item"."'>";
                                     echo strtoupper($campi_chiave[0])." ".strtoupper($campi_chiave[1]).": ".$value;
                                     echo "<br><br><button onclick='mostra_mod(\"nome_comico\", \"".$id."\")' class = 'btn btn-secondary'>Modifica</button><br><br>";
-                                    echo "<form class = 'form-group' method = 'POST' id = 'myForm_nome_comico_".$id."' name = 'myForm_nome_comico_".$id."' action = '../../script/gestione_comici/script_modifica_comico.php' style = 'display: none;'>"; // Form da far comparire dopo aver premuto il bottone
+                                    echo "<form class = 'form-group' method = 'POST' id = 'myForm_nome_comico_".$id."' name = 'myForm_nome_comico_".$id."' action = '../../../script/gestione_comici/script_modifica_comico.php' style = 'display: none;'>"; // Form da far comparire dopo aver premuto il bottone
                                     echo "<input type = 'text' class = 'form-control' id = 'nome_comico1' name = 'nome_comico' placeholder = 'Reinserisci il nome' required />";
                                     echo "<input type = 'hidden' id = 'id' name = 'id' value = '".$id."' />";
                                     echo "<br><input type = 'submit' class = 'btn btn-success' value = 'Conferma' />";
@@ -89,7 +89,7 @@
                                     echo "<li class='"."list-group-item"."'>";
                                     echo strtoupper($campi_chiave[0])." ".strtoupper($campi_chiave[1]).": ".$value;
                                     echo "<br><br><button onclick='mostra_mod(\"cognome_comico\", \"".$id."\")' class = 'btn btn-secondary'>Modifica</button><br><br>";
-                                    echo "<form class = 'form-group' method = 'POST' id = 'myForm_cognome_comico_".$id."' name = 'myForm_cognome_comico_".$id."' action = '../../script/gestione_comici/script_modifica_comico.php' style = 'display: none;'>"; // Form da far comparire dopo aver premuto il bottone
+                                    echo "<form class = 'form-group' method = 'POST' id = 'myForm_cognome_comico_".$id."' name = 'myForm_cognome_comico_".$id."' action = '../../../script/gestione_comici/script_modifica_comico.php' style = 'display: none;'>"; // Form da far comparire dopo aver premuto il bottone
                                     echo "<input type = 'text' class = 'form-control' id = 'cognome_comico1' name = 'cognome_comico' placeholder = 'Reinserisci il cognome' required />";
                                     echo "<input type = 'hidden' id = 'id' name = 'id' value = '".$id."' />";
                                     echo "<br><input type = 'submit' class = 'btn btn-success' value = 'Conferma' />";
@@ -110,7 +110,7 @@
                                     echo '<br><img src="data:image/jpg;base64,'.$row2["img"].'">';
 
                                     echo "<br><br><button onclick='"."mostra_mod(\"profilo\", \"".$id."\")"."' class = 'btn btn-secondary'>Modifica</button><br><br>";
-                                    echo "<form class = 'form-group' method = 'POST' id = 'myForm_profilo_".$id."' action = '../../script/gestione_comici/script_modifica_comico.php' enctype = 'multipart/form-data' style = 'display: none;'>"; // Form da far comparire dopo aver premuto il bottone
+                                    echo "<form class = 'form-group' method = 'POST' id = 'myForm_profilo_".$id."' action = '../../../script/gestione_comici/script_modifica_comico.php' enctype = 'multipart/form-data' style = 'display: none;'>"; // Form da far comparire dopo aver premuto il bottone
                                     echo "<input type = 'file' class = 'form-control' id = 'profilo' name = 'profilo' placeholder = 'Reinserisci immagine profilo' required/>";
                                     echo "<input type = 'hidden' id = 'id' name = 'id' value = '".$id."' />";
                                     echo "<br><input type = 'submit' class = 'btn btn-success' value = 'Conferma'/>";
@@ -123,14 +123,13 @@
                                     echo strtoupper($key).": ".$value;
 
                                     echo "<br><br><button onclick='"."mostra_mod(\"bio\", \"".$id."\")"."' class = 'btn btn-secondary'>Modifica</button><br><br>";
-                                    echo "<form class = 'form-group' method = 'POST' id = 'myForm_bio_".$id."' action = '../../script/gestione_comici/script_modifica_comico.php' style = 'display: none;'>"; // Form da far comparire dopo aver premuto il bottone
+                                    echo "<form class = 'form-group' method = 'POST' id = 'myForm_bio_".$id."' action = '../../../script/gestione_comici/script_modifica_comico.php' style = 'display: none;'>"; // Form da far comparire dopo aver premuto il bottone
                                     echo "<textarea class = 'form-control' id = 'bio' name = 'bio' placeholder = 'Reinserisci la bio' required></textarea>";
                                     echo "<input type = 'hidden' id = 'id' name = 'id' value = '".$id."' />";
                                     echo "<br><input type = 'submit' class = 'btn btn-success' value = 'Conferma'/>";
                                     echo "</form>";
 
                                     echo "</li>";
-                                    break;
                                     break;
                             }
                         }
@@ -140,7 +139,7 @@
                 }
             } else {
                 echo "<h3>Errore nella ricerca del comico da rimuovere</h3><br>";
-                echo "<form class = 'form-group' action = '../home_admin.php'>";
+                echo "<form class = 'form-group' action = '../eventi/home_admin.php'>";
                 echo "<input type = 'submit' class = 'btn btn-success' value = 'Indietro' />";
                 echo "</form>";
             }

@@ -26,10 +26,10 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav mr-auto">
                             <li class="nav-item active">
-                                <a class="nav-link" href="../home_admin.php">Home <span class="sr-only">(current)</span></a>
+                                <a class="nav-link" href="../eventi/home_admin.php">Home <span class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="../insert_comico.php">Comici</a>
+                                <a class="nav-link" href="../comici/insert_comico.php">Comici</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="insert_musicista.php">Musicisti</a>
@@ -90,78 +90,70 @@
                     echo "</th>";
                     
                     while ($row = pg_fetch_assoc($res)) {
-                        $id = $row['id'];
+                        $id = $row['id_musicista'];
                         echo "<tr>";
 
                         foreach($row as $key => $value) {
-                            // echo $row[$key];
-                            // echo "<br>";
-                            if (str_contains($key, '_')) {
-                                $campi_chiave = explode('_', $key);
+                            switch ($key) {
+                                case 'nome_musicista':
+                                    echo "<td class = 'table-".$tipo[$conta]."'>";
+                                    echo $value;
+                                    echo "</td>";
+                                    break;
+                            
+                                case 'id_musicista':
+                                    echo "<td class = 'table-".$tipo[$conta]."'>";
+                                    echo $conta2;
+                                    echo "</td>";
+                                    break;
+                                case 'profilo_musicista':
+                                    $sql = "SELECT encode(profilo_musicista, 'base64') AS img FROM eventi.musicisti AS m WHERE m.id_musicista = $1";
+                                    $res2 = pg_prepare($connection, "", $sql);
+                                    $res2 = pg_execute($connection, "", array($id));
+                                    $row2 = pg_fetch_assoc($res2);
 
-                                switch ($key) {
-                                    case 'nome_musicista':
-                                        echo "<td class = 'table-".$tipo[$conta]."'>";
-                                        echo $value;
-                                        echo "</td>";
-                                        break;
-                                }
-                            } else {
-                                switch ($key) {
-                                    case 'id_musicista':
-                                        echo "<td class = 'table-".$tipo[$conta]."'>";
-                                        echo $conta2;
-                                        echo "</td>";
-                                        break;
-                                    case 'profilo_musicista':
-                                        $sql = "SELECT encode(profilo, 'base64') AS img FROM eventi.comici AS c WHERE c.id = $1";
-                                        $res2 = pg_prepare($connection, "", $sql);
-                                        $res2 = pg_execute($connection, "", array($id));
-                                        $row2 = pg_fetch_assoc($res2);
+                                    echo "<td class = 'table-".$tipo[$conta]."'>";
+                                    echo "<button type='button' class = 'btn btn-info' onclick='mostraFoto(".$id.")'>";
+                                    echo "Mostra";
+                                    echo "</button>";
+                                    echo "</td>";
 
-                                        echo "<td class = 'table-".$tipo[$conta]."'>";
-                                        echo "<button type='button' class = 'btn btn-info' onclick='mostraFoto(".$id.")'>";
-                                        echo "Mostra";
-                                        echo "</button>";
-                                        echo "</td>";
+                                    echo "<div id = 'pannelloFoto".$id."' class = 'pannelloFoto' data-pannello='false'>";
+                                    echo '<img src="data:image/jpg;base64,'.$row2["img"].'"><br><br>';
+                                    echo "<button type = 'button' class = 'btn btn-info' onclick='chiudiFoto(".$id.")'>";
+                                    echo "Chiudi";
+                                    echo "</button>";
+                                    echo "</div>";
 
-                                        echo "<div id = 'pannelloFoto".$id."' class = 'pannelloFoto' data-pannello='false'>";
-                                        echo '<img src="data:image/jpg;base64,'.$row2["img"].'"><br><br>';
-                                        echo "<button type = 'button' class = 'btn btn-info' onclick='chiudiFoto(".$id.")'>";
-                                        echo "Chiudi";
-                                        echo "</button>";
-                                        echo "</div>";
+                                    break;
+                                case 'bio_musicista':
+                                    echo "<td class = 'table-".$tipo[$conta]."'>";
+                                    echo "<button type='button' class = 'btn btn-primary' onclick = 'mostraDesc(".$id.")'>";
+                                    echo "Mostra";
+                                    echo "</button>";
+                                    echo "</td>";
 
-                                        break;
-                                    case 'bio_musicista':
-                                        echo "<td class = 'table-".$tipo[$conta]."'>";
-                                        echo "<button type='button' class = 'btn btn-primary' onclick = 'mostraDesc(".$id.")'>";
-                                        echo "Mostra";
-                                        echo "</button>";
-                                        echo "</td>";
+                                    echo "<div id = 'pannelloDesc".$id."' class = 'pannelloDesc' data-pannello='false'>";
+                                    echo $value;
+                                    echo "<br><br>";
+                                    echo "<button type = 'button' class = 'btn btn-primary' onclick='chiudiDesc(".$id.")'>";
+                                    echo "Chiudi";
+                                    echo "</button>";
+                                    echo "</div>";
 
-                                        echo "<div id = 'pannelloDesc".$id."' class = 'pannelloDesc' data-pannello='false'>";
-                                        echo $value;
-                                        echo "<br><br>";
-                                        echo "<button type = 'button' class = 'btn btn-primary' onclick='chiudiDesc(".$id.")'>";
-                                        echo "Chiudi";
-                                        echo "</button>";
-                                        echo "</div>";
-
-                                        break;
-                                }
+                                    break;
                             }
                         }
 
                         echo "<td class = 'table-".$tipo[$conta]."'>";
-                        echo "<form action = 'modifica_comico.php' method = 'POST'>";
+                        echo "<form action = 'modifica_musicista.php' method = 'POST'>";
                         echo "<input type = 'hidden' id = 'id' name = 'id' value = '".$id."' />";
                         echo "<input type = 'submit' class = 'btn btn-warning' value = 'Modifica' />";
                         echo "</form>";
                         echo "</td>";
 
                         echo "<td class = 'table-".$tipo[$conta]."'>";
-                        echo "<form action = 'conf_elim_comico.php' method = 'POST'>";
+                        echo "<form action = 'conf_elim_mus.php' method = 'POST'>";
                         echo "<input type = 'hidden' id = 'id' name = 'id' value = '".$id."' />";
                         echo "<input type = 'submit' class = 'btn btn-danger' value = 'Elimina' />";
                         echo "</form>";

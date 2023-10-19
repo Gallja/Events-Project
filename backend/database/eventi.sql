@@ -288,7 +288,7 @@ CREATE OR REPLACE PROCEDURE eventi.insert_musicista (
     bio_musicista varchar
 ) AS $$
 BEGIN
-    INSERT INTO eventi.comici(nome_musicista, profilo_musicista, bio_musicista)
+    INSERT INTO eventi.musicisti(nome_musicista, profilo_musicista, bio_musicista)
     VALUES(nome_musicista, profilo_musicista, bio_musicista);
 END;
 $$ LANGUAGE plpgsql;
