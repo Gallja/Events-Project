@@ -77,7 +77,7 @@
                                 echo "<li class='"."list-group-item"."'>";
                                 echo strtoupper($campi_chiave[0])." ".strtoupper($campi_chiave[1]).": ".$value;
                                 echo "<br><br><button onclick='mostra_mod(\"nome_musicista\", \"".$id."\")' class = 'btn btn-secondary'>Modifica</button><br><br>";
-                                echo "<form class = 'form-group' method = 'POST' id = 'myForm_nome_musicista_".$id."' name = 'myForm_nome_musicista_".$id."' action = '../../script/gestione_musicisti/script_modifica_mus.php' style = 'display: none;'>";
+                                echo "<form class = 'form-group' method = 'POST' id = 'myForm_nome_musicista_".$id."' name = 'myForm_nome_musicista_".$id."' action = '../../../script/gestione_musicisti/script_modifica_mus.php' style = 'display: none;'>";
                                 echo "<input type = 'text' class = 'form-control' id = 'nome_mus1' name = 'nome' placeholder = 'Reinserisci il nome' required />";
                                 echo "<input type = 'hidden' id = 'id' name = 'id' value = '".$id."' />";
                                 echo "<br><input type = 'submit' class = 'btn btn-success' value = 'Conferma' />";
@@ -97,7 +97,7 @@
                                 echo '<br><img src="data:image/jpg;base64,'.$row2["img"].'">';
 
                                 echo "<br><br><button onclick='"."mostra_mod(\"profilo_musicista\", \"".$id."\")"."' class = 'btn btn-secondary'>Modifica</button><br><br>";
-                                echo "<form class = 'form-group' method = 'POST' id = 'myForm_profilo_musicista_".$id."' action = '../../script/gestione_musicisti/script_modifica_mus.php' enctype = 'multipart/form-data' style = 'display: none;'>";
+                                echo "<form class = 'form-group' method = 'POST' id = 'myForm_profilo_musicista_".$id."' action = '../../../script/gestione_musicisti/script_modifica_mus.php' enctype = 'multipart/form-data' style = 'display: none;'>";
                                 echo "<input type = 'file' class = 'form-control' id = 'profilo' name = 'profilo' placeholder = 'Reinserisci immagine profilo' required/>";
                                 echo "<input type = 'hidden' id = 'id' name = 'id' value = '".$id."' />";
                                 echo "<br><input type = 'submit' class = 'btn btn-success' value = 'Conferma'/>";
@@ -110,7 +110,7 @@
                                 echo strtoupper($campi_chiave[0])." ".strtoupper($campi_chiave[1]).": ".$value;
 
                                 echo "<br><br><button onclick='"."mostra_mod(\"bio_musicista\", \"".$id."\")"."' class = 'btn btn-secondary'>Modifica</button><br><br>";
-                                echo "<form class = 'form-group' method = 'POST' id = 'myForm_bio_musicista_".$id."' action = '../../script/gestione_musicisti/script_modifica_mus.php' style = 'display: none;'>";
+                                echo "<form class = 'form-group' method = 'POST' id = 'myForm_bio_musicista_".$id."' action = '../../../script/gestione_musicisti/script_modifica_mus.php' style = 'display: none;'>";
                                 echo "<textarea class = 'form-control' id = 'bio' name = 'bio' placeholder = 'Reinserisci la bio' required></textarea>";
                                 echo "<input type = 'hidden' id = 'id' name = 'id' value = '".$id."' />";
                                 echo "<br><input type = 'submit' class = 'btn btn-success' value = 'Conferma'/>";
