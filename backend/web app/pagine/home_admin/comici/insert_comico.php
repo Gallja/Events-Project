@@ -35,7 +35,7 @@
                                 <a class="nav-link" href="../musicisti/insert_musicista.php">Musicisti</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="cambio_pw.php">Cambia password</a>
+                                <a class="nav-link" href="../pw/cambio_pw.php">Cambia password</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="../../../script/logout.php">Loguot</a>
