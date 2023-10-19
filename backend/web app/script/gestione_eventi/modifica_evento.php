@@ -12,11 +12,11 @@
 
             if (!$res1) {
                 $_SESSION['modifica_nome'] = "Errore nella modifica del nome dell'evento";
-                header('Location: ../../pagine/home_admin/conf_modifica.php');
+                header('Location: ../../pagine/home_admin/eventi/conf_modifica.php');
                 exit();
             } else {
                 $_SESSION['modifica_nome'] = "Modifica del nome dell'evento avvenuta con successo!";
-                header('Location: ../../pagine/home_admin/conf_modifica.php');
+                header('Location: ../../pagine/home_admin/eventi/conf_modifica.php');
                 exit();
             }
         } else {
@@ -28,11 +28,11 @@
 
                 if (!$res2) {
                     $_SESSION['modifica_data'] = "Errore nella modifica della data dell'evento";
-                    header('Location: ../../pagine/home_admin/conf_modifica.php');
+                    header('Location: ../../pagine/home_admin/eventi/conf_modifica.php');
                     exit();
                 } else {
                     $_SESSION['modifica_data'] = "Modifica della data dell'evento avvenuta con successo!";
-                    header('Location: ../../pagine/home_admin/conf_modifica.php');
+                    header('Location: ../../pagine/home_admin/eventi/conf_modifica.php');
                     exit();
                 }
             } else {
@@ -44,11 +44,11 @@
 
                     if (!$res3) {
                         $_SESSION['modifica_luogo'] = "Errore nella modifica del luogo dell'evento";
-                        header('Location: ../../pagine/home_admin/conf_modifica.php');
+                        header('Location: ../../pagine/home_admin/eventi/conf_modifica.php');
                         exit();
                     } else {
                         $_SESSION['modifica_luogo'] = "Modifica del luogo dell'evento avvenuta con successo!";
-                        header('Location: ../../pagine/home_admin/conf_modifica.php');
+                        header('Location: ../../pagine/home_admin/eventi/conf_modifica.php');
                         exit();
                     }
                 } else {
@@ -64,11 +64,11 @@
 
                         if (!$res4) {
                             $_SESSION['modifica_immagine'] = "Errore nella modifica della copertina dell'evento";
-                            header('Location: ../../pagine/home_admin/conf_modifica.php');
+                            header('Location: ../../pagine/eventi/eventi/conf_modifica.php');
                             exit();
                         } else {
                             $_SESSION['modifica_immagine'] = "Modifica della copertina dell'evento avvenuta con successo!";
-                            header('Location: ../../pagine/home_admin/conf_modifica.php');
+                            header('Location: ../../pagine/home_admin/eventi/conf_modifica.php');
                             exit();
                         }
                     } else {
@@ -80,16 +80,16 @@
 
                             if (!$res5) {
                                 $_SESSION['modifica_desc'] = "Errore nella modifica della descrizione dell'evento";
-                                header('Location: ../../pagine/home_admin/conf_modifica.php');
+                                header('Location: ../../pagine/home_admin/eventi/conf_modifica.php');
                                 exit();
                             } else {
                                 $_SESSION['modifica_desc'] = "Modifica della descrizione dell'evento avvenuta con successo!";
-                                header('Location: ../../pagine/home_admin/conf_modifica.php');
+                                header('Location: ../../pagine/home_admin/eventi/conf_modifica.php');
                                 exit();
                             }
                         } else {
                             $_SESSION['errore_mod'] = "Errore del sistema";
-                            header('Location: ../../pagine/home_admin/conf_modifica.php');
+                            header('Location: ../../pagine/home_admin/eventi/conf_modifica.php');
                             exit();
                         }
                     }
@@ -98,7 +98,7 @@
         }
     } else {
         $_SESSION['errore_mod'] = "Errore del sistema";
-        header('Location: ../../pagine/home_admin/conf_modifica.php');
+        header('Location: ../../pagine/home_admin/eventi/conf_modifica.php');
         exit();
     }
 ?>

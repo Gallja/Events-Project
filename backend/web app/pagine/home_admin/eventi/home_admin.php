@@ -6,13 +6,13 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <link rel = "stylesheet" href = "../../style/style.css">
-    <script src = "../../js/script.js"></script>
+    <link rel = "stylesheet" href = "../../../style/style.css">
+    <script src = "../../../js/script.js"></script>
 </head>
 <body>
 
     <?php
-        include_once('../../script/check_login.php');
+        include_once('../../../script/check_login.php');
     ?>
 
     <div class = "container d-flex align-items-center centrato">
@@ -30,16 +30,16 @@
                             <a class="nav-link" href="home_admin.php">Home <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="comici/insert_comico.php">Comici</a>
+                            <a class="nav-link" href="../comici/insert_comico.php">Comici</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="musicisti/insert_musicista.php">Musicisti</a>
+                            <a class="nav-link" href="../musicisti/insert_musicista.php">Musicisti</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="pw/cambio_pw.php">Cambia password</a>
+                            <a class="nav-link" href="../pw/cambio_pw.php">Cambia password</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../../script/logout.php">Loguot</a>
+                            <a class="nav-link" href="../../../script/logout.php">Loguot</a>
                         </li>
                     </ul>
                     <div class="row justify-content-center align-items-center" id = "div_search">
@@ -53,7 +53,7 @@
             <br>
 
             <h3>Inserisci un nuovo evento:</h3>
-            <form class = "form-group" method = "POST" action = "../../script/gestione_eventi/insert_evento.php" enctype = "multipart/form-data">
+            <form class = "form-group" method = "POST" action = "../../../script/gestione_eventi/insert_evento.php" enctype = "multipart/form-data">
                 <input type = "text" class = "form-control" id = "nome_evento1" name = "nome_evento" placeholder = "Inserisci il nome dell'evento" required>
                 <input type = "date" class = "form-control" id = "data" name = "data" placeholder = "Inserisci la data" required>
                 <input type = "luogo" class = "form-control" id = "luogo1" name = "luogo" placeholder = "Inserisci il luogo" required>
@@ -64,7 +64,7 @@
                     <label for = "artista">Seleziona un artista per questo evento:</label>
                     <select class = "form-control" id = "artisti" name = "artisti[]" required>
                         <?php
-                            include_once('../../script/connection.php');
+                            include_once('../../../script/connection.php');
 
                             $sql = "SELECT * FROM eventi.comici";
                             $ris = pg_prepare($connection, "", $sql);
@@ -123,7 +123,7 @@
             <h3>Tutti gli eventi creati:</h3>
             
             <?php
-                include_once('../../script/connection.php');
+                include_once('../../../script/connection.php');
 
                 $query = "SELECT * FROM eventi.eventi AS e ORDER BY e.data_evento";
                 $res = pg_prepare($connection, "ris", $query);

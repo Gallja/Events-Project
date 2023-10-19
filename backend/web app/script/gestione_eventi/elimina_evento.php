@@ -11,16 +11,16 @@
 
         if (!$res) {
             $_SESSION['eliminazione'] = "Errore nell'eliminazione dell'evento.";
-            header('Location: ../../pagine/home_admin/conf_eliminazione.php');
+            header('Location: ../../pagine/home_admin/eventi/conf_eliminazione.php');
             exit();
         } else {
             $_SESSION['eliminazione'] = "Eliminazione dell'evento avvenuta con successo!";
-            header('Location: ../../pagine/home_admin/conf_eliminazione.php');
+            header('Location: ../../pagine/home_admin/eventi/conf_eliminazione.php');
             exit();
         }
     } else {
         $_SESSION['eliminazione'] = "Errore nell'eliminazione dell'evento: codice non trovato.";
-        header('Location: ../../pagine/home_admin/conf_eliminazione.php');
+        header('Location: ../../pagine/home_admin/eventi/conf_eliminazione.php');
         exit();
     }
 ?>
