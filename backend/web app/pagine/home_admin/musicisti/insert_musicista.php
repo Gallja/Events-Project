@@ -66,7 +66,7 @@
             <h3>Tutti i musicisti affiliati:</h3>
 
             <?php
-                include_once('../../../script/connection.php');
+                include_once('../../../script/management/connection.php');
 
                 $query = "SELECT * FROM eventi.musicisti";
                 $res = pg_prepare($connection, "ris", $query);

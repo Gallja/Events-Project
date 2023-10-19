@@ -56,7 +56,7 @@
             if (isset($_POST['id'])) {
                 $id = $_POST['id'];
 
-                include_once('../../../script/connection.php');
+                include_once('../../../script/management/connection.php');
 
                 $query = "SELECT * FROM eventi.musicisti AS m WHERE m.id_musicista = $1";
                 $res = pg_prepare($connection, "", $query);

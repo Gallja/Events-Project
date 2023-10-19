@@ -6,7 +6,7 @@
         $cognome_comico = $_POST['cognome_comico'];
         $bio = $_POST['bio'];
 
-        include_once('../connection.php');
+        include_once('../management/connection.php');
 
         // validate image:
         $img_path = $_FILES['profilo']['tmp_name'];

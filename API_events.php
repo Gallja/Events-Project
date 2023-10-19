@@ -2,7 +2,7 @@
 header('Content-Type: application/json');
 
 // open connection to the DB
-include_once('backend\web app\script\connection.php');
+include_once('backend\web app\script\management\connection.php');
 
 // API request - only read events
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {

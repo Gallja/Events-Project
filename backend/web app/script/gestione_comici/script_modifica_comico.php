@@ -2,7 +2,7 @@
     session_start();
 
     if (isset($_POST['id'])) {
-        include_once('../connection.php');
+        include_once('../management/connection.php');
         $id = $_POST['id'];
         if (isset($_POST['nome_comico'])) {
             $nome = $_POST['nome_comico'];

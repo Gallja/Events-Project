@@ -23,7 +23,7 @@
 
         // password and mail well-formed
         
-        include_once('../script/connection.php');
+        include_once('../script/management/connection.php');
 
         $pw_enc = password_hash($pw, PASSWORD_DEFAULT);
 

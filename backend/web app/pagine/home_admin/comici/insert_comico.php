@@ -67,7 +67,7 @@
             <h3>Tutti i comici affiliati:</h3>
 
             <?php
-                include_once('../../../script/connection.php');
+                include_once('../../../script/management/connection.php');
 
                 $query = "SELECT * FROM eventi.comici AS c ORDER BY c.cognome_comico";
                 $res = pg_prepare($connection, "ris", $query);

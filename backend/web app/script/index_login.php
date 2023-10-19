@@ -8,7 +8,7 @@
     }
 
 
-    include_once('../script/connection.php'); 
+    include_once('../management/connection.php'); 
 
     $sql = "SELECT * FROM eventi.autenticazione($1)";
     $res = pg_prepare($connection, "get_all_esito_attesa_acc", $sql);

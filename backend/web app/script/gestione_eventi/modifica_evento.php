@@ -2,7 +2,7 @@
     session_start();
 
     if (isset($_POST['codice'])) {
-        include_once("../connection.php");
+        include_once("../management/connection.php");
         $codice = $_POST['codice'];
         if (isset($_POST['nome_evento'])) {
             $nome = $_POST['nome_evento'];

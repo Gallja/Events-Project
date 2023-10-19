@@ -2,7 +2,7 @@
     session_start();
 
     if (isset($_POST['codice'])) {
-        include_once('../connection.php');
+        include_once('../management/connection.php');
         $codice = $_POST['codice'];
 
         $sql = "DELETE FROM eventi.eventi AS e WHERE e.codice = $1";

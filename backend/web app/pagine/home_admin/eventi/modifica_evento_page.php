@@ -57,7 +57,7 @@
             if (isset($_POST['codice'])) {
                 $codice = $_POST['codice'];
 
-                include_once('../../../script/connection.php');
+                include_once('../../../script/management/connection.php');
 
                 $query = "SELECT * FROM eventi.eventi AS e WHERE e.codice = $1";
                 $res = pg_prepare($connection, "", $query);

@@ -5,7 +5,7 @@
         $nome_mus = $_POST['nome_mus'];
         $bio = $_POST['bio'];
 
-        include_once('../connection.php');
+        include_once('../management/connection.php');
 
         // validate image:
         $img_path = $_FILES['profilo']['tmp_name'];

@@ -7,7 +7,7 @@
         $luogo = $_POST['luogo'];
         $descrizione = $_POST['descrizione'];
 
-        include_once('../connection.php');
+        include_once('../management/connection.php');
 
         // validate image:
         $img_path = $_FILES['img']['tmp_name'];

@@ -2,7 +2,7 @@
     session_start();
 
     if (isset($_POST['mail']) && isset($_POST['old_pw']) && isset($_POST['new_pw']) && isset($_POST['conf_new_pw'])) {
-        include_once('connection.php');
+        include_once('../management/connection.php');
 
         $email = $_POST['mail'];
         $old_pw = $_POST['old_pw'];
@@ -16,8 +16,6 @@
         }
 
         // check old password & update
-
-        include_once('../connection.php');
 
         $test = "SELECT * FROM eventi.autenticazione($1)";
         $res1 = pg_prepare($connection, "get_all", $test);

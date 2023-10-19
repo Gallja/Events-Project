@@ -64,7 +64,7 @@
                     <label for = "artista">Seleziona un artista per questo evento:</label>
                     <select class = "form-control" id = "artisti" name = "artisti[]" required>
                         <?php
-                            include_once('../../../script/connection.php');
+                            include_once('../../../script/management/connection.php');
 
                             $sql = "SELECT * FROM eventi.comici";
                             $ris = pg_prepare($connection, "", $sql);
@@ -117,7 +117,7 @@
             <h3>Tutti gli eventi creati:</h3>
             
             <?php
-                include_once('../../../script/connection.php');
+                include_once('../../../script/management/connection.php');
 
                 $query = "SELECT * FROM eventi.eventi AS e ORDER BY e.data_evento";
                 $res = pg_prepare($connection, "ris", $query);

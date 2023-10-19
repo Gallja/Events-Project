@@ -2,7 +2,7 @@
     session_start();
 
     if (isset($_POST['id'])) {
-        include_once('../connection.php');
+        include_once('../management/connection.php');
         $id = $_POST['id'];
 
         $sql = "DELETE FROM eventi.comici AS c WHERE c.id = $1";
