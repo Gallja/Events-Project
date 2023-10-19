@@ -10,14 +10,15 @@
     <link rel = "stylesheet" href = "../../../style/style_conf.css">
 </head>
 <body>
+    
     <?php
-        include_once('../../../script/check_login.php');
+        include_once('../../../script/management/check_login.php');
     ?>
 
     <div id = "centro">
 
         <?php
-            include_once('../../../script/check_login.php');
+            include_once('../../../script/management/check_login.php');
 
             echo "<h2>".$_SESSION['eliminazione']."</h2>";
 

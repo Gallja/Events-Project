@@ -11,7 +11,7 @@
     <body>
         <div id = "centro">
             <?php
-                include_once('../../../script/check_login.php');
+                include_once('../../../script/management/check_login.php');
 
                 if (isset($_SESSION['modifica_nome_com'])) {
                     echo "<h2>".$_SESSION['modifica_nome_com']."</h2><br>";

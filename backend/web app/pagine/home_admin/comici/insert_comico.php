@@ -12,7 +12,7 @@
 <body>
 
     <?php
-        include_once('../../../script/check_login.php');
+        include_once('../../../script/management/check_login.php');
     ?>
     <div class = "container d-flex align-items-center centrato">
         <div class = "text-center">

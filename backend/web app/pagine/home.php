@@ -20,7 +20,7 @@
                         <br>
 
                         <?php
-                            include_once("../script/check_not_login.php");
+                            include_once("../script/management/check_not_login.php");
 
                             if (isset($_SESSION['autenticazione_fallita'])) {
                                 echo "<p>".$_SESSION['autenticazione_fallita']."</p>";

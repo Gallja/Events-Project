@@ -12,7 +12,7 @@
         <div id = "centro">
 
             <?php
-                include_once('../../../script/check_login.php');
+                include_once('../../../script/management/check_login.php');
 
                 echo "<h2>".$_SESSION['inserimento_musicista']."<h2>";
 
