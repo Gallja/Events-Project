@@ -12,11 +12,11 @@
 
             if (!$res1) {
                 $_SESSION['modifica_nome_com'] = "Errore nella modifica del nome del comico";
-                header('Location: ../../pagine/home_admin/conf_modifica_com.php');
+                header('Location: ../../pagine/comici/home_admin/conf_modifica_com.php');
                 exit();
             } else {
                 $_SESSION['modifica_nome_com'] = "Modifica del nome del comico avvenuta con successo!";
-                header('Location: ../../pagine/home_admin/conf_modifica_com.php');
+                header('Location: ../../pagine/home_admin/comici/conf_modifica_com.php');
                 exit();
             }
         } else {
@@ -28,11 +28,11 @@
 
                 if (!$res2) {
                     $_SESSION['modifica_cognome_com'] = "Errore nella modifica del cognome del comico";
-                    header('Location: ../../pagine/home_admin/conf_modifica_com.php');
+                    header('Location: ../../pagine/home_admin/comici/conf_modifica_com.php');
                     exit();
                 } else {
                     $_SESSION['modifica_cognome_com'] = "Modifica del cognome del comico avvenuta con successo!";
-                    header('Location: ../../pagine/home_admin/conf_modifica_com.php');
+                    header('Location: ../../pagine/home_admin/comici/conf_modifica_com.php');
                     exit();
                 }
             } else {
@@ -49,11 +49,11 @@
 
                     if (!$res3) {
                         $_SESSION['modifica_foto_com'] = "Errore nella modifica della foto profilo del comico";
-                        header('Location: ../../pagine/home_admin/conf_modifica_com.php');
+                        header('Location: ../../pagine/home_admin/comici/conf_modifica_com.php');
                         exit();
                     } else {
                         $_SESSION['modifica_foto_com'] = "Modifica della foto profilo del comico avvenuta con successo!";
-                        header('Location: ../../pagine/home_admin/conf_modifica_com.php');
+                        header('Location: ../../pagine/home_admin/comici/conf_modifica_com.php');
                         exit();
                     }
                 } else {
@@ -65,16 +65,16 @@
 
                         if (!$res4) {
                             $_SESSION['modifica_bio_com'] = "Errore nella modifica della descrizione del comico";
-                            header('Location: ../../pagine/home_admin/conf_modifica_com.php');
+                            header('Location: ../../pagine/home_admin/comici/conf_modifica_com.php');
                             exit();
                         } else {
                             $_SESSION['modifica_bio_com'] = "Modifica della descrizione del comico avvenuta con successo!";
-                            header('Location: ../../pagine/home_admin/conf_modifica_com.php');
+                            header('Location: ../../pagine/home_admin/comici/conf_modifica_com.php');
                             exit();
                         }
                     } else {
                         $_SESSION['errore_mod_com'] = "Errore del sistema";
-                        header('Location: ../../pagine/home_admin/conf_modifica_com.php');
+                        header('Location: ../../pagine/home_admin/comici/conf_modifica_com.php');
                         exit();
                     }
                 }
@@ -82,7 +82,7 @@
         }
     } else {
         $_SESSION['errore_mod_com'] = "Errore del sistema. Comico non trovato.";
-        header('Location: ../../pagine/home_admin/conf_modifica_com.php');
+        header('Location: ../../pagine/home_admin/comici/conf_modifica_com.php');
         exit();
     }
 ?>

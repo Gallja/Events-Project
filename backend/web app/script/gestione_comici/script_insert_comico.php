@@ -23,16 +23,16 @@
 
         if (!$res) {
             $_SESSION['inserimento_comico'] = "Errore nell'inserimento del comico.";
-            header('Location: ../../pagine/home_admin/conf_ins_comico.php');
+            header('Location: ../../pagine/home_admin/comici/conf_ins_comico.php');
             exit();
         } else {
             $_SESSION['inserimento_comico'] = "Inserimento del comico avvenuto con successo!";
-            header('Location: ../../pagine/home_admin/conf_ins_comico.php');
+            header('Location: ../../pagine/home_admin/comici/conf_ins_comico.php');
             exit();
         }
     } else {
         $_SESSION['inserimento_comico'] = "Errore nell'inserimento del comico, compilare tutti i campi.";
-        header('Location: ../../pagine/home_admin/conf_ins_comico.php');
+        header('Location: ../../pagine/home_admin/comici/conf_ins_comico.php');
         exit();
     }
 ?>

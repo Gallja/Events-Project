@@ -11,16 +11,16 @@
 
         if (!$res) {
             $_SESSION['eliminazione_comico'] = "Errore nell'eliminazione del comico.";
-            header('Location: ../../pagine/home_admin/conf_elim_comico2.php');
+            header('Location: ../../pagine/home_admin/comici/conf_elim_comico2.php');
             exit();
         } else {
             $_SESSION['eliminazione_comico'] = "Eliminazione del comico avvenuta con successo!";
-            header('Location: ../../pagine/home_admin/conf_elim_comico2.php');
+            header('Location: ../../pagine/home_admin/comici/conf_elim_comico2.php');
             exit();
         }
     } else {
         $_SESSION['eliminazione_comico'] = "Errore nell'eliminazione del comico: codice non trovato.";
-        header('Location: ../../pagine/home_admin/conf_elim_comico2.php');
+        header('Location: ../../pagine/home_admin/comici/conf_elim_comico2.php');
         exit();
     }
 ?>

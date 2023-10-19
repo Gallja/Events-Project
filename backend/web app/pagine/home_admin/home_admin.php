@@ -30,7 +30,7 @@
                             <a class="nav-link" href="home_admin.php">Home <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="insert_comico.php">Comici</a>
+                            <a class="nav-link" href="comici/insert_comico.php">Comici</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="musicisti/insert_musicista.php">Musicisti</a>
