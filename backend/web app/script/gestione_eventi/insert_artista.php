@@ -5,7 +5,8 @@
         include_once('../management/connection.php');
         
         $flag = true;
-        $conta_sel = count($_POST['artisti']);
+        $arr_backup = array_unique($_POST['artisti']);
+        $conta_sel = $arr_backup;
         for ($i = 0; $i < $conta_sel; $i++) {
             $artista = $_POST['artisti'][$i];
             if ($artista == "empty") {
