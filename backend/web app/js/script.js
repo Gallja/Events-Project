@@ -113,12 +113,20 @@ function chiudiDesc(id) {
 function clonaArtista(id) {
     const selectContainer = document.getElementById(id);
     const selectClone = selectContainer.cloneNode(true);
-    const submitButton = document.querySelector('h4');
+    const submitButton = selectClone.querySelector('input[type="submit"]');
     const br = document.createElement('br');
 
-    selectContainer.parentNode.insertBefore(selectClone, submitButton);
-    selectContainer.parentNode.insertBefore(br, submitButton);
+    selectClone.removeAttribute('id');
+
+    if (submitButton) {
+        submitButton.remove();
+    }
+
+    selectContainer.parentNode.insertBefore(selectClone, selectContainer.nextSibling);
+    selectContainer.parentNode.insertBefore(br, selectContainer.nextSibling);
 }
+
+
 
 function mostraArt(id) {
     firstStr = "pannelloArt";

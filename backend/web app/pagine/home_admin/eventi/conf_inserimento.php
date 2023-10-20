@@ -15,9 +15,11 @@
             <?php
                 include_once('../../../script/management/check_login.php');
 
-                echo "<h2>".$_SESSION['inserimento']."<h2>";
+                if (isset($_SESSION['inserimento'])) {
+                    echo "<h2>".$_SESSION['inserimento']."<h2>";
 
-                unset($_SESSION['inserimento']);
+                    unset($_SESSION['inserimento']);
+                }
             ?>
 
             <br>
@@ -82,6 +84,7 @@
                         ?>
                     </select>
                     <input type = "button" class = "btn btn-secondary btn-sm" id = "aggiungi-artista" onclick = "clonaArtista('artisti-container')" value = "Aggiungi Artista" />
+                    <br />
                     <br />
                     <input type = "submit" class = "btn btn-primary" value = "AGGIUNGI">
                 </form>
