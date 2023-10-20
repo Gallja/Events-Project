@@ -25,6 +25,7 @@
             <br>
 
             <h3>Desideri aggiungere qualche artista per l'evento appena inserito?</h3>
+            <br />
 
             <div id = "artisti-container">
                 <form class = "form-group" method = "POST" action = "../../../script/gestione_eventi/insert_artista.php">

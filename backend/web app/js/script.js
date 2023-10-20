@@ -122,11 +122,9 @@ function clonaArtista(id) {
         submitButton.remove();
     }
 
-    selectContainer.parentNode.insertBefore(selectClone, selectContainer.nextSibling);
-    selectContainer.parentNode.insertBefore(br, selectContainer.nextSibling);
+    selectContainer.parentNode.insertBefore(selectClone, selectContainer);
+    selectContainer.parentNode.insertBefore(br, selectContainer);
 }
-
-
 
 function mostraArt(id) {
     firstStr = "pannelloArt";
