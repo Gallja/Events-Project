@@ -180,31 +180,32 @@
                         // extract artists
                         $query2 = "SELECT * FROM eventi.get_comico_evento($1)";
                         $res2 = pg_prepare($connection, "", $query2);
-                        $res2 = pg_execute($connection, "", array($codice));
+                        $res2 = pg_execute($connection, "", array($row['codice']));
 
                         if (!$res2) {
-                            echo "Errore nella visualizzazione dei comici che partecipano all'evento.\n";
+                            echo "<p>Errore nella visualizzazione dei comici che partecipano all'evento.</p>";
                         } else {
                             $row = pg_fetch_assoc($res2);
                             if ($row['nome_comico'] != null && $row['cognome_comico'] != null) {
-                                echo $row['nome_comico']." ".$row['cognome_comico'];
+                                echo "<p>".$row['nome_comico']." ".$row['cognome_comico']."</p>";
                             } else {
-                                echo "Nessun comico affiliato a questo evento. Per aggiungerlo, modifica l'evento dalla sezione apposita.\n";
+                                echo "<p>Nessun comico affiliato a questo evento. Per aggiungerlo, modifica l'evento dalla sezione apposita.</p>";
                             }
                         }
 
                         $query3 = "SELECT * FROM eventi.get_musicista_evento($1)";
                         $res3 = pg_prepare($connection, "", $query3);
-                        $res3 = pg_execute($connection, "", array($codice));
-
+                        $res3 = pg_execute($connection, "", array($row['codice']));
+                        
                         if (!$res3) {
-                            echo "Errore nella visualizzazione dei comici che partecipano all'evento.\n";
+                            echo "<p>Errore nella visualizzazione dei comici che partecipano all'evento.</p>";
                         } else {
-                            $row2 = pg_fetch_assoc($res3);
-                            if ($row2['nome_musicista'] != null) {
-                                echo $row['nome_musicista'];
+                            $row_mus = pg_fetch_assoc($res3);
+                            print_r($row_mus);
+                            if ($row_mus['get_musicista_evento'] != null) {
+                                echo "<p>".$row_mus['get_musicista_evento']."</p>";
                             } else {
-                                echo "Nessun musicista affiliato a questo evento. Per aggiungerlo, modifica l'evento dalla sezione apposita.\n";
+                                echo "<p>Nessun musicista affiliato a questo evento. Per aggiungerlo, modifica l'evento dalla sezione apposita.</p>";
                             }
                         }
 
