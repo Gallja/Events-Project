@@ -18,6 +18,7 @@
         $res = pg_prepare($connection, "", $query);
         $res = pg_execute($connection, "", array($nome_evento, $data, $luogo, $img_escape, $descrizione));
 
+        $flag = true;
         $conta_sel = count($_POST['artisti']);
         for ($i = 0; $i < $conta_sel; $i++) {
             $artista = $_POST['artisti'][$i];
@@ -43,6 +44,10 @@
                     $query3 = "CALL eventi.ins_eventi_comici($1, $2)";
                     $res3 = pg_prepare($connection, "", $query3);
                     $res3 = pg_execute($connection, "", array($cod_new_ev, $id_comico));
+
+                    if (!$res3) {
+                        $flag = false;
+                    }
                 } else {
                     // select 'musicista' id
                     $campo = explode($artista, '-');
@@ -52,6 +57,10 @@
                     $query4 = "CALL eventi.ins_eventi_musicisti($1, $2)";
                     $res4 = pg_prepare($connection, "", $query4);
                     $res4 = pg_execute($connection, "", array($cod_new_ev, $id_musicista));
+
+                    if (!$res4) {
+                        $flag = false;
+                    }
                 }
             }
         }
@@ -59,13 +68,25 @@
         pg_close($connection);
 
         if (!$res) {
-            $_SESSION['inserimento'] = "Errore nell'inserimento dell'evento. ";
-            header('Location: ../../pagine/home_admin/eventi/conf_inserimento.php');
-            exit();
+            if ($flag) {
+                $_SESSION['inserimento'] = "Errore nell'inserimento dell'evento. ";
+                header('Location: ../../pagine/home_admin/eventi/conf_inserimento.php');
+                exit();
+            } else {
+                $_SESSION['inserimento'] = "Errore nell'inserimento dell'evento e nell'affiliazione degli artisti. ";
+                header('Location: ../../pagine/home_admin/eventi/conf_inserimento.php');
+                exit();
+            }
         } else {
-            $_SESSION['inserimento'] = "Inserimento dell'evento avvenuto con successo!";
-            header('Location: ../../pagine/home_admin/eventi/conf_inserimento.php');
-            exit();
+            if ($flag) {
+                $_SESSION['inserimento'] = "Inserimento dell'evento avvenuto con successo!";
+                header('Location: ../../pagine/home_admin/eventi/conf_inserimento.php');
+                exit();
+            } else {
+                $_SESSION['inserimento'] = "Errore nell'inserimento dell'evento e nell'affiliazione degli artisti. ";
+                header('Location: ../../pagine/home_admin/eventi/conf_inserimento.php');
+                exit();
+            }
         }
     } else {
         $_SESSION['inserimento'] = "Errore nell'inserimento dell'evento, devi compilare tutti i campi.";
