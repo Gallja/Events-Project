@@ -170,7 +170,7 @@
                             }
                         }
                         echo "<td class = 'table-".$tipo[$conta]."'>";
-                        echo "<button type='button' class = 'btn btn-primary' onclick = 'mostraArt(".$codice.")'>";
+                        echo "<button type='button' class = 'btn btn-success' onclick = 'mostraArt(".$codice.")'>";
                         echo "Mostra";
                         echo "</button>";
                         echo "</td>";
@@ -183,11 +183,13 @@
                         $res2 = pg_execute($connection, "", array($codice));
 
                         if (!$res2) {
-                            echo "Errore nella visualizzazione dei comici che partecipano all'evento.";
+                            echo "Errore nella visualizzazione dei comici che partecipano all'evento.\n";
                         } else {
                             $row = pg_fetch_assoc($res2);
                             if ($row['nome_comico'] != null && $row['cognome_comico'] != null) {
                                 echo $row['nome_comico']." ".$row['cognome_comico'];
+                            } else {
+                                echo "Nessun comico affiliato a questo evento. Per aggiungerlo, modifica l'evento dalla sezione apposita.\n";
                             }
                         }
 
@@ -201,6 +203,8 @@
                             $row2 = pg_fetch_assoc($res3);
                             if ($row2['nome_musicista'] != null) {
                                 echo $row['nome_musicista'];
+                            } else {
+                                echo "Nessun musicista affiliato a questo evento. Per aggiungerlo, modifica l'evento dalla sezione apposita.";
                             }
                         }
 
