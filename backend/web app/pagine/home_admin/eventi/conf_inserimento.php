@@ -6,6 +6,7 @@
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <script src = "../../../js/script.js"></script>
         <link rel = "stylesheet" href = "../../../style/style_conf.css">
     </head>
     <body>
@@ -20,6 +21,72 @@
             ?>
 
             <br>
+
+            <h3>Desideri aggiungere qualche artista per l'evento appena inserito?</h3>
+
+            <div id = "artisti-container">
+                <form class = "form-group" method = "POST" action = "../../../script/gestione_eventi/insert_artista.php">
+                    <select class = "form-control" id = "artisti" name = "artisti" required>
+                        <?php
+                            include_once('../../../script/management/connection.php');
+
+                            $sql = "SELECT * FROM eventi.comici";
+                            $ris = pg_prepare($connection, "", $sql);
+                            $ris = pg_execute($connection, "", array());
+
+                            if (!$ris) {
+                                echo "<option>Errore nella visualizzazione dei comici</option>";
+                            } else {
+                                echo "<option value = 'empty'>Scegli un artista</option>";
+                                while ($row = pg_fetch_assoc($ris)) {
+                                    echo "<option value = 'comico-";
+                                    foreach ($row as $key => $value) {
+                                        switch ($key) {
+                                            case 'id':
+                                                echo $value."' >";
+                                                break;
+                                            case "nome_comico":
+                                                echo $value." ";
+                                                break;
+                                            case "cognome_comico":
+                                                echo $value;
+                                                break;
+                                        }
+                                    }
+                                    echo "</option>";
+                                }
+                            }
+
+                            $sql2 = "SELECT * FROM eventi.musicisti";
+                            $ris2 = pg_prepare($connection, "", $sql2);
+                            $ris2 = pg_execute($connection, "", array());
+
+                            if (!$ris2) {
+                                echo "<option>Errore nella visualizzazione dei musicisti</option>";
+                            } else {
+                                while ($row2 = pg_fetch_assoc($ris2)) {
+                                    echo "<option value = 'musicista-";
+                                    foreach ($row2 as $key => $value) {
+                                        switch ($key) {
+                                            case 'id_musicista':
+                                                echo $value."' >";
+                                                break;
+                                            case 'nome_musicista':
+                                                echo $row2['nome_musicista'];
+                                                break;
+                                        }
+                                    }
+                                    echo "</option>";
+                                }
+                            }
+                        ?>
+                    </select>
+                    <input type = "button" class = "btn btn-secondary btn-sm" id = "aggiungi-artista" onclick = "clonaArtista('artisti-container')" value = "Aggiungi Artista" />
+                    <input type = "submit" class = "btn btn-primary" value = "AGGIUNGI">
+                </form>
+            </div>
+            
+            <br />
 
             <h4>Torna alla pagina precedente:</h4>
             <br>

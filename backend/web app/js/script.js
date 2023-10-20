@@ -113,9 +113,35 @@ function chiudiDesc(id) {
 function clonaArtista(id) {
     const selectContainer = document.getElementById(id);
     const selectClone = selectContainer.cloneNode(true);
-    const submitButton = document.querySelector('input[type="submit"]');
+    const submitButton = document.querySelector('h4');
     const br = document.createElement('br');
 
     selectContainer.parentNode.insertBefore(selectClone, submitButton);
     selectContainer.parentNode.insertBefore(br, submitButton);
+}
+
+function mostraArt(id) {
+    firstStr = "pannelloArt";
+    idString = id.toString();
+    idDiv = firstStr.concat(idString);
+    var pannelloArt = document.getElementById(idDiv);
+
+    var pannelliAperti = document.querySelectorAll('[data-pannello="true"]');
+
+    for (var i = 0; i < pannelliAperti.length; i++) {
+        pannelliAperti[i].style.display = "none";
+        pannelliAperti[i].setAttribute('data-pannello', 'false');
+    }
+
+    pannelloArt.style.display = "block";
+    pannelloArt.setAttribute('data-pannello', 'true');
+}
+
+function chiudiArt(id) {
+    firstStr = "pannelloArt";
+    idString = id.toString();
+    idDiv = firstStr.concat(idString);
+    var pannelloArt = document.getElementById(idDiv);
+    pannelloArt.style.display = "none";
+    pannelloArt.setAttribute('data-pannello', 'false');
 }

@@ -60,66 +60,6 @@
                 <input type = "file" class = "form-control" id = "img" name = "img" required>
                 <textarea class = "form-control" id = "descrizione" name = "descrizione" placeholder = "Inserisci la descrizione" required></textarea>
                 <br />
-                <label>Seleziona un artista per questo evento:</label>
-                <div id = "artisti-container">
-                    <select class = "form-control" id = "artisti" name = "artisti" required>
-                        <?php
-                            include_once('../../../script/management/connection.php');
-
-                            $sql = "SELECT * FROM eventi.comici";
-                            $ris = pg_prepare($connection, "", $sql);
-                            $ris = pg_execute($connection, "", array());
-
-                            if (!$ris) {
-                                echo "<option>Errore nella visualizzazione dei comici</option>";
-                            } else {
-                                echo "<option value = 'empty'>Scegli un artista</option>";
-                                while ($row = pg_fetch_assoc($ris)) {
-                                    echo "<option value = 'comico-";
-                                    foreach ($row as $key => $value) {
-                                        switch ($key) {
-                                            case 'id':
-                                                echo $value."' >";
-                                                break;
-                                            case "nome_comico":
-                                                echo $value." ";
-                                                break;
-                                            case "cognome_comico":
-                                                echo $value;
-                                                break;
-                                        }
-                                    }
-                                    echo "</option>";
-                                }
-                            }
-
-                            $sql2 = "SELECT * FROM eventi.musicisti";
-                            $ris2 = pg_prepare($connection, "", $sql2);
-                            $ris2 = pg_execute($connection, "", array());
-
-                            if (!$ris2) {
-                                echo "<option>Errore nella visualizzazione dei musicisti</option>";
-                            } else {
-                                while ($row2 = pg_fetch_assoc($ris2)) {
-                                    echo "<option value = 'musicista-";
-                                    foreach ($row2 as $key => $value) {
-                                        switch ($key) {
-                                            case 'id_musicista':
-                                                echo $value."' >";
-                                                break;
-                                            case 'nome_musicista':
-                                                echo $row2['nome_musicista'];
-                                                break;
-                                        }
-                                    }
-                                    echo "</option>";
-                                }
-                            }
-                        ?>
-                    </select>
-                    <input type = "button" class = "btn btn-secondary btn-sm" id = "aggiungi-artista" onclick = "clonaArtista('artisti-container')" value = "Aggiungi Artista" />
-                </div>
-                <br />
                 <br />
                 <input type = "submit" class="btn btn-primary" value = "INSERISCI">
             </form>
@@ -152,6 +92,7 @@
                     echo "<td class='int'>Luogo</td>";
                     echo "<td class='int'>Locandina</td>";
                     echo "<td class='int'>Descrizione</td>";
+                    echo "<td class='int'>Artisti affiliati</td>";
                     echo "<td class='int'>Modifica Evento</td>";
                     echo "<td class='int'>Elimina Evento</td>";
                     echo "</th>";
@@ -228,6 +169,47 @@
                                 }
                             }
                         }
+                        echo "<td class = 'table-".$tipo[$conta]."'>";
+                        echo "<button type='button' class = 'btn btn-primary' onclick = 'mostraArt(".$codice.")'>";
+                        echo "Mostra";
+                        echo "</button>";
+                        echo "</td>";
+
+                        echo "<div id = 'pannelloArt".$codice."' class = 'pannelloArt' data-pannello='false'>";
+                        
+                        // extract artists
+                        $query2 = "SELECT * FROM eventi.get_comico_evento($1)";
+                        $res2 = pg_prepare($connection, "", $query2);
+                        $res2 = pg_execute($connection, "", array($codice));
+
+                        if (!$res2) {
+                            echo "Errore nella visualizzazione dei comici che partecipano all'evento.";
+                        } else {
+                            $row = pg_fetch_assoc($res2);
+                            if ($row['nome_comico'] != null && $row['cognome_comico'] != null) {
+                                echo $row['nome_comico']." ".$row['cognome_comico'];
+                            }
+                        }
+
+                        $query3 = "SELECT * FROM eventi.get_musicista_evento($1)";
+                        $res3 = pg_prepare($connection, "", $query3);
+                        $res3 = pg_execute($connection, "", array($codice));
+
+                        if (!$res3) {
+                            echo "Errore nella visualizzazione dei comici che partecipano all'evento.";
+                        } else {
+                            $row2 = pg_fetch_assoc($res3);
+                            if ($row2['nome_musicista'] != null) {
+                                echo $row['nome_musicista'];
+                            }
+                        }
+
+                        echo "<br><br>";
+                        echo "<button type = 'button' class = 'btn btn-primary' onclick='chiudiArt(".$codice.")'>";
+                        echo "Chiudi";
+                        echo "</button>";
+                        echo "</div>";
+
 
                         echo "<td class = 'table-".$tipo[$conta]."'>";
                         echo "<form action = 'modifica_evento_page.php' method = 'POST'>";

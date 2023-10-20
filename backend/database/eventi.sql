@@ -350,3 +350,38 @@ BEGIN
     VALUES(evento, musicista);
 END;
 $$ LANGUAGE plpgsql;
+
+-- Funzione che restituisce i dettagli del comico affiliato ad un evento:
+CREATE OR REPLACE FUNCTION eventi.get_comico_evento (
+    cod_evento integer
+)
+RETURNS TABLE (nome_comico varchar, cognome_comico varchar) AS $$
+BEGIN
+    RETURN QUERY
+    SELECT c.nome_comico, c.cognome_comico
+    FROM eventi.eventi_comici AS ec 
+    INNER JOIN eventi.comici AS c 
+    ON ec.comico = c.id 
+    WHERE ec.evento = cod_evento;
+
+    RETURN;
+END;
+$$ LANGUAGE plpgsql;
+
+-- Funzione che restituisce i dettagli del musicista affiliato ad un evento:
+CREATE OR REPLACE FUNCTION eventi.get_musicista_evento (
+    cod_evento integer
+)
+RETURNS VARCHAR AS $$
+DECLARE nome_out varchar;
+BEGIN
+	SELECT m.nome_musicista
+	INTO nome_out
+	FROM eventi.musicisti AS m
+	INNER JOIN eventi.eventi_musicisti AS em
+	ON m.id_musicista = em.musicista
+	WHERE em.evento = cod_evento;
+	
+	RETURN nome_out;
+END;
+$$ LANGUAGE plpgsql;
