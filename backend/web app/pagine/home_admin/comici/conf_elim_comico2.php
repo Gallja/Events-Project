@@ -19,9 +19,11 @@
         <?php
             include_once('../../../script/management/check_login.php');
 
-            echo "<h2>".$_SESSION['eliminazione_comico']."</h2>";
+            if (isset($_SESSION['eliminazione_comico'])) {    
+                echo "<h2>".$_SESSION['eliminazione_comico']."</h2>";
 
-            unset($_SESSION['eliminazione_comico']);
+                unset($_SESSION['eliminazione_comico']);
+            }
         ?>
 
         <br>
