@@ -81,6 +81,7 @@
                             }
                         ?>
                     </select>
+                    <br />
                     <input type = "button" class = "btn btn-secondary btn-sm" id = "aggiungi-artista" onclick = "clonaArtista('artisti-container')" value = "Aggiungi Artista" />
                     <input type = "submit" class = "btn btn-primary" value = "AGGIUNGI">
                 </form>

@@ -198,13 +198,13 @@
                         $res3 = pg_execute($connection, "", array($codice));
 
                         if (!$res3) {
-                            echo "Errore nella visualizzazione dei comici che partecipano all'evento.";
+                            echo "Errore nella visualizzazione dei comici che partecipano all'evento.\n";
                         } else {
                             $row2 = pg_fetch_assoc($res3);
                             if ($row2['nome_musicista'] != null) {
                                 echo $row['nome_musicista'];
                             } else {
-                                echo "Nessun musicista affiliato a questo evento. Per aggiungerlo, modifica l'evento dalla sezione apposita.";
+                                echo "Nessun musicista affiliato a questo evento. Per aggiungerlo, modifica l'evento dalla sezione apposita.\n";
                             }
                         }
 

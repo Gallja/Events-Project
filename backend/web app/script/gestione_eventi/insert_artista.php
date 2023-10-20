@@ -7,6 +7,7 @@
         $flag = true;
         $arr_backup = array_unique($_POST['artisti']);
         $conta_sel = $arr_backup;
+
         for ($i = 0; $i < $conta_sel; $i++) {
             $artista = $_POST['artisti'][$i];
             if ($artista == "empty") {
@@ -68,5 +69,9 @@
                 exit();
             }
         }
+    } else {
+        $_SESSION['ins_artista'] = "Errore di sistema.";
+        header('Location: ../../pagine/home_admin/eventi/conf_ins_art.php');
+        exit();
     }
 ?>
