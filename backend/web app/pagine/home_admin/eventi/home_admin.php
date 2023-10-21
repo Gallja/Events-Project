@@ -176,9 +176,10 @@
                         echo "</td>";
 
                         echo "<div id = 'pannelloArt".$codice."' class = 'pannelloArt' data-pannello='false'>";
-                        
+                        echo "<h3>Artisti che parteciperanno a questo evento:</h3>";
+
                         // extract artists
-                        $query2 = "SELECT * FROM eventi.get_comico_evento($1)";
+                        $query2 = "SELECT * FROM eventi.get_artisti_evento($1)";
                         $res2 = pg_prepare($connection, "", $query2);
                         $res2 = pg_execute($connection, "", array($row['codice']));
 
@@ -191,19 +192,8 @@
                             } else {
                                 echo "<p>Nessun comico affiliato a questo evento. Per aggiungerlo, modifica l'evento dalla sezione apposita.</p>";
                             }
-                        }
-
-                        $query3 = "SELECT * FROM eventi.get_musicista_evento($1)";
-                        $res3 = pg_prepare($connection, "", $query3);
-                        $res3 = pg_execute($connection, "", array($row['codice']));
-                        
-                        if (!$res3) {
-                            echo "<p>Errore nella visualizzazione dei comici che partecipano all'evento.</p>";
-                        } else {
-                            $row_mus = pg_fetch_assoc($res3);
-                            print_r($row_mus);
-                            if ($row_mus['get_musicista_evento'] != null) {
-                                echo "<p>".$row_mus['get_musicista_evento']."</p>";
+                            if ($row['nome_musicista'] != null) {
+                                echo "<p>".$row['nome_musicista']."</p>";
                             } else {
                                 echo "<p>Nessun musicista affiliato a questo evento. Per aggiungerlo, modifica l'evento dalla sezione apposita.</p>";
                             }
