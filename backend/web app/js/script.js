@@ -110,21 +110,20 @@ function chiudiDesc(id) {
     pannelloDesc.setAttribute('data-pannello', 'false');
 }
 
-function clonaArtista(id) {
-    const selectContainer = document.getElementById(id);
-    const selectClone = selectContainer.cloneNode(true);
-    const submitButton = selectClone.querySelector('input[type="submit"]');
-    const br = document.createElement('br');
+function clonaArtista(containerId) {
+    var container = document.getElementById(containerId);
 
-    selectClone.removeAttribute('id');
+    var originalSelect = container.querySelector("select");
+    var cloneSelect = originalSelect.cloneNode(true);
+    cloneSelect.style.marginTop = "10px";
+    
+    var originalButton = container.querySelector("input[type=button]");
+    var cloneButton = originalButton.cloneNode(true);
 
-    if (submitButton) {
-        submitButton.remove();
-    }
-
-    selectContainer.parentNode.insertBefore(selectClone, selectContainer);
-    selectContainer.parentNode.insertBefore(br, selectContainer);
+    container.insertBefore(cloneSelect, container.querySelector("input[type=submit]"));
+    container.insertBefore(cloneButton, container.querySelector("input[type=submit]"));
 }
+
 
 function mostraArt(id) {
     firstStr = "pannelloArt";

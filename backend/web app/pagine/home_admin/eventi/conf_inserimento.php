@@ -27,69 +27,69 @@
             <h3>Desideri aggiungere qualche artista per l'evento appena inserito?</h3>
             <br />
 
-            <div id = "artisti-container">
                 <form class = "form-group" method = "POST" action = "../../../script/gestione_eventi/insert_artista.php">
-                    <select class = "form-control" id = "artisti" name = "artisti" required>
-                        <?php
-                            include_once('../../../script/management/connection.php');
+                    <div id = "artisti-container">
+                        <select class = "form-control" id = "artisti" name = "artisti[]" required>
+                            <?php
+                                include_once('../../../script/management/connection.php');
 
-                            $sql = "SELECT * FROM eventi.comici";
-                            $ris = pg_prepare($connection, "", $sql);
-                            $ris = pg_execute($connection, "", array());
+                                $sql = "SELECT * FROM eventi.comici";
+                                $ris = pg_prepare($connection, "", $sql);
+                                $ris = pg_execute($connection, "", array());
 
-                            if (!$ris) {
-                                echo "<option>Errore nella visualizzazione dei comici</option>";
-                            } else {
-                                echo "<option value = 'empty'>Scegli un artista</option>";
-                                while ($row = pg_fetch_assoc($ris)) {
-                                    echo "<option value = 'comico-";
-                                    foreach ($row as $key => $value) {
-                                        switch ($key) {
-                                            case 'id':
-                                                echo $value."' >";
-                                                break;
-                                            case "nome_comico":
-                                                echo $value." ";
-                                                break;
-                                            case "cognome_comico":
-                                                echo $value;
-                                                break;
+                                if (!$ris) {
+                                    echo "<option>Errore nella visualizzazione dei comici</option>";
+                                } else {
+                                    echo "<option value = 'empty'>Scegli un artista</option>";
+                                    while ($row = pg_fetch_assoc($ris)) {
+                                        echo "<option value = 'comico-";
+                                        foreach ($row as $key => $value) {
+                                            switch ($key) {
+                                                case 'id':
+                                                    echo $value."' >";
+                                                    break;
+                                                case "nome_comico":
+                                                    echo $value." ";
+                                                    break;
+                                                case "cognome_comico":
+                                                    echo $value;
+                                                    break;
+                                            }
                                         }
+                                        echo "</option>";
                                     }
-                                    echo "</option>";
                                 }
-                            }
 
-                            $sql2 = "SELECT * FROM eventi.musicisti";
-                            $ris2 = pg_prepare($connection, "", $sql2);
-                            $ris2 = pg_execute($connection, "", array());
+                                $sql2 = "SELECT * FROM eventi.musicisti";
+                                $ris2 = pg_prepare($connection, "", $sql2);
+                                $ris2 = pg_execute($connection, "", array());
 
-                            if (!$ris2) {
-                                echo "<option>Errore nella visualizzazione dei musicisti</option>";
-                            } else {
-                                while ($row2 = pg_fetch_assoc($ris2)) {
-                                    echo "<option value = 'musicista-";
-                                    foreach ($row2 as $key => $value) {
-                                        switch ($key) {
-                                            case 'id_musicista':
-                                                echo $value."' >";
-                                                break;
-                                            case 'nome_musicista':
-                                                echo $row2['nome_musicista'];
-                                                break;
+                                if (!$ris2) {
+                                    echo "<option>Errore nella visualizzazione dei musicisti</option>";
+                                } else {
+                                    while ($row2 = pg_fetch_assoc($ris2)) {
+                                        echo "<option value = 'musicista-";
+                                        foreach ($row2 as $key => $value) {
+                                            switch ($key) {
+                                                case 'id_musicista':
+                                                    echo $value."' >";
+                                                    break;
+                                                case 'nome_musicista':
+                                                    echo $row2['nome_musicista'];
+                                                    break;
+                                            }
                                         }
+                                        echo "</option>";
                                     }
-                                    echo "</option>";
                                 }
-                            }
-                        ?>
-                    </select>
-                    <input type = "button" class = "btn btn-secondary btn-sm" id = "aggiungi-artista" onclick = "clonaArtista('artisti-container')" value = "Aggiungi Artista" />
+                            ?>
+                        </select>
+                        <input type = "button" class = "btn btn-secondary btn-sm" id = "aggiungi-artista" onclick = "clonaArtista('artisti-container')" value = "Aggiungi Artista" />
+                        </div>
                     <br />
                     <br />
                     <input type = "submit" class = "btn btn-primary" value = "AGGIUNGI">
                 </form>
-            </div>
             
             <br />
 
