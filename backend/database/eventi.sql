@@ -53,14 +53,18 @@ CREATE TABLE eventi.eventi_musicisti (
     PRIMARY KEY (evento, musicista)
 );
 
--- Vista materializzata che mette in relazione eventi e comici:
+-- Vista materializzata che mette in relazione eventi, comici e musicisti:
 CREATE OR REPLACE VIEW eventi.vista_eventi_completi AS
-    SELECT e.*, c.*
+    SELECT e.codice AS cod_evento, c.nome_comico, c.cognome_comico, m.nome_musicista
     FROM eventi.eventi AS e 
-    JOIN eventi.eventi_comici AS ec 
+    INNER JOIN eventi.eventi_comici AS ec 
     ON e.codice = ec.evento 
-    JOIN eventi.comici AS c 
-    ON ec.comico = c.id;
+    INNER JOIN eventi.comici AS c 
+    ON ec.comico = c.id
+    INNER JOIN eventi.eventi_musicisti AS em 
+    ON e.codice = em.evento 
+    INNER JOIN eventi.musicisti AS m 
+    ON em.musicista = m.id_musicista;
 
 -- Procedura di inserimento di un nuovo utente:
 CREATE OR REPLACE PROCEDURE eventi.insert_utente (
@@ -329,59 +333,40 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
--- Funzione di inserimento nella tabella 'eventi_comici':
-CREATE OR REPLACE PROCEDURE eventi.ins_eventi_comici (
-    evento integer,
-    comico integer
-) AS $$
+-- Procedura di inserimento nelle tabelle eventi_comici ed eventi_musicisti:
+CREATE OR REPLACE FUNCTION eventi.aggiungi_evento_comico_musicista(
+    evento_id integer,
+    comico_id integer DEFAULT NULL,
+    musicista_id integer DEFAULT NULL
+) RETURNS VOID AS
+$$
 BEGIN
-    INSERT INTO eventi.eventi_comici(evento, comico)
-    VALUES(evento, comico);
-END;
-$$ LANGUAGE plpgsql;
+    -- Inserimento nella tabella eventi_comici:
+    IF comico_id IS NOT NULL THEN
+        INSERT INTO eventi.eventi_comici (evento, comico) 
+		VALUES (evento_id, comico_id);
+    END IF;
 
--- Funzione di inserimento nella tabella 'eventi_musicisti':
-CREATE OR REPLACE PROCEDURE eventi.ins_eventi_musicisti (
-    evento integer,
-    musicista integer
-) AS $$
-BEGIN
-    INSERT INTO eventi.eventi_musicisti(evento, musicista)
-    VALUES(evento, musicista);
+    -- Inserimento nella tabella eventi_musicisti:
+    IF musicista_id IS NOT NULL THEN
+        INSERT INTO eventi.eventi_musicisti (evento, musicista) 
+		VALUES (evento_id, musicista_id);
+    END IF;
 END;
-$$ LANGUAGE plpgsql;
+$$
+LANGUAGE plpgsql;
 
--- Funzione che restituisce i dettagli del comico affiliato ad un evento:
-CREATE OR REPLACE FUNCTION eventi.get_comico_evento (
-    cod_evento integer
+-- Funzione che restituisce i dettagli del comico e del musicista affiliati ad un evento:
+CREATE OR REPLACE FUNCTION eventi.get_artisti_evento (
+    codice_in integer
 )
-RETURNS TABLE (nome_comico varchar, cognome_comico varchar) AS $$
+RETURNS TABLE (cod_evento integer, nome_comico varchar, cognome_comico varchar, nome_musicista varchar) AS $$
 BEGIN
     RETURN QUERY
-    SELECT c.nome_comico, c.cognome_comico
-    FROM eventi.eventi_comici AS ec 
-    INNER JOIN eventi.comici AS c 
-    ON ec.comico = c.id 
-    WHERE ec.evento = cod_evento;
+    SELECT *
+    FROM eventi.vista_eventi_completi AS vec
+    WHERE vec.cod_evento = codice_in;
 
     RETURN;
-END;
-$$ LANGUAGE plpgsql;
-
--- Funzione che restituisce i dettagli del musicista affiliato ad un evento:
-CREATE OR REPLACE FUNCTION eventi.get_musicista_evento (
-    cod_evento integer
-)
-RETURNS VARCHAR AS $$
-DECLARE nome_out varchar;
-BEGIN
-	SELECT m.nome_musicista
-	INTO nome_out
-	FROM eventi.musicisti AS m
-	INNER JOIN eventi.eventi_musicisti AS em
-	ON m.id_musicista = em.musicista
-	WHERE em.evento = cod_evento;
-	
-	RETURN nome_out;
 END;
 $$ LANGUAGE plpgsql;
