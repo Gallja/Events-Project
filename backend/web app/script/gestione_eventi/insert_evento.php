@@ -26,6 +26,7 @@
             exit();
         } else {
             $_SESSION['inserimento'] = "Inserimento dell'evento avvenuto con successo!";
+            $_SESSION['nome_evento'] = $nome_evento;
             header('Location: ../../pagine/home_admin/eventi/conf_inserimento.php');
             exit();
         }
