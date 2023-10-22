@@ -19,6 +19,18 @@
                     echo "<h2>".$_SESSION['inserimento']."<h2>";
 
                     unset($_SESSION['inserimento']);
+
+                    include_once('../../../script/management/connection.php');
+        
+                    $nome_evento = $_SESSION['nome_evento'];
+
+                    $sql = "SELECT e.codice FROM eventi.eventi AS e WHERE e.nome_evento = $1";
+                    $res = pg_prepare($connection, "", $sql);
+                    $res = pg_execute($connection, "", array($nome_evento));
+                    $row = pg_fetch_assoc($res);
+                    $_SESSION['codice_evento'] = $row['codice'];
+
+                    unset($_SESSION['nome_evento']);
                 }
             ?>
 

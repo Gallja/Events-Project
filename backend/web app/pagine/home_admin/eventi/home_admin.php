@@ -179,7 +179,7 @@
                         echo "<h3>Artisti che parteciperanno a questo evento:</h3>";
 
                         // extract artists
-                        $query2 = "SELECT * FROM eventi.get_artisti_evento($1)";
+                        $query2 = "SELECT DISTINCT * FROM eventi.get_artisti_evento($1)";
                         $res2 = pg_prepare($connection, "", $query2);
                         $res2 = pg_execute($connection, "", array($row['codice']));
 
