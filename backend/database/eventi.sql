@@ -327,15 +327,19 @@ CREATE OR REPLACE FUNCTION eventi.inserisci_comici_musicisti (
     musicisti integer[]
 ) RETURNS void AS $$
 BEGIN
-    -- Inserimento nella tabella eventi_comici:
-    INSERT INTO eventi.eventi_comici (evento, comico)
-    SELECT evento_id, comico_id
-    FROM unnest(comici) AS comico_id;
+    -- Inserimento nella tabella eventi_comici se l'array comici non è vuoto:
+    IF array_length(comici, 1) IS NOT NULL THEN
+        INSERT INTO eventi.eventi_comici (evento, comico)
+        SELECT evento_id, comico_id
+        FROM unnest(comici) AS comico_id;
+    END IF;
 
-    -- Inserimento nella tabella eventi_musicisti
-    INSERT INTO eventi.eventi_musicisti (evento, musicista)
-    SELECT evento_id, musicista_id
-    FROM unnest(musicisti) AS musicista_id;
+    -- Inserimento nella tabella eventi_musicisti se l'array musicisti non è vuoto:
+    IF array_length(musicisti, 1) IS NOT NULL THEN
+        INSERT INTO eventi.eventi_musicisti (evento, musicista)
+        SELECT evento_id, musicista_id
+        FROM unnest(musicisti) AS musicista_id;
+    END IF;
 END;
 $$ LANGUAGE plpgsql;
 

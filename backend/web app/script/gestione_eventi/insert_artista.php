@@ -21,7 +21,6 @@
         
         for ($i = 0; $i < count($arr_backup); $i++) {
             $campi = $arr_backup[$i].split('-'); // $campi[0] --> tipo artista ; $campi[1] --> codice artista ;
-            
             switch ($campi[0]) {
                 case 'comico':
                     // increase comici list
