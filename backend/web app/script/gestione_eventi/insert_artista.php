@@ -19,19 +19,15 @@
                 case 'comico':
                     // increase comici list
                     array_push($arr_comici, (int)$campi[1]);
-                    echo "VIVO";
                     break;
                 case 'musicista':
                     // increase musicisti list
                     array_push($arr_musicisti, (int)$campi[1]);
-                    echo "VIVO";
                     break;
                 case 'empty':
                     break;
             }
         }
-        print_r($arr_comici);
-        print_r($arr_musicisti);
         
         $arr_comici_str = '{' . implode(',', $arr_comici) . '}';
         $arr_musicisti_str = '{' . implode(',', $arr_musicisti) . '}';
@@ -41,10 +37,8 @@
         $ris = pg_execute($connection, "", array($codice_evento, $arr_comici_str, $arr_musicisti_str));
 
         $err = pg_last_error($connection);
-        echo "<p>".$err."</p>";
 
         pg_close($connection);
-        /**
         if (!$ris) {
             $_SESSION['ins_artista'] = "Errore nell'inserimento degli artisti nell'evento.";
             header('Location: ../../pagine/home_admin/eventi/conf_ins_art.php');
@@ -53,7 +47,7 @@
             $_SESSION['ins_artista'] = "Artisti associati correttamente all'evento.";
             header('Location: ../../pagine/home_admin/eventi/conf_ins_art.php');
             exit();
-        } */
+        } 
     } else {
         $_SESSION['ins_artista'] = "Errore di sistema. L'aggiunta dell'evento deve essere andata a buon fine prima di poter aggiungere ad esso degli artisti.";
         header('Location: ../../pagine/home_admin/eventi/conf_ins_art.php');
