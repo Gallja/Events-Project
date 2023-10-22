@@ -179,23 +179,21 @@
                         echo "<h3>Artisti che parteciperanno a questo evento:</h3>";
 
                         // extract artists
-                        $query2 = "SELECT * FROM eventi.get_artisti_evento($1)";
+                        $query2 = "SELECT DISTINCT * FROM eventi.get_artisti_evento($1)";
                         $res2 = pg_prepare($connection, "", $query2);
                         $res2 = pg_execute($connection, "", array($row['codice']));
 
                         if (!$res2) {
                             echo "<p>Errore nella visualizzazione dei comici che partecipano all'evento.</p>";
                         } else {
-                            $row = pg_fetch_assoc($res2);
-                            if ($row['nome_comico'] != null && $row['cognome_comico'] != null) {
-                                echo "<p>".$row['nome_comico']." ".$row['cognome_comico']."</p>";
-                            } else {
-                                echo "<p>Nessun comico affiliato a questo evento. Per aggiungerlo, modifica l'evento dalla sezione apposita.</p>";
-                            }
-                            if ($row['nome_musicista'] != null) {
-                                echo "<p>".$row['nome_musicista']."</p>";
-                            } else {
-                                echo "<p>Nessun musicista affiliato a questo evento. Per aggiungerlo, modifica l'evento dalla sezione apposita.</p>";
+                            while ($row = pg_fetch_assoc($res2)) {
+                                if ($row['nome_artista'] != null && $row['cognome_artista'] != null) {
+                                    echo "<p>".$row['nome_artista']." ".$row['cognome_artista']."</p>";
+                                } else {
+                                    if ($row['nome_artista'] != null && $row['cognome_artista'] == null) {
+                                        echo "<p>".$row['nome_artista']."</p>";
+                                    }
+                                }
                             }
                         }
 
