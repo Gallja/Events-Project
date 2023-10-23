@@ -365,5 +365,3 @@ BEGIN
 
 END;
 $$ LANGUAGE plpgsql;
-
--- Procedura di modifica/aggiornamento della tabella eventi_comici ed eventi_musicisti:
