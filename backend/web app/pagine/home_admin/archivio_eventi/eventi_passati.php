@@ -195,7 +195,7 @@
                         echo "</button>";
 
 
-                        echo "<form action = 'modifica_artista.php' method = 'POST'>";
+                        echo "<form action = '../eventi/modifica_artista.php' method = 'POST'>";
                         echo "<input type = 'hidden' id = 'codice' name = 'codice' value = '".$codice."' />";
                         echo "<input type = 'submit' class = 'btn btn-warning' id = 'sep' value = 'Modifica' />";
                         echo "</form>";
@@ -204,14 +204,14 @@
 
 
                         echo "<td class = 'table-".$tipo[$conta]."'>";
-                        echo "<form action = 'modifica_evento_page.php' method = 'POST'>";
+                        echo "<form action = '../eventi/modifica_evento_page.php' method = 'POST'>";
                         echo "<input type = 'hidden' id = 'codice' name = 'codice' value = '".$codice."' />";
                         echo "<input type = 'submit' class = 'btn btn-warning' value = 'Modifica' />";
                         echo "</form>";
                         echo "</td>";
 
                         echo "<td class = 'table-".$tipo[$conta]."'>";
-                        echo "<form action = 'conferma_eliminazione.php' method = 'POST'>";
+                        echo "<form action = '../eventi/conferma_eliminazione.php' method = 'POST'>";
                         echo "<input type = 'hidden' id = 'codice' name = 'codice' value = '".$codice."' />";
                         echo "<input type = 'submit' class = 'btn btn-danger' value = 'Elimina' />";
                         echo "</form>";

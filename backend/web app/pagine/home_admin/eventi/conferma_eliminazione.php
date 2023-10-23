@@ -30,12 +30,12 @@
                     echo "<input type = 'submit' class = 'btn btn-danger' value = 'Conferma cancellazione' />";
                     echo "</form>";
                     echo "<form class = 'form-group' action = 'home_admin.php'>";
-                    echo "<input type = 'submit' class = 'btn btn-success' value = 'Indietro' />";
+                    echo "<input type = 'submit' class = 'btn btn-success' value = 'Homepage' />";
                     echo "</form>";
                 } else {
                     echo "<h3>Errore nella ricerca dell'evento da eliminare</h3><br>";
                     echo "<form class = 'form-group' action = 'home_admin.php'>";
-                    echo "<input type = 'submit' class = 'btn btn-success' value = 'Indietro' />";
+                    echo "<input type = 'submit' class = 'btn btn-success' value = 'Homepage' />";
                     echo "</form>";
                 }
             ?>
