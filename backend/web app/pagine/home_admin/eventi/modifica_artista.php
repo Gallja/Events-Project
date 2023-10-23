@@ -56,6 +56,7 @@
         <?php
             if (isset($_POST['codice'])) {
                 $codice = $_POST['codice'];
+                $_SESSION['codice_evento'] = $codice;
 
                 include_once('../../../script/management/connection.php');
 
