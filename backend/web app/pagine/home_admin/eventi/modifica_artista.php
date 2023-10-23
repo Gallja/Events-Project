@@ -100,7 +100,7 @@
 
                         echo "<input type = 'hidden' name = 'codice_evento' value = '".$codice."' />";
                         echo "<input type = 'hidden' name = 'codice_comico' value = '".$codice_comico."' />";
-                        echo "<input type = 'submit' class = 'btn btn-danger' id = 'eliminaArt' value = 'Elimina' />";
+                        echo "<input type = 'submit' class = 'btn btn-danger' id = 'eliminaArt' value = 'Elimina dall evento' />";
 
                         echo "</form>";
 
@@ -127,7 +127,7 @@
 
                         echo "<input type = 'hidden' name = 'codice_evento' value = '".$codice."' />";
                         echo "<input type = 'hidden' name = 'codice_mus' value = '".$codice_mus."' />";
-                        echo "<input type = 'submit' class = 'btn btn-danger' id = 'eliminaArt' value = 'Elimina' />";
+                        echo "<input type = 'submit' class = 'btn btn-danger' id = 'eliminaArt' value = 'Elimina dall evento' />";
 
                         echo "</form>";
 

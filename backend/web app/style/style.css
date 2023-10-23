@@ -192,4 +192,6 @@ input#nome_mus1 {
 #eliminaArt {
     margin-top: 10px;
     margin-bottom: 10px;
+    text-align: center;
+    display: inline-block;
 }

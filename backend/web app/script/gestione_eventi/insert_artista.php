@@ -42,7 +42,7 @@
 
         pg_close($connection);
         if (!$ris) {
-            $_SESSION['ins_artista'] = "Errore nell'inserimento degli artisti nell'evento.";
+            $_SESSION['ins_artista'] = "Errore nell'inserimento degli artisti nell'evento. Non puoi inserire lo stesso artista 2 volte.";
             header('Location: ../../pagine/home_admin/eventi/conf_ins_art.php');
             exit();
         } else {
