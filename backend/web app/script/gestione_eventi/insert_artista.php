@@ -10,6 +10,7 @@
 
         $arr_comici = array();
         $arr_musicisti = array();
+        $flag = false;
         
         $len = count($_POST['artisti']);
 
@@ -25,6 +26,7 @@
                     array_push($arr_musicisti, (int)$campi[1]);
                     break;
                 case 'empty':
+                    $flag = true;
                     break;
             }
         }
@@ -44,9 +46,15 @@
             header('Location: ../../pagine/home_admin/eventi/conf_ins_art.php');
             exit();
         } else {
-            $_SESSION['ins_artista'] = "Artisti associati correttamente all'evento.";
-            header('Location: ../../pagine/home_admin/eventi/conf_ins_art.php');
-            exit();
+            if ($flag && count($arr_comici) == 0 && count($arr_musicisti) == 0) {
+                $_SESSION['ins_artista'] = "Non hai associato nessun artista all'evento.";
+                header('Location: ../../pagine/home_admin/eventi/conf_ins_art.php');
+                exit();
+            } else {
+                $_SESSION['ins_artista'] = "Artisti associati correttamente all'evento.";
+                header('Location: ../../pagine/home_admin/eventi/conf_ins_art.php');
+                exit();
+            }
         } 
     } else {
         $_SESSION['ins_artista'] = "Errore di sistema. L'aggiunta dell'evento deve essere andata a buon fine prima di poter aggiungere ad esso degli artisti.";
