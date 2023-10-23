@@ -207,6 +207,8 @@
                 <input type = "submit" class = "btn btn-primary" value = "AGGIUNGI">
             </form>
 
+            <hr>
+
             <a href = "home_admin.php">
                 <button class = "btn btn-primary">Homepage</button>
             </a>

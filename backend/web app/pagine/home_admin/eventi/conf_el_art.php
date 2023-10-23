@@ -23,9 +23,9 @@
 
             <br />
 
-            <h4>Torna alla pagina di modifica degli artisti:</h4>
+            <h4>Torna alla Homepage:</h4>
             <br>
-            <form action = "modifica_artista.php">
+            <form action = "home_admin.php">
                 <input type = "submit" class = "btn btn-primary" value = "Homepage" />
             </form>
 
