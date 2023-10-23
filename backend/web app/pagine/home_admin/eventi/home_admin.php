@@ -176,7 +176,7 @@
                         echo "</td>";
 
                         echo "<div id = 'pannelloArt".$codice."' class = 'pannelloArt' data-pannello='false'>";
-                        echo "<h3>Artisti che parteciperanno a questo evento:</h3>";
+                        echo "<h4>Artisti che parteciperanno a questo evento:</h4>";
 
                         // extract artists
                         $query2 = "SELECT DISTINCT * FROM eventi.get_artisti_evento($1)";
@@ -198,9 +198,17 @@
                         }
 
                         echo "<br><br>";
-                        echo "<button type = 'button' class = 'btn btn-primary' onclick='chiudiArt(".$codice.")'>";
+                        echo "<div id='bottoniCentro'>";
+                        echo "<button type = 'button' class = 'btn btn-primary' id = 'sep' onclick='chiudiArt(".$codice.")'>";
                         echo "Chiudi";
                         echo "</button>";
+
+
+                        echo "<form action = 'modifica_artista.php' method = 'POST'>";
+                        echo "<input type = 'hidden' id = 'codice' name = 'codice' value = '".$codice."' />";
+                        echo "<input type = 'submit' class = 'btn btn-warning' id = 'sep' value = 'Modifica'";
+                        echo "</form>";
+                        echo "</div>";
                         echo "</div>";
 
 
