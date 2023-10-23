@@ -29,11 +29,15 @@
                         <li class="nav-item active">
                             <a class="nav-link" href="home_admin.php">Home <span class="sr-only">(current)</span></a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="../comici/insert_comico.php">Comici</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="artistiDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Artisti</a>
+                            <div class="dropdown-menu" aria-labelledby="artistiDropdown">
+                                <a class="dropdown-item" href="../comici/insert_comico.php">Comici</a>
+                                <a class="dropdown-item" href="../musicisti/insert_musicista.php">Musicisti</a>
+                            </div>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../musicisti/insert_musicista.php">Musicisti</a>
+                            <a class="nav-link" href="../archivio_eventi/eventi_passati.php">Archivio eventi</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="../pw/cambio_pw.php">Cambia password</a>
@@ -73,7 +77,9 @@
             <?php
                 include_once('../../../script/management/connection.php');
 
-                $query = "SELECT * FROM eventi.eventi AS e ORDER BY e.data_evento";
+                $query = "SELECT * FROM eventi.eventi AS e 
+                          WHERE e.data_evento >= CURRENT_DATE 
+                          ORDER BY e.data_evento";
                 $res = pg_prepare($connection, "ris", $query);
                 $res = pg_execute($connection, "ris", array());
 

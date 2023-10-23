@@ -28,11 +28,15 @@
                             <li class="nav-item active">
                                 <a class="nav-link" href="../eventi/home_admin.php">Home <span class="sr-only">(current)</span></a>
                             </li>
+                            <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="artistiDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Artisti</a>
+                            <div class="dropdown-menu" aria-labelledby="artistiDropdown">
+                                <a class="dropdown-item" href="../comici/insert_comico.php">Comici</a>
+                                <a class="dropdown-item" href="insert_musicista.php">Musicisti</a>
+                            </div>
+                            </li>    
                             <li class="nav-item">
-                                <a class="nav-link" href="../comici/insert_comico.php">Comici</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="insert_musicista.php">Musicisti</a>
+                                    <a class="nav-link" href="../archivio_eventi/eventi_passati.php">Archivio eventi</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="../pw/cambio_pw.php">Cambia password</a>
