@@ -206,7 +206,7 @@
 
                         echo "<form action = 'modifica_artista.php' method = 'POST'>";
                         echo "<input type = 'hidden' id = 'codice' name = 'codice' value = '".$codice."' />";
-                        echo "<input type = 'submit' class = 'btn btn-warning' id = 'sep' value = 'Modifica'";
+                        echo "<input type = 'submit' class = 'btn btn-warning' id = 'sep' value = 'Modifica' />";
                         echo "</form>";
                         echo "</div>";
                         echo "</div>";

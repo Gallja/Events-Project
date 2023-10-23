@@ -188,3 +188,8 @@ input#nome_mus1 {
 #sep {
     margin: auto;
 }
+
+#eliminaArt {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}

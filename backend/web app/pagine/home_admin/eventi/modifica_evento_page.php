@@ -56,7 +56,7 @@
         <?php
             if (isset($_POST['codice'])) {
                 $codice = $_POST['codice'];
-
+                
                 include_once('../../../script/management/connection.php');
 
                 $query = "SELECT * FROM eventi.eventi AS e WHERE e.codice = $1";
@@ -159,7 +159,7 @@
             <br><br><br>
 
             <a href = "home_admin.php">
-                <button class = "btn btn-primary">HomePage</button>
+                <button class = "btn btn-primary">Homepage</button>
             </a>
 
             <br><br>
