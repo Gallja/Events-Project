@@ -7,7 +7,7 @@
     <meta charset="utf-8" />
     <meta property="twitter:card" content="summary_large_image" />
 
-    <script type="text/javascript" src="script.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
 
     <style data-tag="reset-style-sheet">
       html {  line-height: 1.15;}body {  margin: 0;}* {  box-sizing: border-box;  border-width: 0;  border-style: solid;}p,li,ul,pre,div,h1,h2,h3,h4,h5,h6,figure,blockquote,figcaption {  margin: 0;  padding: 0;}button {  background-color: transparent;}button,input,optgroup,select,textarea {  font-family: inherit;  font-size: 100%;  line-height: 1.15;  margin: 0;}button,select {  text-transform: none;}button,[type="button"],[type="reset"],[type="submit"] {  -webkit-appearance: button;}button::-moz-focus-inner,[type="button"]::-moz-focus-inner,[type="reset"]::-moz-focus-inner,[type="submit"]::-moz-focus-inner {  border-style: none;  padding: 0;}button:-moz-focus,[type="button"]:-moz-focus,[type="reset"]:-moz-focus,[type="submit"]:-moz-focus {  outline: 1px dotted ButtonText;}a {  color: inherit;  text-decoration: inherit;}input {  padding: 2px 4px;}img {  display: block;}html { scroll-behavior: smooth  }
@@ -35,11 +35,11 @@
       href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
       data-tag="font"
     />
-    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="style/style.css" />
   </head>
   <body>
     <div>
-      <link href="./index.css" rel="stylesheet" />
+      <link href="style/index.css" rel="stylesheet" />
 
       <div class="home-container" id="top">
         <div class="home-navbar">
@@ -66,7 +66,7 @@
               </div>
               <div class="home-icons">
                 <a href="mailto:gallia4729@gmail.com">
-                  <img alt="AccountCircle3271301" src="mailicon.svg" class="home-image3" />
+                  <img alt="AccountCircle3271301" src="img/mailicon.svg" class="home-image3" />
                 </a>
               </div>
             </div>
@@ -189,7 +189,7 @@
                 <span class="home-text31">Mostra dettagli</span>
               </div>
             </div>
-              <img alt="Rectangle13271410" src="copertina.jpg" class="home-image6"/>
+              <img alt="Rectangle13271410" src="img/copertina.jpg" class="home-image6"/>
           </div>
 
           <div class="home-full-width-banner section-container">
@@ -204,7 +204,7 @@
                 <span class="home-text31">Mostra dettagli</span>
               </div>
             </div>
-            <img alt="Rectangle13271410" src="copertina2.jpg" class="home-image6" />
+            <img alt="Rectangle13271410" src="img/copertina2.jpg" class="home-image6" />
           </div>
 
         </div>
