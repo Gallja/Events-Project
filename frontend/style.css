@@ -137,6 +137,7 @@
 .column {
   display: flex;
   flex-direction: column;
+  background-color: #E8E8E8;
 }
 .navbar-link {
   color: gold;
