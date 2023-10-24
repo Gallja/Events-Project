@@ -18,7 +18,7 @@
 
         $response['eventi'] = $eventi;
         $response['comici'] = $comici;
-        $rensonse['musicisti'] = $musicisti;
+        $renponse['musicisti'] = $musicisti;
 
         // JSON encoding
         echo json_encode($response);
