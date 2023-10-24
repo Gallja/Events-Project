@@ -2,6 +2,7 @@
 <html lang ="it">
   <head>
     <title>E-O Management</title>
+    <link rel="icon" type="image/png" href="img/icon.png">
     <meta property="og:title" content="E-O Management" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta charset="utf-8" />
