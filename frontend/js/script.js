@@ -27,11 +27,13 @@ document.addEventListener("DOMContentLoaded", function() {
     for (let i = 0; i < showDivButtons.length; i++) {
         showDivButtons[i].addEventListener('click', function() {
             centeredDiv.classList.remove('hidden');
+            centeredDiv.style.display = 'flex';
         });
     }
 
     closeDivButton.addEventListener('click', function() {
         centeredDiv.classList.add('hidden');
+        centeredDiv.style.display = 'none';
     });
 
     const showDivButtons2 = document.getElementsByClassName('showDivButton2');

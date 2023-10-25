@@ -942,6 +942,9 @@ input.home-textinput.input {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   z-index: 1000;
   border: 1px solid #333;
+  display: none;
+  justify-content: center;
+  align-items: center;
 }
 
 #centeredDiv:hover {
@@ -1031,4 +1034,16 @@ input.home-textinput.input {
   margin-bottom: var(--dl-space-space-unit);
   padding: inherit;
   cursor: pointer;
+}
+
+.infoContatto {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.social {
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
 }
