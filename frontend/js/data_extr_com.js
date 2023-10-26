@@ -15,7 +15,7 @@ function fetchData() {
 
 function displayComici(comici) {
     const comiciContainer = document.getElementById('carouselExampleIndicators');
-    comiciContainer.innerHTML = ''; // Rimuovi tutto il contenuto precedente
+    comiciContainer.innerHTML = '';
 
     const indicatori = document.createElement('ol');
     indicatori.setAttribute('class', 'carousel-indicators');
@@ -26,7 +26,7 @@ function displayComici(comici) {
         indicator.setAttribute('data-slide-to', index);
 
         if (index === 0) {
-            indicator.classList.add('active'); // Imposta il primo indicatore come attivo
+            indicator.classList.add('active');
         }
 
         indicatori.appendChild(indicator);
@@ -35,11 +35,11 @@ function displayComici(comici) {
         comicoDiv.setAttribute('class', 'carousel-item');
 
         if (index === 0) {
-            comicoDiv.classList.add('active'); // Imposta il primo elemento come attivo
+            comicoDiv.classList.add('active');
         }
 
         comicoDiv.innerHTML = `
-            <img class="d-block w-100" src="data:image/jpeg;base64,${comico.immagine}" alt="${comico.nome_comico} ${comico.cognome_comico}">
+            <img class="d-block w-100" src="data:image/jpeg;base64,${comico.immagine}" alt="${comico.nome_comico} ${comico.cognome_comico}" id="caroselloCom">
             <div class="carousel-caption">
                 <h5>${comico.nome_comico} ${comico.cognome_comico}</h5>
                 <p>${comico.bio}</p>

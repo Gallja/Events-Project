@@ -228,3 +228,21 @@
 #first-bottone {
   margin: auto;
 }
+
+.carousel {
+  width: 300px;
+  height: 200px;
+}
+
+/* Aggiungi queste regole CSS al tuo foglio di stile o nell'elemento <style> del tuo documento */
+.full-width {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+#carouselExampleIndicators {
+  flex: 1; /* Il carousel occupa tutto lo spazio rimanente */
+}
+
+/* Aggiungi ulteriori stili per il carousel, le immagini e i testi a tuo piacimento */

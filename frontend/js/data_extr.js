@@ -7,7 +7,6 @@ function fetchData() {
         .then(response => response.json())
         .then(data => {
             displayEventi(data.eventi);
-            displayComici(data.comici);
             displayMusicisti(data.musicisti);
         })
         .catch(error => {
@@ -21,11 +20,11 @@ function displayEventi(eventi) {
     eventi.forEach(evento => {
         const eventoDiv = document.createElement('div');
         eventoDiv.setAttribute('class', 'home-full-width-banner section container');
-        // console.log(eventoDiv);
+        const nomeMaiusc = evento.nome_evento.toUpperCase();
         eventoDiv.innerHTML = `
             <div class="home-left1" id="third">
                 <div class="home-content">
-                    <span class="home-text29">${evento.nome_evento}</span>
+                    <span class="home-text29">${nomeMaiusc}</span>
                     <span class="home-text30">${evento.descrizione}</span>
                 </div>
                 <div class="home-btn button border">
@@ -35,26 +34,6 @@ function displayEventi(eventi) {
             <img src="data:image/jpg;base64,${evento.immagine}" class="home-image6">
         `;
         eventiContainer.appendChild(eventoDiv);
-    });
-}
-
-function displayComici(comici) {
-    const comiciContainer = document.getElementById('containerCom');
-    comiciContainer.innerHTML = '';
-
-    comici.forEach(comico => {
-        const comicoDiv = document.createElement('div');
-        comicoDiv.setAttribute('class', 'comicoCard');
-
-        comicoDiv.style.background = 'url(${comico.profilo}) no-repeat 50% / cover';
-
-        comicoDiv.innerHTML = `
-            <div class="content">
-                <h2>${comico.nome_comico} ${comico.cognome_comico}</h2>
-                <span>${comico.bio}</span>
-            </div>
-        `;
-        comiciContainer.appendChild(comicoDiv);
     });
 }
 

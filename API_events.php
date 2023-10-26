@@ -9,7 +9,8 @@
         // endpoint
         $result = pg_query($connection, "SELECT e.codice, e.nome_evento, e.data_evento, 
                                                 e.luogo, encode(e.immagine, 'base64') AS immagine, e.descrizione
-                                         FROM eventi.eventi AS e");
+                                         FROM eventi.eventi AS e
+                                         WHERE e.data_evento >= CURRENT_DATE");
         $eventi = pg_fetch_all($result);
 
         $result2 = pg_query($connection, "SELECT c.id, c.nome_comico, c.cognome_comico, encode(c.profilo, 'base64') AS immagine, c.bio
@@ -26,11 +27,18 @@
         $result5 = pg_query($connection, "SELECT * FROM eventi.eventi_musicisti");
         $eventi_musicisti = pg_fetch_all($result5);
 
+        $result6 = pg_query($connection, "SELECT e.codice, e.nome_evento, e.data_evento,
+                                                 e.luogo, encode(e.immagine, 'base64') AS immagine, e.descrizione
+                                          FROM eventi.eventi AS e
+                                          WHERE e.data_evento < CURRENT_DATE");
+        $archivio_eventi = pg_fetch_all($result6);
+
         $response['eventi'] = $eventi;
         $response['comici'] = $comici;
         $response['musicisti'] = $musicisti;
         $response['eventi_comici'] = $eventi_comici;
         $response['eventi_musicisti'] = $eventi_musicisti;
+        $response['archivio_eventi'] = $archivio_eventi;
 
         // JSON encoding
         echo json_encode($response);

@@ -1070,3 +1070,7 @@ input.home-textinput.input {
   background-color: #E8E8E8;
   z-index: 500;
 }
+
+#caroselloCom {
+  height: 100%;
+}
