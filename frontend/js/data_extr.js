@@ -39,15 +39,20 @@ function displayEventi(eventi) {
 }
 
 function displayComici(comici) {
-    const comiciContainer = document.getElementById('comici-container');
+    const comiciContainer = document.getElementById('containerCom');
     comiciContainer.innerHTML = '';
 
     comici.forEach(comico => {
         const comicoDiv = document.createElement('div');
+        comicoDiv.setAttribute('class', 'comicoCard');
+
+        comicoDiv.style.background = 'url(${comico.profilo}) no-repeat 50% / cover';
+
         comicoDiv.innerHTML = `
-            <h2>${comico.nome_comico} ${comico.cognome_comico}</h2>
-            <img src = "data:image/jpg;base64,${comico.immagine}" width = "100px">
-            <p>${comico.bio}</p>
+            <div class="content">
+                <h2>${comico.nome_comico} ${comico.cognome_comico}</h2>
+                <span>${comico.bio}</span>
+            </div>
         `;
         comiciContainer.appendChild(comicoDiv);
     });

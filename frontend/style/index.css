@@ -565,6 +565,7 @@
   border-right-width: 0px;
   border-bottom-width: 0px;
   background-color:#E8E8E8;
+  z-index: 1;
 }
 .home-footer1 {
   width: 100%;
@@ -1055,4 +1056,17 @@ input.home-textinput.input {
 
 #contEventi {
   width: 100%;
+}
+
+#scuro {
+  background-color: #28282B;
+}
+
+#topDiv {
+  background-color: #28282B;
+}
+
+#mid {
+  background-color: #E8E8E8;
+  z-index: 500;
 }
