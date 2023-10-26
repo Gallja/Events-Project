@@ -24,9 +24,11 @@ function displayEventi(eventi) {
         eventoDiv.innerHTML = `
             <h2>${evento.nome_evento}</h2>
             <p>Data: ${evento.data_evento}</p>
+            <img src = "data:image/jpg;base64,${evento.immagine}" width="100px">
             <p>Luogo: ${evento.luogo}</p>
             <p>${evento.descrizione}</p>
         `;
+        console.log(eventi.immagine);
         eventiContainer.appendChild(eventoDiv);
     });
 }
@@ -39,6 +41,7 @@ function displayComici(comici) {
         const comicoDiv = document.createElement('div');
         comicoDiv.innerHTML = `
             <h2>${comico.nome_comico} ${comico.cognome_comico}</h2>
+            <img src = "data:image/jpg;base64,${comico.immagine}" width = "100px">
             <p>${comico.bio}</p>
         `;
         comiciContainer.appendChild(comicoDiv);
@@ -53,6 +56,7 @@ function displayMusicisti(musicisti) {
         const musicistaDiv = document.createElement('div');
         musicistaDiv.innerHTML = `
             <h2>${musicista.nome_musicista}</h2>
+            <img src = "data:image/jpg;base64,${musicista.immagine}" width = "100px">
             <p>${musicista.bio_musicista}</p>
         `;
         musicistiContainer.appendChild(musicistaDiv);

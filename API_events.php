@@ -7,13 +7,17 @@
     // API request - only read events
     if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         // endpoint
-        $result = pg_query($connection, "SELECT * FROM eventi.eventi");
+        $result = pg_query($connection, "SELECT e.codice, e.nome_evento, e.data_evento, 
+                                                e.luogo, encode(e.immagine, 'base64') AS immagine, e.descrizione
+                                         FROM eventi.eventi AS e");
         $eventi = pg_fetch_all($result);
 
-        $result2 = pg_query($connection, "SELECT * FROM eventi.comici");
+        $result2 = pg_query($connection, "SELECT c.id, c.nome_comico, c.cognome_comico, encode(c.profilo, 'base64') AS immagine, c.bio
+                                          FROM eventi.comici AS c");
         $comici = pg_fetch_all($result2);
 
-        $result3 = pg_query($connection, "SELECT * FROM eventi.musicisti");
+        $result3 = pg_query($connection, "SELECT m.id_musicista, m.nome_musicista, encode(m.profilo_musicista, 'base64') AS immagine, m.bio_musicista 
+                                          FROM eventi.musicisti AS m");
         $musicisti = pg_fetch_all($result3);
 
         $result4 = pg_query($connection, "SELECT * FROM eventi.eventi_comici");
