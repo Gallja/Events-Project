@@ -16,19 +16,24 @@ function fetchData() {
 }
 
 function displayEventi(eventi) {
-    const eventiContainer = document.getElementById('eventi-container');
+    const eventiContainer = document.getElementById('contEventi');
     eventiContainer.innerHTML = '';
-
     eventi.forEach(evento => {
         const eventoDiv = document.createElement('div');
+        eventoDiv.setAttribute('class', 'home-full-width-banner section container');
+        // console.log(eventoDiv);
         eventoDiv.innerHTML = `
-            <h2>${evento.nome_evento}</h2>
-            <p>Data: ${evento.data_evento}</p>
-            <img src = "data:image/jpg;base64,${evento.immagine}" width="100px">
-            <p>Luogo: ${evento.luogo}</p>
-            <p>${evento.descrizione}</p>
+            <div class="home-left1" id="third">
+                <div class="home-content">
+                    <span class="home-text29">${evento.nome_evento}</span>
+                    <span class="home-text30">${evento.descrizione}</span>
+                </div>
+                <div class="home-btn button border">
+                    <span class="home-text31">Mostra dettagli</span>
+                </div>
+            </div>
+            <img src="data:image/jpg;base64,${evento.immagine}" class="home-image6">
         `;
-        console.log(eventi.immagine);
         eventiContainer.appendChild(eventoDiv);
     });
 }

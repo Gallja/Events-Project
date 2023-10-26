@@ -199,34 +199,41 @@
               </div>
             </div>
           </div>
-          <div class="home-full-width-banner section-container">
-            <div class="home-left1" id="third">
-              <div class="home-content">
-                <span class="home-text29">SPACCIAMO RISATE</span>
-                <span class="home-text30">
-                  Carefully curated furniture, well matched in style and looks
-                </span>
+          <div id = "contEventi">
+            <!--
+            <div class="home-full-width-banner section-container">
+              
+              <div class="home-left1" id="third">
+                <div class="home-content">
+                  <span class="home-text29">SPACCIAMO RISATE</span>
+                  <span class="home-text30">
+                    Carefully curated furniture, well matched in style and looks
+                  </span>
+                </div>
+                <div class="home-btn button border">
+                  <span class="home-text31">Mostra dettagli</span>
+                </div>
               </div>
-              <div class="home-btn button border">
-                <span class="home-text31">Mostra dettagli</span>
-              </div>
-            </div>
               <img alt="Rectangle13271410" src="img/copertina.jpg" class="home-image6"/>
-          </div>
-
-          <div class="home-full-width-banner section-container">
-            <div class="home-left1">
-              <div class="home-content">
-                <span class="home-text29">IL CABARETTO</span>
-                <span class="home-text30">
-                  Carefully curated furniture, well matched in style and looks
-                </span>
-              </div>
-              <div class="home-btn button border">
-                <span class="home-text31">Mostra dettagli</span>
-              </div>
+              
             </div>
-            <img alt="Rectangle13271410" src="img/copertina2.jpg" class="home-image6" />
+
+            <div class="home-full-width-banner section-container">
+
+              <div class="home-left1">
+                <div class="home-content">
+                  <span class="home-text29">IL CABARETTO</span>
+                  <span class="home-text30">
+                    Carefully curated furniture, well matched in style and looks
+                  </span>
+                </div>
+                <div class="home-btn button border">
+                  <span class="home-text31">Mostra dettagli</span>
+                </div>
+              </div>
+              <img alt="Rectangle13271410" src="img/copertina2.jpg" class="home-image6" />
+            </div>
+            -->
           </div>
 
         </div>
@@ -268,11 +275,6 @@
       </div>
     </div>
     <script src="https://unpkg.com/@teleporthq/teleport-custom-scripts"></script>
-
-    <h1>Eventi</h1>
-    <div id="eventi-container">
-        <!-- Qui verranno inseriti gli eventi dalla sorgente esterna -->
-    </div>
 
     <h1>Comici</h1>
     <div id="comici-container">

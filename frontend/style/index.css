@@ -1030,6 +1030,11 @@ input.home-textinput.input {
   font-family: Jost;
 }
 
+#p-h:hover {
+  color: rgba(239, 193, 76, 1);
+  text-shadow: 0 0 3px black, 0 0 5px black;
+}
+
 .showDivButton2 {
   margin-bottom: var(--dl-space-space-unit);
   padding: inherit;
@@ -1046,4 +1051,8 @@ input.home-textinput.input {
   width: 24px;
   height: 24px;
   margin-right: 10px;
+}
+
+#contEventi {
+  width: 100%;
 }
