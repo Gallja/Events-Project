@@ -232,3 +232,8 @@
 #contComici {
   z-index: 50;
 }
+
+#contMus{
+  z-index: 50;
+  width: 100%;
+}

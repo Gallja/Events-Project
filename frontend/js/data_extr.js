@@ -7,7 +7,6 @@ function fetchData() {
         .then(response => response.json())
         .then(data => {
             displayEventi(data.eventi);
-            displayMusicisti(data.musicisti);
         })
         .catch(error => {
             console.error('Errore durante il recupero dei dati:', error);
@@ -34,20 +33,5 @@ function displayEventi(eventi) {
             <img src="data:image/jpg;base64,${evento.immagine}" class="home-image6">
         `;
         eventiContainer.appendChild(eventoDiv);
-    });
-}
-
-function displayMusicisti(musicisti) {
-    const musicistiContainer = document.getElementById('musicisti-container');
-    musicistiContainer.innerHTML = '';
-
-    musicisti.forEach(musicista => {
-        const musicistaDiv = document.createElement('div');
-        musicistaDiv.innerHTML = `
-            <h2>${musicista.nome_musicista}</h2>
-            <img src = "data:image/jpg;base64,${musicista.immagine}" width = "100px">
-            <p>${musicista.bio_musicista}</p>
-        `;
-        musicistiContainer.appendChild(musicistaDiv);
     });
 }
