@@ -463,12 +463,13 @@
   font-size: 28px;
   align-self: auto;
   font-style: normal;
-  text-align: left;
+  text-align: center;
   font-family: Jost;
   font-weight: 500px;
   line-height: 20px;
   font-stretch: normal;
   text-decoration: none;
+  line-height: 1.4;
 }
 .home-text30 {
   color: white;
@@ -783,6 +784,30 @@
     filter: brightness(1) invert(0);
   }
 
+  .large{
+    width: 300px;
+    height: 600px;
+    left: -300px;
+    bottom: -250px;
+    border-color: white;
+  }
+  
+  .xlarge{
+    width: 500px;
+    height: 800px;
+    left: -400px;
+    bottom: -350px;
+    border-color: white;
+  }
+  
+  .xxlarge{
+    width: 700px;
+    height: 1000px;
+    left: -500px;
+    bottom: -450px;
+    border-color: white;
+  }
+
   .home-icons {
     display: none;
   }
@@ -842,6 +867,31 @@
   .home-text23 {
     max-width: 770px;
   }
+
+  .large{
+    width: 300px;
+    height: 600px;
+    left: -300px;
+    bottom: -250px;
+    border-color: white;
+  }
+  
+  .xlarge{
+    width: 500px;
+    height: 800px;
+    left: -400px;
+    bottom: -350px;
+    border-color: white;
+  }
+  
+  .xxlarge{
+    width: 700px;
+    height: 1000px;
+    left: -500px;
+    bottom: -450px;
+    border-color: white;
+  }
+
   .home-full-width-banner {
     padding-top: var(--dl-space-space-twounits);
     flex-direction: column;
@@ -897,6 +947,31 @@
     margin-bottom: var(--dl-space-space-unit);
     margin: auto;
   }
+
+  .large{
+    width: 300px;
+    height: 600px;
+    left: -300px;
+    bottom: -250px;
+    border-color: white;
+  }
+  
+  .xlarge{
+    width: 500px;
+    height: 800px;
+    left: -400px;
+    bottom: -350px;
+    border-color: white;
+  }
+  
+  .xxlarge{
+    width: 700px;
+    height: 1000px;
+    left: -500px;
+    bottom: -450px;
+    border-color: white;
+  }
+
   .home-btn-group {
     flex-direction: column;
   }
@@ -1039,6 +1114,30 @@ input.home-textinput.input {
   #centeredDiv {
     width: 90%;
   }
+
+  .large{
+    width: 400px;
+    height: 600px;
+    left: -450px;
+    bottom: -250px;
+    border-color: white;
+  }
+  
+  .xlarge{
+    width: 600px;
+    height: 800px;
+    left: -550px;
+    bottom: -350px;
+    border-color: white;
+  }
+  
+  .xxlarge{
+    width: 800px;
+    height: 1000px;
+    left: -650px;
+    bottom: -450px;
+    border-color: white;
+  }
 }
 
 #centeredDiv h2, #centeredDiv h3, #centeredDiv button {
@@ -1049,6 +1148,29 @@ input.home-textinput.input {
 @media (max-width: 1000px) {
   #centeredDiv2 {
     width: 90%;
+  }
+  .large{
+    width: 300px;
+    height: 600px;
+    left: -300px;
+    bottom: -250px;
+    border-color: white;
+  }
+  
+  .xlarge{
+    width: 500px;
+    height: 800px;
+    left: -400px;
+    bottom: -350px;
+    border-color: white;
+  }
+  
+  .xxlarge{
+    width: 700px;
+    height: 1000px;
+    left: -500px;
+    bottom: -450px;
+    border-color: white;
   }
 }
 
