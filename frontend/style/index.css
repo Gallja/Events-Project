@@ -432,6 +432,7 @@
   padding-top: var(--dl-space-space-fourunits);
   justify-content: center;
   background-color: #E8E8E8;
+  overflow: hidden;
 }
 .home-left1 {
   flex: 1;
@@ -482,6 +483,11 @@
   font-stretch: normal;
   text-decoration: none;
 }
+
+.dimRidottaSpan {
+  width: 400px;
+}
+
 .home-btn {
   cursor: pointer;
   display: flex;
@@ -550,6 +556,10 @@
   position: relative;
   box-sizing: border-box;
   object-fit: cover;
+}
+
+.dimRidotta {
+  width: 40%;
 }
 
 .home-footer {

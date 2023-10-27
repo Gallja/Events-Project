@@ -25,10 +25,10 @@ function displayComici(comici) {
             <div class="home-left1" id="third">
                 <div class="home-content">
                     <span class="home-text29">${nomeMaiusc} ${cognomeMaiusc}</span>
-                    <span class="home-text30">${comico.bio}</span>
+                    <span class="home-text30 dimRidottaSpan">${comico.bio}</span>
                 </div>
             </div>
-            <img src="data:image/jpg;base64,${comico.immagine}" class="home-image6">
+            <img src="data:image/jpg;base64,${comico.immagine}" class="home-image6 dimRidotta">
         `;
         comiciContainer.appendChild(comicoDiv);
     });
