@@ -634,18 +634,36 @@
   color: var(--dl-color-gray-black50);
   margin-bottom: var(--dl-space-space-unit);
 }
+.home-text39:hover {
+  color: rgb(254, 252, 248);
+  text-shadow: 0 0 3px black, 0 0 5px black;
+}
 .home-text40 {
   color: var(--dl-color-gray-black50);
   margin-bottom: var(--dl-space-space-unit);
+}
+.home-text40:hover {
+  color: rgb(254, 252, 248);
+  text-shadow: 0 0 3px black, 0 0 5px black;
 }
 .home-text41 {
   color: var(--dl-color-gray-black50);
   margin-bottom: var(--dl-space-space-unit);
 }
+.home-text41:hover {
+  color: rgb(254, 252, 248);
+  text-shadow: 0 0 3px black, 0 0 5px black;
+}
 .home-text42 {
   color: var(--dl-color-gray-black50);
   margin-bottom: var(--dl-space-space-unit);
 }
+.home-text42:hover {
+  color: rgb(254, 252, 248);
+  text-shadow: 0 0 3px black, 0 0 5px black;
+}
+
+
 .home-text43 {
   color: var(--dl-color-gray-black50);
   margin-bottom: var(--dl-space-space-unit);
@@ -668,14 +686,26 @@
   line-height: 14px;
   margin-bottom: 44px;
 }
+
+
 .home-text46 {
   color: var(--dl-color-gray-black50);
   margin-bottom: var(--dl-space-space-unit);
+}
+.home-text46:hover {
+  color: rgb(254, 252, 248);
+  text-shadow: 0 0 3px black, 0 0 5px black;
 }
 .home-text47 {
   color: var(--dl-color-gray-black50);
   margin-bottom: var(--dl-space-space-unit);
 }
+.home-text47:hover {
+  color: rgb(254, 252, 248);
+  text-shadow: 0 0 3px black, 0 0 5px black;
+}
+
+
 .home-text48 {
   color: var(--dl-color-gray-black50);
   margin-bottom: var(--dl-space-space-unit);
@@ -984,37 +1014,6 @@ input.home-textinput.input {
   max-height: 100%;
 }
 
-#centeredDiv2 {
-  margin: auto;
-  position: fixed;
-  width: 30%;
-  height: 40%;
-  top: 30%;
-  background-color: lightgray;
-  transform: 0 0 10px rgba(0, 0, 0, 0.5);
-  padding: 20px;
-  text-align: center;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  z-index: 1000;
-  border: 1px solid #333;
-}
-
-#centeredDiv2:hover {
-  --border-size: 3px;
-  --border-angle: 0turn;
-  background-image: conic-gradient(
-      from var(--border-angle),
-      lightgray,
-      lightgray 50%,
-      lightgray
-  ), conic-gradient(from var(--border-angle), transparent 20%, grey, black);
-  background-size: calc(100% - (var(--border-size) * 2))
-  calc(100% - (var(--border-size) * 2)), cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-  animation: bg-spin 2s linear infinite;
-}
-
 @media (max-width: 1000px) {
   #centeredDiv2 {
     width: 90%;
@@ -1043,12 +1042,6 @@ input.home-textinput.input {
 #p-h:hover {
   color: rgba(239, 193, 76, 1);
   text-shadow: 0 0 3px black, 0 0 5px black;
-}
-
-.showDivButton2 {
-  margin-bottom: var(--dl-space-space-unit);
-  padding: inherit;
-  cursor: pointer;
 }
 
 .infoContatto {
