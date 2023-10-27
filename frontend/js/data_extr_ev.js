@@ -17,7 +17,7 @@ function fetchData() {
 function displayEventi(eventi) {
     const eventiContainer = document.getElementById('contEventi');
     eventiContainer.innerHTML = `
-        <h1 class="Heading-1 centerTitle">Prossimamente...</h1>
+        <h1 class="Heading-1 centerTitle">Prossimamente:</h1>
     `;
     eventi.forEach(evento => {
         const eventoDiv = document.createElement('div');
@@ -43,7 +43,7 @@ function displayEventiArchivio(archivio_eventi) {
     const eventiContainer = document.getElementById('contArchivioEventi');
     eventiContainer.innerHTML = `
         <div id="contTitolo">
-            <h1 class="Heading-1 centerTitle">Vecchi spettacoli</h1>
+            <h1 class="Heading-1 centerTitle">Vecchi spettacoli:</h1>
         </div>
     `;
     archivio_eventi.forEach(evento => {

@@ -36,3 +36,10 @@ document.addEventListener("DOMContentLoaded", function() {
         centeredDiv.style.display = 'none';
     });
 });
+
+function chiudiMenu() {
+    var menu = document.querySelector('.home-mobile-menu');
+    if (menu.classList.contains('teleport-show')) {
+        menu.classList.remove('teleport-show');
+    }
+}
