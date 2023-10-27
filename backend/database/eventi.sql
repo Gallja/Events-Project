@@ -13,9 +13,11 @@ CREATE TABLE eventi.eventi (
     codice serial PRIMARY KEY,
     nome_evento varchar NOT NULL CHECK (nome_evento <> ''),
     data_evento date NOT NULL,
+    ora_evento time NOT NULL,
     luogo varchar NOT NULL CHECK (luogo <> ''),
     immagine bytea NOT NULL,
-    descrizione varchar NOT NULL CHECK (descrizione <> '')
+    descrizione varchar NOT NULL CHECK (descrizione <> ''),
+    link varchar CHECK (link <> '')
 );
 
 -- Tabella dei comici:
