@@ -110,6 +110,9 @@
   object-fit: cover;
   filter: invert(76%) sepia(74%) saturate(840%) hue-rotate(358deg) brightness(102%) contrast(106%);
 }
+.home-image3:hover {
+  filter: brightness(0) invert(1);
+}
 .home-burger-menu {
   display: none;
 }
