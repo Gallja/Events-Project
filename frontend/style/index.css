@@ -439,6 +439,7 @@
   flex-direction: column;
   justify-content: center;
   background-color: #28282B;
+  z-index: 50;
 }
 .home-content {
   margin: 0 0 40px 0;
@@ -1064,13 +1065,4 @@ input.home-textinput.input {
 
 #topDiv {
   background-color: #28282B;
-}
-
-#mid {
-  background-color: #E8E8E8;
-  z-index: 500;
-}
-
-#caroselloCom {
-  height: 100%;
 }
