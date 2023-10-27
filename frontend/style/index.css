@@ -547,11 +547,6 @@
   position: relative;
   box-sizing: border-box;
   object-fit: cover;
-  transition: width 0.5s ease-in-out, height 0.5s ease-in-out;
-}
-.home-image6:hover {
-  width: 62%;
-  height: auto;
 }
 
 .home-footer {
