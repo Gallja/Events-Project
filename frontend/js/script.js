@@ -35,19 +35,5 @@ document.addEventListener("DOMContentLoaded", function() {
         centeredDiv.classList.add('hidden');
         centeredDiv.style.display = 'none';
     });
-
-    const showDivButtons2 = document.getElementsByClassName('showDivButton2');
-    const centeredDiv2 = document.getElementById('centeredDiv2');
-    const closeDivButton2 = document.getElementById('closeDivButton2');
-
-    for (let i = 0; i < showDivButtons2.length; i++) {
-        showDivButtons2[i].addEventListener('click', function() {
-            centeredDiv2.classList.remove('hidden');
-        });
-    }
-
-    closeDivButton2.addEventListener('click', function() {
-        centeredDiv2.classList.add('hidden');
-    });
 });
   

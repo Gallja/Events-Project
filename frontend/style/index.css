@@ -1042,6 +1042,12 @@ input.home-textinput.input {
 #p-h:hover {
   color: rgba(239, 193, 76, 1);
   text-shadow: 0 0 3px black, 0 0 5px black;
+  transition: all 0.3s;
+}
+
+.social:hover {
+  filter: invert(76%) sepia(74%) saturate(840%) hue-rotate(358deg) brightness(102%) contrast(106%) drop-shadow(0 0 3px black) drop-shadow(0 0 5px black);
+  transition: filter 0.3s ease;
 }
 
 .infoContatto {
