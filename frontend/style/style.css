@@ -237,3 +237,38 @@
   z-index: 50;
   width: 100%;
 }
+
+#form-altraP {
+  margin: auto;
+}
+
+#contArchivioEventi {
+  width: 100%;
+  z-index: 50;
+}
+
+.marginDiv {
+  margin-top: 10%;
+}
+
+.centerTitle {
+  text-align: center;
+}
+
+#contTitolo {
+  margin-top: 5%;
+  position: relative;
+  width: 100%;
+  z-index: 50;
+}
+
+.line {
+  display: inline-block;
+  margin-top: 10%;
+  width: 100%;
+  border-top: 0.2px solid black;
+}
+
+hr {
+  border-top: 0.2px solid black;
+}

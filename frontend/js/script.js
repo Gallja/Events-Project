@@ -36,4 +36,3 @@ document.addEventListener("DOMContentLoaded", function() {
         centeredDiv.style.display = 'none';
     });
 });
-  

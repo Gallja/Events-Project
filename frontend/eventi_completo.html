@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang ="it">
   <head>
-    <title>E-O Management</title>
+    <title>Tutti gli spettacoli</title>
     <link rel="icon" type="image/png" href="img/icon.png">
     <meta property="og:title" content="E-O Management" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,7 +9,7 @@
     <meta property="twitter:card" content="summary_large_image" />
 
     <script type="text/javascript" src="js/script.js"></script>
-    <script type="text/javascript" src="js/data_extr.js"></script>
+    <script type="text/javascript" src="js/data_extr_ev.js"></script>
 
     <style data-tag="reset-style-sheet">
       html {  line-height: 1.15;}body {  margin: 0;}* {  box-sizing: border-box;  border-width: 0;  border-style: solid;}p,li,ul,pre,div,h1,h2,h3,h4,h5,h6,figure,blockquote,figcaption {  margin: 0;  padding: 0;}button {  background-color: transparent;}button,input,optgroup,select,textarea {  font-family: inherit;  font-size: 100%;  line-height: 1.15;  margin: 0;}button,select {  text-transform: none;}button,[type="button"],[type="reset"],[type="submit"] {  -webkit-appearance: button;}button::-moz-focus-inner,[type="button"]::-moz-focus-inner,[type="reset"]::-moz-focus-inner,[type="submit"]::-moz-focus-inner {  border-style: none;  padding: 0;}button:-moz-focus,[type="button"]:-moz-focus,[type="reset"]:-moz-focus,[type="submit"]:-moz-focus {  outline: 1px dotted ButtonText;}a {  color: inherit;  text-decoration: inherit;}input {  padding: 2px 4px;}img {  display: block;}html { scroll-behavior: smooth  }
@@ -53,15 +53,15 @@
               </div>
               <div class="home-middle">
                 <div class="home-left">
-                  <a href="#third" class="navbar-link">SPETTACOLI</a>
+                  <a href="#top" class="navbar-link">SPETTACOLI</a>
                   <a href="comici.html" class="navbar-link">COMICI</a>
                   <a href="musicisti.html" class="navbar-link">MUSICISTI</a>
                 </div>
-                <a href="#top" class="navbar-logo-title" align="center">E-O Management</a>
+                <a href="index.html" class="navbar-logo-title" align="center">E-O Management</a>
                 <div class="home-right">
-                  <a href="#center-div" class="navbar-link">CHI SIAMO</a>
+                  <a href="index.html#center-div" class="navbar-link">CHI SIAMO</a>
                   <a href="https://www.facebook.com/frank.limone.10" class="navbar-link">PAGINA FB</a>
-                  <button class="showDivButton"> 
+                  <button class="showDivButton">
                     <span class="navbar-link">CONTATTACI</span>
                   </button>
                 </div>
@@ -123,15 +123,23 @@
             <div class="home-max-width max-width-container">
               <div class="home-hero1">
                 <div class="home-container03">
-                  <h1 class="home-text16 Heading-1">E-O Management</h1>
+                  <h1 class="home-text16 Heading-1">Gli spettacoli</h1>
                   <span class="home-text12">
-                      <span>Nuovi eventi - 2023 / 24</span>
+                      <span>Vecchie date:</span>
                   </span>
-                  <br />
                   <div class="home-btn-group">
-                    <form action="eventi_completo.html" id="form-altraP">
-                      <button class="button" id="first-bottone">Tutti gli spettacoli</button>
-                    </form>
+                    <a href="#contArchivioEventi" id="form-altraP">
+                        <button class="button" id="first-bottone">Clicca qui</button>
+                    </a>
+                  </div>
+                  <br />
+                  <span class="home-text12">
+                    <span>Nuove date:</span>
+                  </span>
+                  <div class="home-btn-group">
+                    <a href="#contEventi" id="form-altraP">
+                        <button class="button" id="first-bottone">Clicca qui</button>
+                    </a>
                   </div>
                 </div>
               </div>
@@ -179,39 +187,16 @@
             </div>
           </div>
 
-          <div class="section-container column" id="center-div">
-            <div class="home-banner">
-              <div class="home-container05">
-                <h3 class="home-text19 Heading-3">E - O</h3>
-                <span class="home-text20">
-                  <span></span>
-                  <span>Management</span>
-                </span>
-              </div>
-            </div>
-            <div class="home-container06 max-width-container">
-              <div class="home-container07">
-                <span class="home-text23">
-                  <span>
-                    Ciao! Mi chiamo Daniele Specchiulli e ti do il benvenuto nel mio sito.
-                  </span><br />
-                  <span>
-                    Da dodici anni faccio parte del mondo del cabaret come presentatore ed organizzatore di eventi. Sarò a disposizione per ogni tua richiesta. Potrai scegliere qualsiasi tipo di artista, dal
-                    Comico al deejay, dal mago per bambini al cantante. Sarò bene felice di aiutarti per rendere unico e indimenticabile il tuo evento, che sia una  festa privata o un matrimonio, una festa di piazza o uno spettacolo in teatro.
-                  </span><br />
-                  <span>
-                    Insomma, grazie ad E O Management riuscirai a soddisfare qualsiasi tua esigenza. Ah dimenticavo, il preventivo è gratuito!
-                  </span>
-                </span>
-                <img alt="M3271427" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0nMTk5JyBoZWlnaHQ9JzIwMCcgdmlld0JveD0nMCAwIDE5OSAyMDAnIGZpbGw9J25vbmUnIHhtbG5zPSdodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2Zyc+CjxwYXRoIGQ9J00zNy4zMDI2IDcxLjI5MjVMOTkuMzgyNyAxODIuMzEzTDE2MS40NjMgNzEuMjkyNUwxNzUuNjIyIDIwMEgxOTguNzY1TDE3NS42MjIgMEw5OS4zODI3IDEzNy45NTlMMjMuMTQzOSAwTDAgMjAwSDIzLjE0MzlMMzcuMzAyNiA3MS4yOTI1WicgZmlsbD0nYmxhY2snIGZpbGwtb3BhY2l0eT0nMC4wNicvPgo8L3N2Zz4K" class="home-svg" />
-                <button class="bottone showDivButton">Contattaci</button>
-                <br>
-              </div>
-            </div>
-          </div>
-          <div id = "contEventi">
+          <div id = "contArchivioEventi">
             
           </div>
+
+          <span class="line"></span>
+
+          <div id = "contEventi" class = "marginDiv">
+            
+          </div>
+
         </div>
         <div class="home-footer">
           <div class="max-width-container">

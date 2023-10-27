@@ -261,6 +261,7 @@
   padding-top: var(--dl-space-space-threeunits);
   padding-bottom: var(--dl-space-space-threeunits);
   background-color: #28282B;
+  overflow: hidden;
 }
 .home-max-width {
   max-width: 1032px;
