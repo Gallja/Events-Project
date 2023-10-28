@@ -102,6 +102,29 @@
                                     echo "</form>";
                                     echo "</li>";
                                     break;
+                                case 'ora_evento':
+                                    echo "<li class = 'list-group-item'>";
+                                    $newTime = substr($value, 0, 5);
+                                    echo strtoupper($campi_chiave[0])." ".strtoupper($campi_chiave[1]).": ".$newTime;
+                                    echo "<br><br><button onclick='mostra_mod(\"ora_evento\", \"".$codice."\")' class = 'btn btn-secondary'>Modifica</button><br><br>";
+                                    echo "<form class = 'form-group' method = 'POST' id = 'myForm_ora_evento_".$codice."' name = 'myForm_data_evento' action = '../../../script/gestione_eventi/modifica_evento.php' style = 'display: none;'>";
+                                    echo "<input type = 'time' class = 'form-control' id = 'ora_evento' name = 'ora_evento' placeholder = 'Reinserisci l orario' required />";
+                                    echo "<input type = 'hidden' id = 'codice' name = 'codice' value = '".$codice."' />";
+                                    echo "<br><input type = 'submit' class = 'btn btn-success' value = 'Conferma'/>";
+                                    echo "</form>";
+                                    echo "</li>";
+                                    break;
+                                case 'link_biglietto':
+                                    echo "<li class = 'list-group-item'>";
+                                    echo strtoupper($campi_chiave[0])." ".strtoupper($campi_chiave[1]).": ".$value;
+                                    echo "<br><br><button onclick='mostra_mod(\"link_biglietto\", \"".$codice."\")' class = 'btn btn-secondary'>Modifica</button><br><br>";
+                                    echo "<form class = 'form-group' method = 'POST' id = 'myForm_link_biglietto_".$codice."' name = 'myForm_data_evento' action = '../../../script/gestione_eventi/modifica_evento.php' style = 'display: none;'>";
+                                    echo "<textarea class = 'form-control' id = 'link_biglietto' name = 'link_biglietto' placeholder = 'Reinserisci il link' required></textarea>";
+                                    echo "<input type = 'hidden' id = 'codice' name = 'codice' value = '".$codice."' />";
+                                    echo "<br><input type = 'submit' class = 'btn btn-success' value = 'Conferma'/>";
+                                    echo "</form>";
+                                    echo "</li>";
+                                    break;
                             }
                         } else {
                             switch ($key) {

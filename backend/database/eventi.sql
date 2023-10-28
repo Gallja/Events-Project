@@ -207,6 +207,18 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
+--Funzione di modifica/aggiornamento dell'ora di un evento:
+CREATE OR REPLACE PROCEDURE eventi.aggiorna_evento_ora (
+    codice_in integer,
+    ora_in time
+) AS $$
+BEGIN
+    UPDATE eventi.eventi AS e 
+    SET ora_evento = ora_in
+    WHERE e.codice = codice_in;
+END;
+$$ LANGUAGE plpgsql;
+
 -- Funzione di modifica/aggiornamento del luogo di un evento:
 CREATE OR REPLACE PROCEDURE eventi.aggiorna_evento_luogo (
     codice_in integer,
@@ -239,6 +251,18 @@ CREATE OR REPLACE PROCEDURE eventi.aggiorna_evento_desc (
 BEGIN
     UPDATE eventi.eventi AS e
     SET descrizione = descrizione_in
+    WHERE e.codice = codice_in;
+END;
+$$ LANGUAGE plpgsql;
+
+-- Funzione di modifica/aggiornamento del link del biglietto di un evento:
+CREATE OR REPLACE PROCEDURE eventi.aggiorna_evento_link (
+    codice_in integer,
+    link_in varchar
+) AS $$
+BEGIN
+    UPDATE eventi.eventi AS e 
+    SET link_biglietto = link_in
     WHERE e.codice = codice_in;
 END;
 $$ LANGUAGE plpgsql;

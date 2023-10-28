@@ -37,6 +37,14 @@ body {
     display: none;
 }
 
+#myForm_ora_evento {
+    display: none;
+}
+
+#myForm_link_biglietto {
+    display: none;
+}
+
 ul.list-group li {
     margin: 0;
     padding: 0;

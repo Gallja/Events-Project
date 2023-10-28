@@ -88,9 +88,43 @@
                                 exit();
                             }
                         } else {
-                            $_SESSION['errore_mod'] = "Errore del sistema";
-                            header('Location: ../../pagine/home_admin/eventi/conf_modifica.php');
-                            exit();
+                            if (isset($_POST['ora_evento'])) {
+                                $ora = $_POST['ora_evento'];
+                                $query6 = "CALL eventi.aggiorna_evento_ora($1, $2)";
+                                $res6 = pg_prepare($connection, "", $query6);
+                                $res6 = pg_execute($connection, "", array($codice, $ora));
+
+                                if (!$res6) {
+                                    $_SESSION['modifica_ora'] = "Errore nella modifica dell'ora dell'evento";
+                                    header('Location: ../../pagine/home_admin/eventi/conf_modifica.php');
+                                    exit();
+                                } else {
+                                    $_SESSION['modifica_ora'] = "Modifica dell'ora dell'evento avvenuta con successo!";
+                                    header('Location: ../../pagine/home_admin/eventi/conf_modifica.php');
+                                    exit();
+                                }
+                            } else {
+                                if (isset($_POST['link_biglietto'])) {
+                                    $link = $_POST['link_biglietto'];
+                                    $query7 = "CALL eventi.aggiorna_evento_link($1, $2)";
+                                    $res7 = pg_prepare($connection, "", $query7);
+                                    $res7 = pg_execute($connection, "", array($codice, $link));
+
+                                    if (!$res7) {
+                                        $_SESSION['modifica_link'] = "Errore nella modifica del link del biglietto dell'evento";
+                                        header('Location: ../../pagine/home_admin/eventi/conf_modifica.php');
+                                        exit();
+                                    } else {
+                                        $_SESSION['modifica_link'] = "Modifica del link del biglietto dell'evento avvenuta con successo!";
+                                        header('Location: ../../pagine/home_admin/eventi/conf_modifica.php');
+                                        exit();
+                                    }
+                                } else {
+                                    $_SESSION['errore_mod'] = "Errore del sistema";
+                                    header('Location: ../../pagine/home_admin/eventi/conf_modifica.php');
+                                    exit();
+                                }
+                            }
                         }
                     }
                 }

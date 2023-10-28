@@ -39,6 +39,16 @@
                     unset($_SESSION['modifica_desc']);
                 }
 
+                if (isset($_SESSION['modifica_ora'])) {
+                    echo "<h2>".$_SESSION['modifica_ora']."</h2><br>";
+                    unset($_SESSION['modifica_ora']);
+                }
+
+                if (isset($_SESSION['modifica_link'])) {
+                    echo "<h2>".$_SESSION['modifica_link']."</h2><br>";
+                    unset($_SESSION['modifica_link']);
+                }
+
                 if (isset($_SESSION['errore_mod'])) {
                     echo "<h2>".$_SESSION['errore_mod']."</h2><br>";
                     unset($_SESSION['errore_mod']);
