@@ -17,7 +17,7 @@ CREATE TABLE eventi.eventi (
     luogo varchar NOT NULL CHECK (luogo <> ''),
     immagine bytea NOT NULL,
     descrizione varchar NOT NULL CHECK (descrizione <> ''),
-    link varchar CHECK (link <> '')
+    link_biglietto varchar CHECK (link_biglietto <> '')
 );
 
 -- Tabella dei comici:
@@ -69,17 +69,34 @@ $$ LANGUAGE plpgsql;
 SELECT pg_get_serial_sequence ('eventi.eventi', 'codice');
 SELECT setval (pg_get_serial_sequence('eventi.eventi', 'codice'), 1, false);
 
--- Procedura di inserimento di un nuovo evento:
+-- Procedura di inserimento di un nuovo evento con link:
 CREATE OR REPLACE PROCEDURE eventi.insert_evento (
     nome_evento varchar,
     data_evento date,
+    ora_evento time,
+    luogo varchar,
+    immagine bytea,
+    descrizione varchar,
+    link_biglietto varchar
+) AS $$
+BEGIN
+    INSERT INTO eventi.eventi(nome_evento, data_evento, ora_evento, luogo, immagine, descrizione, link_biglietto)
+    VALUES (nome_evento, data_evento, ora_evento, luogo, immagine, descrizione, link_biglietto);
+END;
+$$ LANGUAGE plpgsql;
+
+-- Procedura di inserimento di un nuovo evento senza link:
+CREATE OR REPLACE PROCEDURE eventi.insert_evento_nolink (
+    nome_evento varchar,
+    data_evento date,
+    ora_evento time,
     luogo varchar,
     immagine bytea,
     descrizione varchar
 ) AS $$
 BEGIN
-    INSERT INTO eventi.eventi(nome_evento, data_evento, luogo, immagine, descrizione)
-    VALUES (nome_evento, data_evento, luogo, immagine, descrizione);
+    INSERT INTO eventi.eventi(nome_evento, data_evento, ora_evento, luogo, immagine, descrizione)
+    VALUES (nome_evento, data_evento, ora_evento, luogo, immagine, descrizione);
 END;
 $$ LANGUAGE plpgsql;
 

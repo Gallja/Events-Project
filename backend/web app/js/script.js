@@ -150,3 +150,29 @@ function chiudiArt(id) {
     pannelloArt.style.display = "none";
     pannelloArt.setAttribute('data-pannello', 'false');
 }
+
+function mostraLink(id) {
+    firstStr = "pannelloLink";
+    idString = id.toString();
+    idDiv = firstStr.concat(idString);
+    var pannelloArt = document.getElementById(idDiv);
+
+    var pannelliAperti = document.querySelectorAll('[data-pannello="true"]');
+
+    for (var i = 0; i < pannelliAperti.length; i++) {
+        pannelliAperti[i].style.display = "none";
+        pannelliAperti[i].setAttribute('data-pannello', 'false');
+    }
+
+    pannelloArt.style.display = "block";
+    pannelloArt.setAttribute('data-pannello', 'true');
+}
+
+function chiudiLink(id) {
+    firstStr = "pannelloLink";
+    idString = id.toString();
+    idDiv = firstStr.concat(idString);
+    var pannelloArt = document.getElementById(idDiv);
+    pannelloArt.style.display = "none";
+    pannelloArt.setAttribute('data-pannello', 'false');
+}

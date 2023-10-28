@@ -60,10 +60,12 @@
             <h3>Inserisci un nuovo evento:</h3>
             <form class = "form-group" method = "POST" action = "../../../script/gestione_eventi/insert_evento.php" enctype = "multipart/form-data">
                 <input type = "text" class = "form-control" id = "nome_evento1" name = "nome_evento" placeholder = "Inserisci il nome dell'evento" required>
-                <input type = "date" class = "form-control" id = "data" name = "data" placeholder = "Inserisci la data" required>
+                <input type = "date" class = "form-control" id = "data" name = "data" required>
+                <input type = "time" class = "form-control" id = "ora" name = "ora" required>
                 <input type = "luogo" class = "form-control" id = "luogo1" name = "luogo" placeholder = "Inserisci il luogo" required>
                 <input type = "file" class = "form-control" id = "img" name = "img" required>
                 <textarea class = "form-control" id = "descrizione" name = "descrizione" placeholder = "Inserisci la descrizione" required></textarea>
+                <textarea class = "form-control" id = "link" name = "link" placeholder = "Inserisci il link per il biglietto"></textarea>
                 <br />
                 <br />
                 <input type = "submit" class="btn btn-primary" value = "INSERISCI">
@@ -96,9 +98,11 @@
                     echo "<th>";
                     echo "<td class='int'>Nome Evento</td>";
                     echo "<td class='int'>Data Evento</td>";
+                    echo "<td class='int'>Ora Evento</td>";
                     echo "<td class='int'>Luogo</td>";
                     echo "<td class='int'>Locandina</td>";
                     echo "<td class='int'>Descrizione</td>";
+                    echo "<td class='int'>Link Biglietto</td>";
                     echo "<td class='int'>Artisti affiliati</td>";
                     echo "<td class='int'>Modifica Evento</td>";
                     echo "<td class='int'>Elimina Evento</td>";
@@ -124,6 +128,54 @@
                                         echo $newData;
                                         echo "</td>";
                                         break;
+                                    case 'ora_evento':
+                                        echo "<td class = 'table-".$tipo[$conta]."'>";
+                                        $newTime = substr($value, 0, 5);
+                                        echo $newTime;
+                                        echo "</td>";
+                                        break;
+                                    case 'link_biglietto':
+                                        if ($value == null) {
+                                            echo "<td class = 'table-".$tipo[$conta]."'>";
+                                            
+                                            echo "<button type='button' class = 'btn btn-secondary' onclick = 'mostraLink(".$codice.")'>";
+                                            echo "Mostra";
+                                            echo "</button>";
+                                            echo "</td>";
+
+                                            echo "<div id = 'pannelloLink".$codice."' class = 'pannelloLink' data-pannello='false'>";
+                                            echo "<h4>Link del biglietto dell'evento:</h4>";
+                                            echo "<p>Nessun link al biglietto.</p>";
+
+                                            echo "<button type = 'button' class = 'btn btn-info' onclick='chiudiLink(".$codice.")'>";
+                                            echo "Chiudi";
+                                            echo "</button>";
+
+                                            echo "</div>";
+                                            break;
+                                        } else {
+                                            echo "<button type='button' class = 'btn btn-success' onclick = 'mostraLink(".$codice.")'>";
+                                            echo "Mostra";
+                                            echo "</button>";
+
+                                            echo "<div id = 'pannelloLink".$codice."' class = 'pannelloLink' data-pannello='false'>";
+                                            
+                                            $query_link = "SELECT e.link_biglietto FROM eventi.eventi AS e WHERE e.codice = $1";
+                                            $res_link = pg_prepare($connection, "", $query_link);
+                                            $res_link = pg_execute($connection, "", array($codice));
+
+                                            $row_link = pg_fetch_assoc($res_link);
+
+                                            echo $row_link['link_biglietto'];
+
+                                            echo "<button type = 'button' class = 'btn btn-info' onclick='chiudiLink(".$codice.")'>";
+                                            echo "Chiudi";
+                                            echo "</button>";
+
+                                            echo "</div>";
+
+                                            break;
+                                        }
                                 }
                             } else {
                                 switch ($key) {
@@ -155,7 +207,6 @@
                                         echo "Chiudi";
                                         echo "</button>";
                                         echo "</div>";
-
                                         break;
                                     case 'descrizione':
                                         echo "<td class = 'table-".$tipo[$conta]."'>";
@@ -171,7 +222,6 @@
                                         echo "Chiudi";
                                         echo "</button>";
                                         echo "</div>";
-
                                         break;
                                 }
                             }
