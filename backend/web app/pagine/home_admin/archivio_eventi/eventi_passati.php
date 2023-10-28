@@ -136,6 +136,30 @@
                                             echo "</div>";
                                             break;
                                         } else {
+                                            echo "<td class = 'table-".$tipo[$conta]."'>";
+
+                                            echo "<button type='button' class = 'btn btn-secondary' onclick = 'mostraLink(".$codice.")'>";
+                                            echo "Mostra";
+                                            echo "</button>";
+
+                                            echo "</td>";
+
+                                            echo "<div id = 'pannelloLink".$codice."' class = 'pannelloLink' data-pannello='false'>";
+                                            
+                                            $query_link = "SELECT e.link_biglietto FROM eventi.eventi AS e WHERE e.codice = $1";
+                                            $res_link = pg_prepare($connection, "", $query_link);
+                                            $res_link = pg_execute($connection, "", array($codice));
+
+                                            $row_link = pg_fetch_assoc($res_link);
+
+                                            echo "<h4>Link del biglietto dell'evento:</h4>";
+                                            echo $row_link['link_biglietto']."<br><br>";
+
+                                            echo "<button type = 'button' class = 'btn btn-info' onclick='chiudiLink(".$codice.")'>";
+                                            echo "Chiudi";
+                                            echo "</button>";
+
+                                            echo "</div>";
 
                                             break;
                                         }
