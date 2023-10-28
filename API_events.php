@@ -11,7 +11,7 @@
         if (isset($_GET['evento_id'])) {
             $evento_id = $_GET['evento_id'];
 
-            $result_comici = pg_query($connection, "SELECT c.nome_evento, e.data_evento, e.ora_evento, e.luogo, e.descrizione, e.link,
+            $result_comici = pg_query($connection, "SELECT e.codice, e.nome_evento, e.data_evento, e.ora_evento, e.luogo, e.link_biglietto,
                                                            c.nome_comico, c.cognome_comico, encode(c.profilo, 'base64') AS immagine
                                                     FROM eventi.comici AS c 
                                                     INNER JOIN eventi.eventi_comici AS ec
@@ -22,7 +22,7 @@
 
             $eventi_comici = pg_fetch_all($result_comici);
 
-            $result_musicisti = pg_query($connection, "SELECT e.nome_evento, e.data_evento, e.ora_evento, e.luogo, e.descrizione, e.link,
+            $result_musicisti = pg_query($connection, "SELECT e.nome_evento, e.data_evento, e.ora_evento, e.luogo, e.descrizione, e.link_biglietto,
                                                               m.nome_musicista, encode(m.profilo_musicista, 'base64') AS immagine
                                                        FROM eventi.musicisti AS m
                                                        INNER JOIN eventi.eventi_musicisti AS em
@@ -37,7 +37,7 @@
             $response['eventi_musicisti'] = $eventi_musicisti;
         }
 
-        $result = pg_query($connection, "SELECT e.codice, e.nome_evento, e.data_evento, 
+        $result = pg_query($connection, "SELECT e.codice, e.nome_evento, e.data_evento, e.ora_evento,
                                                 e.luogo, encode(e.immagine, 'base64') AS immagine, e.descrizione
                                          FROM eventi.eventi AS e
                                          WHERE e.data_evento >= CURRENT_DATE");
