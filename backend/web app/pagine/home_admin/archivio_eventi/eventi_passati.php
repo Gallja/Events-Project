@@ -81,9 +81,11 @@
                     echo "<th>";
                     echo "<td class='int'>Nome Evento</td>";
                     echo "<td class='int'>Data Evento</td>";
+                    echo "<td class='int'>Ora Evento</td>";
                     echo "<td class='int'>Luogo</td>";
                     echo "<td class='int'>Locandina</td>";
                     echo "<td class='int'>Descrizione</td>";
+                    echo "<td class='int'>Link Biglietto</td>";
                     echo "<td class='int'>Artisti affiliati</td>";
                     echo "<td class='int'>Modifica Evento</td>";
                     echo "<td class='int'>Elimina Evento</td>";
@@ -109,6 +111,34 @@
                                         echo $newData;
                                         echo "</td>";
                                         break;
+                                    case 'ora_evento':
+                                        echo "<td class = 'table-".$tipo[$conta]."'>";
+                                        $newTime = substr($value, 0, 5);
+                                        echo $newTime;
+                                        echo "</td>";
+                                        break;
+                                    case 'link_biglietto':
+                                        if ($value == null) {
+                                            echo "<td class = 'table-".$tipo[$conta]."'>";
+                                            echo "<button type='button' class = 'btn btn-secondary' onclick = 'mostraLink(".$codice.")'>";
+                                            echo "Mostra";
+                                            echo "</button>";
+                                            echo "</td>";
+
+                                            echo "<div id = 'pannelloLink".$codice."' class = 'pannelloLink' data-pannello='false'>";
+                                            echo "<h4>Link del biglietto dell'evento:</h4>";
+                                            echo "<p>Nessun link al biglietto.</p>";
+
+                                            echo "<button type = 'button' class = 'btn btn-info' onclick='chiudiLink(".$codice.")'>";
+                                            echo "Chiudi";
+                                            echo "</button>";
+
+                                            echo "</div>";
+                                            break;
+                                        } else {
+
+                                            break;
+                                        }
                                 }
                             } else {
                                 switch ($key) {
