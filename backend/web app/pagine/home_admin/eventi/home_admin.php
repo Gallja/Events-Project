@@ -154,9 +154,13 @@
                                             echo "</div>";
                                             break;
                                         } else {
-                                            echo "<button type='button' class = 'btn btn-success' onclick = 'mostraLink(".$codice.")'>";
+                                            echo "<td class = 'table-".$tipo[$conta]."'>";
+
+                                            echo "<button type='button' class = 'btn btn-secondary' onclick = 'mostraLink(".$codice.")'>";
                                             echo "Mostra";
                                             echo "</button>";
+
+                                            echo "</td>";
 
                                             echo "<div id = 'pannelloLink".$codice."' class = 'pannelloLink' data-pannello='false'>";
                                             
@@ -166,7 +170,7 @@
 
                                             $row_link = pg_fetch_assoc($res_link);
 
-                                            echo $row_link['link_biglietto'];
+                                            echo $row_link['link_biglietto']."<br><br>";
 
                                             echo "<button type = 'button' class = 'btn btn-info' onclick='chiudiLink(".$codice.")'>";
                                             echo "Chiudi";
