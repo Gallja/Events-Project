@@ -1079,8 +1079,8 @@ input.home-textinput.input {
 #dettagli-container {
   margin: auto;
   position: fixed;
-  width: 30%;
-  height: 40%;
+  width: 60%;
+  height: 80%;
   top: 30%;
   background-color: lightgray;
   transform: 0 0 10px rgba(0, 0, 0, 0.5);
@@ -1102,7 +1102,7 @@ input.home-textinput.input {
       lightgray,
       lightgray 50%,
       lightgray
-  ), conic-gradient(from var(--border-angle), transparent 20%, grey, black);
+  ), conic-gradient(from var(--border-angle), transparent 20%, rgba(239, 193, 76, 1), black);
   background-size: calc(100% - (var(--border-size) * 2))
   calc(100% - (var(--border-size) * 2)), cover;
   background-position: center center;
@@ -1269,4 +1269,34 @@ input.home-textinput.input {
 
 .iconMobile {
   filter: brightness(1) invert(0);
+}
+
+.ul-spettacolo {
+  list-style-type: none;
+}
+
+.ul-comico {
+  list-style-type: none;
+}
+
+.ul-musicista {
+  list-style-type: none;
+}
+
+.chiudiDett {
+  margin: auto;
+  margin-top: 50px;
+}
+
+#dettagli-container {
+  max-width: 100%;
+  word-wrap: break-word;
+  top: 0;
+  bottom: 0;
+}
+
+.linkBE:hover {
+  color: rgba(239, 193, 76, 1);
+  text-shadow: 0 0 3px black, 0 0 5px black;
+  transition: all 0.3s;
 }

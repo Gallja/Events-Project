@@ -67,15 +67,47 @@ function displayDett(eventi_comici, eventi_musicisti) {
 
         eventi_comici.forEach(evento => {
             if (conta == 0) {
-                const liEvento = document.createElement('li');
+                dettagliSpettacolo.innerHTML = '<h3 class="title-h">DETTAGLI SPETTACOLO:</h3>';
+                const liEventoTitolo = document.createElement('li');
+                const liEventoData = document.createElement('li');
+                const liEventoOra = document.createElement('li');
+                const liEventoLuogo = document.createElement('li');
 
-                liEvento.textContent = `Nome evento: ${evento.nome_evento}, Data: ${evento.data_evento}, Ora: ${evento.ora_evento}, Luogo: ${evento.luogo}`
-                ulSpett.appendChild(liEvento);
+                liEventoTitolo.textContent = `Nome evento: ${evento.nome_evento}`
+                ulSpett.appendChild(liEventoTitolo);
+
+                const data = new Date(evento.data_evento);
+                const dataFormatt = `${data.getDate()}/${data.getMonth() + 1}/${data.getFullYear()}`;
+                liEventoData.textContent = `Data: ${dataFormatt}`
+                ulSpett.appendChild(liEventoData);
+
+                const orario = evento.ora_evento;
+                const orarioFormatt = orario.slice(0, 5);
+                liEventoOra.textContent = `Ora: ${orarioFormatt}`
+                ulSpett.appendChild(liEventoOra);
+
+                liEventoLuogo.textContent = `Luogo: ${evento.luogo}`
+                ulSpett.appendChild(liEventoLuogo);
+
+                if (evento.link_biglietto != null) {
+                    const liEventoLink = document.createElement('li');
+                    const linkEvento = document.createElement('a');
+
+                    liEventoLink.textContent = `Link biglietto: `;
+                    linkEvento.setAttribute('href', evento.link_biglietto);
+                    linkEvento.setAttribute('class', 'linkBE');
+                    linkEvento.textContent = 'CLICCA QUI';
+
+                    liEventoLink.appendChild(linkEvento);
+                    ulSpett.appendChild(liEventoLink);
+                }
+
                 dettagliSpettacolo.appendChild(ulSpett);
             }
             
+            artistiAffiliati.innerHTML = '<h3 class="title-h">COMICI:</h3>';
             const li = document.createElement('li');
-            li.textContent = `Comico: ${evento.nome_comico} ${evento.cognome_comico}`;
+            li.textContent = `${evento.nome_comico} ${evento.cognome_comico}`;
             ulComico.appendChild(li);
 
             conta ++;
@@ -85,6 +117,7 @@ function displayDett(eventi_comici, eventi_musicisti) {
     }
 
     if (eventi_musicisti.length > 0) {
+
         const ulSpett = document.createElement('ul');
         ulSpett.setAttribute('class', 'ul-spettacolo');
 
@@ -92,24 +125,67 @@ function displayDett(eventi_comici, eventi_musicisti) {
         ulMusicisti.setAttribute('class', 'ul-musicista');
 
         if (eventi_comici.length > 0) {
+            const h3 = document.createElement('h3');
+            h3.setAttribute('class', 'title-h');
+            h3.innerHTML = 'MUSICISTI:';
+            artistiAffiliati.appendChild(h3);
+
             eventi_musicisti.forEach(evento => {
                 const li = document.createElement('li');
-                li.textContent = `Nome musicista: ${evento.nome_musicista}`;
+                li.textContent = `${evento.nome_musicista}`;
                 ulMusicisti.appendChild(li);
             });
+
+            artistiAffiliati.appendChild(ulMusicisti);
         } else {
             conta = 0;
 
             eventi_musicisti.forEach(evento => {
                 if (conta == 0) {
-                    const liEvento = document.createElement('li');
-                    liEvento.textContent = `Nome evento: ${evento.nome_evento}, Data: ${evento.data_evento}, Ora: ${evento.ora_evento}, Luogo: ${evento.luogo}`
-                    ulSpett.appendChild(liEvento);
-                    dettagliContainer.appendChild(ulSpett);
+                    dettagliSpettacolo.innerHTML = '<h3 class="title-h">DETTAGLI SPETTACOLO:</h3>';
+                    const liEventoTitolo = document.createElement('li');
+                    const liEventoData = document.createElement('li');
+                    const liEventoOra = document.createElement('li');
+                    const liEventoLuogo = document.createElement('li');
+
+                    liEventoTitolo.textContent = `Nome evento: ${evento.nome_evento}`
+                    ulSpett.appendChild(liEventoTitolo);
+
+                    const data = new Date(evento.data_evento);
+                    const dataFormatt = `${data.getDate()}-${data.getMonth() + 1}-${data.getFullYear()}`;
+                    liEventoData.textContent = `Data: ${dataFormatt}`
+                    ulSpett.appendChild(liEventoData);
+
+                    const orario = evento.ora_evento;
+                    const orarioFormatt = orario.slice(0, 5);
+                    liEventoOra.textContent = `Ora: ${orarioFormatt}`
+                    ulSpett.appendChild(liEventoOra);
+
+                    liEventoLuogo.textContent = `Luogo: ${evento.luogo}`
+                    ulSpett.appendChild(liEventoLuogo);
+
+                    if (evento.link_biglietto != null) {
+                        const liEventoLink = document.createElement('li');
+                        const linkEvento = document.createElement('a');
+
+                        liEventoLink.textContent = `Link biglietto: `;
+                        linkEvento.setAttribute('href', evento.link_biglietto);
+                        linkEvento.textContent = 'CLICCA QUI';
+
+                        liEventoLink.appendChild(linkEvento);
+                        ulSpett.appendChild(liEventoLink);
+                    }
+
+                    dettagliSpettacolo.appendChild(ulSpett);
                 }
 
+                const h3 = document.createElement('h3');
+                h3.setAttribute('class', 'title-h');
+                h3.innerHTML = 'MUSICISTI:';
+                artistiAffiliati.appendChild(h3);
+
                 const li = document.createElement('li');
-                li.textContent = `Nome evento: ${evento.nome_evento}, Data: ${evento.data_evento}, Ora: ${evento.ora_evento}, Luogo: ${evento.Luogo}, Musicista: ${evento.nome_musicista}`;
+                li.textContent = `Musicista: ${evento.nome_musicista}`;
 
                 ulMusicisti.appendChild(li);
 
