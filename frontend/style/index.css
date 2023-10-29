@@ -1076,6 +1076,40 @@ input.home-textinput.input {
   display: none;
 }
 
+#dettagli-container {
+  margin: auto;
+  position: fixed;
+  width: 30%;
+  height: 40%;
+  top: 30%;
+  background-color: lightgray;
+  transform: 0 0 10px rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  border: 1px solid #333;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+#dettagli-container:hover {
+  --border-size: 3px;
+  --border-angle: 0turn;
+  background-image: conic-gradient(
+      from var(--border-angle),
+      lightgray,
+      lightgray 50%,
+      lightgray
+  ), conic-gradient(from var(--border-angle), transparent 20%, grey, black);
+  background-size: calc(100% - (var(--border-size) * 2))
+  calc(100% - (var(--border-size) * 2)), cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  animation: bg-spin 2s linear infinite;
+}
+
 #centeredDiv {
   margin: auto;
   position: fixed;

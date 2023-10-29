@@ -43,3 +43,8 @@ function chiudiMenu() {
         menu.classList.remove('teleport-show');
     }
 }
+
+function chiudiDettagli() {
+    const dettagliContainer = document.getElementById('dettagli-container');
+    dettagliContainer.style.display = 'none';
+}
