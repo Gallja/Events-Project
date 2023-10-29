@@ -60,143 +60,148 @@
             
             <br />
 
-            <?php
-                include_once('../../../script/management/connection.php');
+        </div>
+    </div>
+    
+    <div class = "table-container">
+        <?php
+            include_once('../../../script/management/connection.php');
 
-                $query = "SELECT * FROM eventi.eventi AS e 
-                          WHERE e.data_evento < CURRENT_DATE 
-                          ORDER BY e.data_evento";
-                $res = pg_prepare($connection, "ris", $query);
-                $res = pg_execute($connection, "ris", array());
+            $query = "SELECT * FROM eventi.eventi AS e 
+                        WHERE e.data_evento < CURRENT_DATE 
+                        ORDER BY e.data_evento";
+            $res = pg_prepare($connection, "ris", $query);
+            $res = pg_execute($connection, "ris", array());
 
-                $tipo = ['danger', 'warning', 'secondary', 'primary', 'success', 'light', 'info'];
-                $conta = 0;
-                $conta2 = 1;
+            $tipo = ['danger', 'warning', 'secondary', 'primary', 'success', 'light', 'info'];
+            $conta = 0;
+            $conta2 = 1;
 
-                if (!$res) {
-                    echo "<h4>Errore nella visualizzazione degli eventi.</h4>";
-                } else {
-                    echo "<table class='table'>";
+            if (!$res) {
+                echo "<h4>Errore nella visualizzazione degli eventi.</h4>";
+            } else {
+                echo "<table class='table'>";
 
-                    echo "<th>";
-                    echo "<td class='int'>Nome Evento</td>";
-                    echo "<td class='int'>Data Evento</td>";
-                    echo "<td class='int'>Ora Evento</td>";
-                    echo "<td class='int'>Luogo</td>";
-                    echo "<td class='int'>Locandina</td>";
-                    echo "<td class='int'>Descrizione</td>";
-                    echo "<td class='int'>Link Biglietto</td>";
-                    echo "<td class='int'>Artisti affiliati</td>";
-                    echo "<td class='int'>Modifica Evento</td>";
-                    echo "<td class='int'>Elimina Evento</td>";
-                    echo "</th>";
-                    
-                    while ($row = pg_fetch_assoc($res)) {
-                        $codice = $row['codice'];
-                        echo "<tr>";
+                echo "<th>";
+                echo "<td class='int'>Nome Evento</td>";
+                echo "<td class='int'>Data Evento</td>";
+                echo "<td class='int'>Ora Evento</td>";
+                echo "<td class='int'>Luogo</td>";
+                echo "<td class='int'>Locandina</td>";
+                echo "<td class='int'>Descrizione</td>";
+                echo "<td class='int'>Link Biglietto</td>";
+                echo "<td class='int'>Artisti affiliati</td>";
+                echo "<td class='int'>Modifica Evento</td>";
+                echo "<td class='int'>Elimina Evento</td>";
+                echo "</th>";
+                
+                while ($row = pg_fetch_assoc($res)) {
+                    $codice = $row['codice'];
+                    echo "<tr>";
 
-                        foreach($row as $key => $value) {
-                            if (str_contains($key, '_')) {
-                                $campi_chiave = explode('_', $key);
+                    foreach($row as $key => $value) {
+                        if (str_contains($key, '_')) {
+                            $campi_chiave = explode('_', $key);
 
-                                switch ($key) {
-                                    case 'nome_evento':
+                            switch ($key) {
+                                case 'nome_evento':
+                                    echo "<td class = 'table-".$tipo[$conta]."'>";
+                                    echo $value;
+                                    echo "</td>";
+                                    break;
+                                case 'data_evento':
+                                    echo "<td class = 'table-".$tipo[$conta]."'>";
+                                    $newData = date('d-m-Y', strtotime($value));
+                                    echo $newData;
+                                    echo "</td>";
+                                    break;
+                                case 'ora_evento':
+                                    echo "<td class = 'table-".$tipo[$conta]."'>";
+                                    $newTime = substr($value, 0, 5);
+                                    echo $newTime;
+                                    echo "</td>";
+                                    break;
+                                case 'link_biglietto':
+                                    if ($value == null) {
                                         echo "<td class = 'table-".$tipo[$conta]."'>";
-                                        echo $value;
-                                        echo "</td>";
-                                        break;
-                                    case 'data_evento':
-                                        echo "<td class = 'table-".$tipo[$conta]."'>";
-                                        $newData = date('d-m-Y', strtotime($value));
-                                        echo $newData;
-                                        echo "</td>";
-                                        break;
-                                    case 'ora_evento':
-                                        echo "<td class = 'table-".$tipo[$conta]."'>";
-                                        $newTime = substr($value, 0, 5);
-                                        echo $newTime;
-                                        echo "</td>";
-                                        break;
-                                    case 'link_biglietto':
-                                        if ($value == null) {
-                                            echo "<td class = 'table-".$tipo[$conta]."'>";
-                                            echo "<button type='button' class = 'btn btn-secondary' onclick = 'mostraLink(".$codice.")'>";
-                                            echo "Mostra";
-                                            echo "</button>";
-                                            echo "</td>";
-
-                                            echo "<div id = 'pannelloLink".$codice."' class = 'pannelloLink' data-pannello='false'>";
-                                            echo "<h4>Link del biglietto dell'evento:</h4>";
-                                            echo "<p>Nessun link al biglietto.</p>";
-
-                                            echo "<button type = 'button' class = 'btn btn-info' onclick='chiudiLink(".$codice.")'>";
-                                            echo "Chiudi";
-                                            echo "</button>";
-
-                                            echo "</div>";
-                                            break;
-                                        } else {
-                                            echo "<td class = 'table-".$tipo[$conta]."'>";
-
-                                            echo "<button type='button' class = 'btn btn-secondary' onclick = 'mostraLink(".$codice.")'>";
-                                            echo "Mostra";
-                                            echo "</button>";
-
-                                            echo "</td>";
-
-                                            echo "<div id = 'pannelloLink".$codice."' class = 'pannelloLink' data-pannello='false'>";
-                                            
-                                            $query_link = "SELECT e.link_biglietto FROM eventi.eventi AS e WHERE e.codice = $1";
-                                            $res_link = pg_prepare($connection, "", $query_link);
-                                            $res_link = pg_execute($connection, "", array($codice));
-
-                                            $row_link = pg_fetch_assoc($res_link);
-
-                                            echo "<h4>Link del biglietto dell'evento:</h4>";
-                                            echo $row_link['link_biglietto']."<br><br>";
-
-                                            echo "<button type = 'button' class = 'btn btn-info' onclick='chiudiLink(".$codice.")'>";
-                                            echo "Chiudi";
-                                            echo "</button>";
-
-                                            echo "</div>";
-
-                                            break;
-                                        }
-                                }
-                            } else {
-                                switch ($key) {
-                                    case 'codice':
-                                        echo "<td class = 'table-".$tipo[$conta]."'>";
-                                        echo $conta2;
-                                        echo "</td>";
-                                        break;
-                                    case 'luogo':
-                                        echo "<td class = 'table-".$tipo[$conta]."'>";
-                                        echo $value;
-                                        echo "</td>";
-                                        break;
-                                    case 'immagine':
-                                        $sql = "SELECT encode(immagine, 'base64') AS img FROM eventi.eventi AS e WHERE e.codice = $1";
-                                        $res2 = pg_prepare($connection, "", $sql);
-                                        $res2 = pg_execute($connection, "", array($codice));
-                                        $row2 = pg_fetch_assoc($res2);
-
-                                        echo "<td class = 'table-".$tipo[$conta]."'>";
-                                        echo "<button type='button' class = 'btn btn-info' onclick='mostraFoto(".$codice.")'>";
+                                        echo "<button type='button' class = 'btn btn-secondary' onclick = 'mostraLink(".$codice.")'>";
                                         echo "Mostra";
                                         echo "</button>";
                                         echo "</td>";
 
-                                        echo "<div id = 'pannelloFoto".$codice."' class = 'pannelloFoto' data-pannello='false'>";
-                                        echo '<img src="data:image/jpg;base64,'.$row2["img"].'"><br><br>';
-                                        echo "<button type = 'button' class = 'btn btn-info' onclick='chiudiFoto(".$codice.")'>";
+                                        echo "<div id = 'pannelloLink".$codice."' class = 'pannelloLink' data-pannello='false'>";
+                                        echo "<h4>Link del biglietto dell'evento:</h4>";
+                                        echo "<p>Nessun link al biglietto.</p>";
+
+                                        echo "<button type = 'button' class = 'btn btn-info butDiv' onclick='chiudiLink(".$codice.")'>";
                                         echo "Chiudi";
                                         echo "</button>";
+
+                                        echo "</div>";
+                                        break;
+                                    } else {
+                                        echo "<td class = 'table-".$tipo[$conta]."'>";
+
+                                        echo "<button type='button' class = 'btn btn-secondary' onclick = 'mostraLink(".$codice.")'>";
+                                        echo "Mostra";
+                                        echo "</button>";
+
+                                        echo "</td>";
+
+                                        echo "<div id = 'pannelloLink".$codice."' class = 'pannelloLink' data-pannello='false'>";
+                                        
+                                        $query_link = "SELECT e.link_biglietto FROM eventi.eventi AS e WHERE e.codice = $1";
+                                        $res_link = pg_prepare($connection, "", $query_link);
+                                        $res_link = pg_execute($connection, "", array($codice));
+
+                                        $row_link = pg_fetch_assoc($res_link);
+
+                                        echo "<h4>Link del biglietto dell'evento:</h4>";
+                                        echo $row_link['link_biglietto']."<br><br>";
+
+                                        echo "<button type = 'button' class = 'btn btn-info butDiv' onclick='chiudiLink(".$codice.")'>";
+                                        echo "Chiudi";
+                                        echo "</button>";
+
                                         echo "</div>";
 
                                         break;
-                                    case 'descrizione':
+                                    }
+                            }
+                        } else {
+                            switch ($key) {
+                                case 'codice':
+                                    echo "<td class = 'table-".$tipo[$conta]."'>";
+                                    echo $conta2;
+                                    echo "</td>";
+                                    break;
+                                case 'luogo':
+                                    echo "<td class = 'table-".$tipo[$conta]."'>";
+                                    echo $value;
+                                    echo "</td>";
+                                    break;
+                                case 'immagine':
+                                    $sql = "SELECT encode(immagine, 'base64') AS img FROM eventi.eventi AS e WHERE e.codice = $1";
+                                    $res2 = pg_prepare($connection, "", $sql);
+                                    $res2 = pg_execute($connection, "", array($codice));
+                                    $row2 = pg_fetch_assoc($res2);
+
+                                    echo "<td class = 'table-".$tipo[$conta]."'>";
+                                    echo "<button type='button' class = 'btn btn-info' onclick='mostraFoto(".$codice.")'>";
+                                    echo "Mostra";
+                                    echo "</button>";
+                                    echo "</td>";
+
+                                    echo "<div id = 'pannelloFoto".$codice."' class = 'pannelloFoto' data-pannello='false'>";
+                                    echo '<img src="data:image/jpg;base64,'.$row2["img"].'"><br><br>';
+                                    echo "<button type = 'button' class = 'btn btn-info butDivImm' onclick='chiudiFoto(".$codice.")'>";
+                                    echo "Chiudi";
+                                    echo "</button>";
+                                    echo "</div>";
+
+                                    break;
+                                case 'descrizione':
+                                    if (strlen($value) > 30) {
                                         echo "<td class = 'table-".$tipo[$conta]."'>";
                                         echo "<button type='button' class = 'btn btn-primary' onclick = 'mostraDesc(".$codice.")'>";
                                         echo "Mostra";
@@ -206,89 +211,106 @@
                                         echo "<div id = 'pannelloDesc".$codice."' class = 'pannelloDesc' data-pannello='false'>";
                                         echo $value;
                                         echo "<br><br>";
-                                        echo "<button type = 'button' class = 'btn btn-primary' onclick='chiudiDesc(".$codice.")'>";
+                                        echo "<button type = 'button' class = 'btn btn-primary butDivDesc' onclick='chiudiDesc(".$codice.")'>";
                                         echo "Chiudi";
                                         echo "</button>";
                                         echo "</div>";
 
                                         break;
-                                }
-                            }
-                        }
-                        echo "<td class = 'table-".$tipo[$conta]."'>";
-                        echo "<button type='button' class = 'btn btn-success' onclick = 'mostraArt(".$codice.")'>";
-                        echo "Mostra";
-                        echo "</button>";
-                        echo "</td>";
+                                    } else {
+                                        echo "<td class = 'table-".$tipo[$conta]."'>";
+                                        echo "<button type='button' class = 'btn btn-primary' onclick = 'mostraDesc(".$codice.")'>";
+                                        echo "Mostra";
+                                        echo "</button>";
+                                        echo "</td>";
 
-                        echo "<div id = 'pannelloArt".$codice."' class = 'pannelloArt' data-pannello='false'>";
-                        echo "<h4>Artisti che parteciperanno a questo evento:</h4>";
+                                        echo "<div id = 'pannelloDesc".$codice."' class = 'pannelloDesc' data-pannello='false'>";
+                                        echo $value;
+                                        echo "<br><br>";
+                                        echo "<button type = 'button' class = 'btn btn-primary butDivImm' onclick='chiudiDesc(".$codice.")'>";
+                                        echo "Chiudi";
+                                        echo "</button>";
+                                        echo "</div>";
 
-                        // extract artists
-                        $query2 = "SELECT DISTINCT * FROM eventi.get_artisti_evento($1)";
-                        $res2 = pg_prepare($connection, "", $query2);
-                        $res2 = pg_execute($connection, "", array($row['codice']));
-
-                        if (!$res2) {
-                            echo "<p>Errore nella visualizzazione dei comici che partecipano all'evento.</p>";
-                        } else {
-                            while ($row = pg_fetch_assoc($res2)) {
-                                if ($row['nome_artista'] != null && $row['cognome_artista'] != null) {
-                                    echo "<p>".$row['nome_artista']." ".$row['cognome_artista']."</p>";
-                                } else {
-                                    if ($row['nome_artista'] != null && $row['cognome_artista'] == null) {
-                                        echo "<p>".$row['nome_artista']."</p>";
+                                        break;
                                     }
+                                    
+                            }
+                        }
+                    }
+                    echo "<td class = 'table-".$tipo[$conta]."'>";
+                    echo "<button type='button' class = 'btn btn-success' onclick = 'mostraArt(".$codice.")'>";
+                    echo "Mostra";
+                    echo "</button>";
+                    echo "</td>";
+
+                    echo "<div id = 'pannelloArt".$codice."' class = 'pannelloArt' data-pannello='false'>";
+                    echo "<h4>Artisti che parteciperanno a questo evento:</h4>";
+
+                    // extract artists
+                    $query2 = "SELECT DISTINCT * FROM eventi.get_artisti_evento($1)";
+                    $res2 = pg_prepare($connection, "", $query2);
+                    $res2 = pg_execute($connection, "", array($row['codice']));
+
+                    if (!$res2) {
+                        echo "<p>Errore nella visualizzazione dei comici che partecipano all'evento.</p>";
+                    } else {
+                        while ($row = pg_fetch_assoc($res2)) {
+                            if ($row['nome_artista'] != null && $row['cognome_artista'] != null) {
+                                echo "<p>".$row['nome_artista']." ".$row['cognome_artista']."</p>";
+                            } else {
+                                if ($row['nome_artista'] != null && $row['cognome_artista'] == null) {
+                                    echo "<p>".$row['nome_artista']."</p>";
                                 }
                             }
                         }
-
-                        echo "<br><br>";
-                        echo "<div id='bottoniCentro'>";
-                        echo "<button type = 'button' class = 'btn btn-primary' id = 'sep' onclick='chiudiArt(".$codice.")'>";
-                        echo "Chiudi";
-                        echo "</button>";
-
-
-                        echo "<form action = '../eventi/modifica_artista.php' method = 'POST'>";
-                        echo "<input type = 'hidden' id = 'codice' name = 'codice' value = '".$codice."' />";
-                        echo "<input type = 'submit' class = 'btn btn-warning' id = 'sep' value = 'Modifica' />";
-                        echo "</form>";
-                        echo "</div>";
-                        echo "</div>";
-
-
-                        echo "<td class = 'table-".$tipo[$conta]."'>";
-                        echo "<form action = '../eventi/modifica_evento_page.php' method = 'POST'>";
-                        echo "<input type = 'hidden' id = 'codice' name = 'codice' value = '".$codice."' />";
-                        echo "<input type = 'submit' class = 'btn btn-warning' value = 'Modifica' />";
-                        echo "</form>";
-                        echo "</td>";
-
-                        echo "<td class = 'table-".$tipo[$conta]."'>";
-                        echo "<form action = '../eventi/conferma_eliminazione.php' method = 'POST'>";
-                        echo "<input type = 'hidden' id = 'codice' name = 'codice' value = '".$codice."' />";
-                        echo "<input type = 'submit' class = 'btn btn-danger' value = 'Elimina' />";
-                        echo "</form>";
-                        echo "</td>";
-
-                        $conta++;
-
-                        if ($conta > 6) {
-                            $conta = 0;
-                        }
-                        
-                        echo "</tr>";
-                        $conta2++;
                     }
-                    echo "</table>";
-                }
-            ?>
-            
-            <br>
-            <br>
 
-        </div>
+                    echo "<br><br>";
+                    echo "<div id='bottoniCentro'>";
+                    echo "<button type = 'button' class = 'btn btn-primary butDiv' id = 'sep' onclick='chiudiArt(".$codice.")'>";
+                    echo "Chiudi";
+                    echo "</button>";
+
+
+                    echo "<form action = '../eventi/modifica_artista.php' method = 'POST'>";
+                    echo "<input type = 'hidden' id = 'codice' name = 'codice' value = '".$codice."' />";
+                    echo "<input type = 'submit' class = 'btn btn-warning' id = 'sep' value = 'Modifica' />";
+                    echo "</form>";
+                    echo "</div>";
+                    echo "</div>";
+
+
+                    echo "<td class = 'table-".$tipo[$conta]."'>";
+                    echo "<form action = '../eventi/modifica_evento_page.php' method = 'POST'>";
+                    echo "<input type = 'hidden' id = 'codice' name = 'codice' value = '".$codice."' />";
+                    echo "<input type = 'submit' class = 'btn btn-warning' value = 'Modifica' />";
+                    echo "</form>";
+                    echo "</td>";
+
+                    echo "<td class = 'table-".$tipo[$conta]."'>";
+                    echo "<form action = '../eventi/conferma_eliminazione.php' method = 'POST'>";
+                    echo "<input type = 'hidden' id = 'codice' name = 'codice' value = '".$codice."' />";
+                    echo "<input type = 'submit' class = 'btn btn-danger' value = 'Elimina' />";
+                    echo "</form>";
+                    echo "</td>";
+
+                    $conta++;
+
+                    if ($conta > 6) {
+                        $conta = 0;
+                    }
+                    
+                    echo "</tr>";
+                    $conta2++;
+                }
+                echo "</table>";
+            }
+        ?>
+        
+        <br>
+        <br>
+
     </div>
 
 </body>

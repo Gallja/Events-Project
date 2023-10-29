@@ -71,6 +71,11 @@
 
             <h3>Tutti i comici affiliati:</h3>
 
+        </div>
+    </div>
+
+    <div class = "table-container">
+
             <?php
                 include_once('../../../script/management/connection.php');
 
@@ -140,28 +145,46 @@
 
                                         echo "<div id = 'pannelloFoto".$id."' class = 'pannelloFoto' data-pannello='false'>";
                                         echo '<img src="data:image/jpg;base64,'.$row2["img"].'"><br><br>';
-                                        echo "<button type = 'button' class = 'btn btn-info' onclick='chiudiFoto(".$id.")'>";
+                                        echo "<button type = 'button' class = 'btn btn-info butDivImm' onclick='chiudiFoto(".$id.")'>";
                                         echo "Chiudi";
                                         echo "</button>";
                                         echo "</div>";
 
                                         break;
                                     case 'bio':
-                                        echo "<td class = 'table-".$tipo[$conta]."'>";
-                                        echo "<button type='button' class = 'btn btn-primary' onclick = 'mostraDesc(".$id.")'>";
-                                        echo "Mostra";
-                                        echo "</button>";
-                                        echo "</td>";
+                                        if (strlen($value) > 30) {
+                                            echo "<td class = 'table-".$tipo[$conta]."'>";
+                                            echo "<button type='button' class = 'btn btn-primary' onclick = 'mostraDesc(".$id.")'>";
+                                            echo "Mostra";
+                                            echo "</button>";
+                                            echo "</td>";
 
-                                        echo "<div id = 'pannelloDesc".$id."' class = 'pannelloDesc' data-pannello='false'>";
-                                        echo $value;
-                                        echo "<br><br>";
-                                        echo "<button type = 'button' class = 'btn btn-primary' onclick='chiudiDesc(".$id.")'>";
-                                        echo "Chiudi";
-                                        echo "</button>";
-                                        echo "</div>";
+                                            echo "<div id = 'pannelloDesc".$id."' class = 'pannelloDesc' data-pannello='false'>";
+                                            echo $value;
+                                            echo "<br><br>";
+                                            echo "<button type = 'button' class = 'btn btn-primary butDivDesc' onclick='chiudiDesc(".$id.")'>";
+                                            echo "Chiudi";
+                                            echo "</button>";
+                                            echo "</div>";
 
-                                        break;
+                                            break;
+                                        } else {
+                                            echo "<td class = 'table-".$tipo[$conta]."'>";
+                                            echo "<button type='button' class = 'btn btn-primary' onclick = 'mostraDesc(".$id.")'>";
+                                            echo "Mostra";
+                                            echo "</button>";
+                                            echo "</td>";
+
+                                            echo "<div id = 'pannelloDesc".$id."' class = 'pannelloDesc' data-pannello='false'>";
+                                            echo $value;
+                                            echo "<br><br>";
+                                            echo "<button type = 'button' class = 'btn btn-primary butDivImm' onclick='chiudiDesc(".$id.")'>";
+                                            echo "Chiudi";
+                                            echo "</button>";
+                                            echo "</div>";
+
+                                            break;
+                                        }
                                 }
                             }
                         }
@@ -193,7 +216,7 @@
                 }
             ?>
             <br><br>
-        </div>
+            
     </div>
     
 </body>
