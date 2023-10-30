@@ -844,6 +844,22 @@
   }
 }
 @media(max-width: 767px) {
+  #centeredDiv {
+      --border-size: 3px;
+    --border-angle: 0turn;
+    background-image: conic-gradient(
+        from var(--border-angle),
+        lightgray,
+        lightgray 50%,
+        lightgray
+    ), conic-gradient(from var(--border-angle), transparent 20%, grey, black);
+    background-size: calc(100% - (var(--border-size) * 2))
+    calc(100% - (var(--border-size) * 2)), cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    animation: bg-spin 2s linear infinite;
+  }
+
   .home-burger-menu {
     display: flex;
     align-items: center;
@@ -924,6 +940,22 @@
   }
 }
 @media(max-width: 479px) {
+  #centeredDiv {
+    --border-size: 3px;
+  --border-angle: 0turn;
+  background-image: conic-gradient(
+      from var(--border-angle),
+      lightgray,
+      lightgray 50%,
+      lightgray
+  ), conic-gradient(from var(--border-angle), transparent 20%, grey, black);
+  background-size: calc(100% - (var(--border-size) * 2))
+  calc(100% - (var(--border-size) * 2)), cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  animation: bg-spin 2s linear infinite;
+}
+
   .iconMobile {
     filter: brightness(1) invert(0);
   }
@@ -1147,6 +1179,19 @@ input.home-textinput.input {
 @media (max-width: 1000px) {
   #centeredDiv {
     width: 90%;
+    --border-size: 3px;
+    --border-angle: 0turn;
+    background-image: conic-gradient(
+        from var(--border-angle),
+        lightgray,
+        lightgray 50%,
+        lightgray
+    ), conic-gradient(from var(--border-angle), transparent 20%, grey, black);
+    background-size: calc(100% - (var(--border-size) * 2))
+    calc(100% - (var(--border-size) * 2)), cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    animation: bg-spin 2s linear infinite;
   }
 
   .large{
