@@ -1265,6 +1265,7 @@ input.home-textinput.input {
 .borderPix {
   border: 2px solid black;
   font-weight: bold;
+  color: black;
 }
 
 .iconMobile {
