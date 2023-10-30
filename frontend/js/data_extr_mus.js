@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function fetchData() {
-    fetch('../API_events.php')
+    fetch('../backend/API_events.php')
         .then(response => response.json())
         .then(data => {
             displayMusicisti(data.musicisti);
