@@ -843,9 +843,10 @@
     margin-bottom: var(--dl-space-space-threeunits);
   }
 }
+
 @media(max-width: 767px) {
   #centeredDiv {
-      --border-size: 3px;
+    --border-size: 3px;
     --border-angle: 0turn;
     background-image: conic-gradient(
         from var(--border-angle),
@@ -1204,6 +1205,7 @@ input.home-textinput.input {
     background-position: center center;
     background-repeat: no-repeat;
     animation: bg-spin 2s linear infinite;
+    zoom: 0.5;
   }
 
   @keyframes bg-spin {
@@ -1245,6 +1247,7 @@ input.home-textinput.input {
 @media (max-width: 1000px) {
   #centeredDiv2 {
     width: 90%;
+    zoom: 0.5;
   }
   .large{
     width: 300px;
