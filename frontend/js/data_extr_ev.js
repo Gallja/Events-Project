@@ -69,7 +69,7 @@ function displayEventiArchivio(archivio_eventi) {
 }
 
 function mostraDett(eventoId) {
-    fetch(`../API_events.php?evento_id=${eventoId}`)
+    fetch(`../backend/API_events.php?evento_id=${eventoId}`)
         .then(response => response.json())
         .then(data => {
             // console.log(data);
