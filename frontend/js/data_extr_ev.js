@@ -29,7 +29,7 @@ function displayEventi(eventi) {
                     <span class="home-text29">${nomeMaiusc}</span>
                     <span class="home-text30">${evento.descrizione}</span>
                 </div>
-                <div class="home-btn button border">
+                <div class="home-btn button border" onclick=mostraDett(${evento.codice})>
                     <span class="home-text31">Mostra dettagli</span>
                 </div>
             </div>
