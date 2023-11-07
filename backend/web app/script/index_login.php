@@ -7,8 +7,9 @@
         exit();
     }
 
-    $email = pg_escape_string($connection, $_POST['email']);
+    
     include_once('management/connection.php'); 
+    $email = pg_escape_string($connection, $_POST['email']);
 
     $sql = "SELECT * FROM eventi.autenticazione($1)";
     $res = pg_prepare($connection, "get_all_esito_attesa_acc", $sql);
