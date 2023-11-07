@@ -24,9 +24,11 @@
         exit();
     }
 
+    $email = pg_escape_string($connection, $_POST['email']);
+
     $query = "SELECT pw FROM eventi.utenti WHERE email = $1";
     $res2 = pg_prepare($connection, "", $query);
-    $res2 = pg_execute($connection, "", array($_POST['email']));
+    $res2 = pg_execute($connection, "", array($email));
 
     $row2 = pg_fetch_assoc($res2);
     $pw_enc = $row2['pw'];
