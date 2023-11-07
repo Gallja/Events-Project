@@ -7,13 +7,13 @@
         exit();
     }
 
-
+    $email = pg_escape_string($connection, $_POST['email']);
     include_once('management/connection.php'); 
 
     $sql = "SELECT * FROM eventi.autenticazione($1)";
     $res = pg_prepare($connection, "get_all_esito_attesa_acc", $sql);
 
-    $res = pg_execute($connection, "get_all_esito_attesa_acc", array($_POST["email"]));
+    $res = pg_execute($connection, "get_all_esito_attesa_acc", array($email));
 
     $row = pg_fetch_assoc($res);
     
@@ -23,8 +23,6 @@
         header('Location: ../pagine/home.php');
         exit();
     }
-
-    $email = pg_escape_string($connection, $_POST['email']);
 
     $query = "SELECT pw FROM eventi.utenti WHERE email = $1";
     $res2 = pg_prepare($connection, "", $query);
