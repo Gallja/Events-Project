@@ -1182,6 +1182,19 @@ input.home-textinput.input {
 @media (max-width: 1000px) {
   #centeredDiv2 {
     width: 90%;
+    --border-size: 3px;
+    --border-angle: 0turn;
+    background-image: conic-gradient(
+        from var(--border-angle),
+        lightgray,
+        lightgray 50%,
+        lightgray
+    ), conic-gradient(from var(--border-angle), transparent 20%, grey, black);
+    background-size: calc(100% - (var(--border-size) * 2))
+    calc(100% - (var(--border-size) * 2)), cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    animation: bg-spin 2s linear infinite;
   }
   .large{
     width: 300px;
@@ -1293,6 +1306,19 @@ input.home-textinput.input {
   word-wrap: break-word;
   top: 0;
   bottom: 0;
+  --border-size: 3px;
+  --border-angle: 0turn;
+  background-image: conic-gradient(
+      from var(--border-angle),
+      lightgray,
+      lightgray 50%,
+      lightgray
+  ), conic-gradient(from var(--border-angle), transparent 20%, rgba(239, 193, 76, 1), black);
+  background-size: calc(100% - (var(--border-size) * 2))
+  calc(100% - (var(--border-size) * 2)), cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  animation: bg-spin 2s linear infinite;
 }
 
 .linkBE:hover {
