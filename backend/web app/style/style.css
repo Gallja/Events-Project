@@ -137,12 +137,14 @@ input#nome_mus1 {
 .pannelloFoto {
     display: none;
     position: fixed;
-    top: 20%;
+    margin: auto;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: white;
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    text-align: center;
     z-index: 9999;
 }
 
@@ -158,12 +160,14 @@ input#nome_mus1 {
 .pannelloDesc {
     display: none;
     position: fixed;
-    top: 20%;
+    margin: auto;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: white;
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    text-align: center;
     z-index: 9999;
 }
 
@@ -179,13 +183,15 @@ input#nome_mus1 {
 
 .pannelloArt {
     display: none;
+    margin: auto;
     position: fixed;
-    top: 20%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: white;
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    text-align: center;
     z-index: 9999;
 }
 
@@ -207,27 +213,17 @@ input#nome_mus1 {
 .pannelloLink {
     display: none;
     position: fixed;
-    top: 20%;
+    margin: auto;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: white;
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    text-align: center;
     z-index: 9999;
 }
 
 .table-container {
     align-items: center;
-}
-
-.butDiv {
-    margin-left: 40%;
-}
-
-.butDivDesc {
-    margin-left: 45%;
-}
-
-.butDivImm {
-    margin-left: 27%;
 }
