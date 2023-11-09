@@ -157,7 +157,7 @@
                                         $row_link = pg_fetch_assoc($res_link);
 
                                         echo "<h4>Link del biglietto dell'evento:</h4>";
-                                        echo $row_link['link_biglietto']."<br><br>";
+                                        echo "<a href = '".$row_link['link_biglietto']."'>".$row_link['link_biglietto']."</a><br><br>";
 
                                         echo "<button type = 'button' class = 'btn btn-info butDiv' onclick='chiudiLink(".$codice.")'>";
                                         echo "Chiudi";
