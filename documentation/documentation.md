@@ -14,17 +14,17 @@
     - API
 - Frontend site
 
-### Introduction
+## Introduction
 This repository contains all source codes of the **"Events-Project"**.  
 It is developed in 2023 for _**"E-O Management"**_ company to manage and visualize all the events, comedians and musicians affiliated.
 
-The project is divided in 2 parts:
-1. **The management system** which is divided in 3 fundamental parts: 
-- Relational database, in SQL language;
-- Web site, whose backend is written in PHP language;
-- an API to get some data to frontend site.  
-Only people with right credential can login.
+The project is divided in 2 branch:
+1. **The management system** where only people with credential can login. It is divided in 3 fundamental parts: 
+- Relational database;
+- Web site;
+- API to get some data to frontend site.  
 2. **Frontend site**: public, anyone can see it.
-Thanks to Javascript 
 
 ## Analysis of client requirement
+Before to start to analize the code, the most important thing is understand and get an idea of all client's requirement.  
+First of all, it is crucial to individuate all the entity in DB and management system; after that, we want to understand how to get datas to the frontend site and how to catch and visualize all of them.
