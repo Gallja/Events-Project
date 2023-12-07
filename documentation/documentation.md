@@ -10,8 +10,8 @@
         - [Inter-relational bond](#inter-relational-bond)
         - [Main procedures & Functions](#main-procedures--functions)
     - [Web App](#web-app)
-        - Structure
-        - Security & Encryption
+        - [Structure](#structure)
+        - [Security & Encryption](#security--encryption)
     - API
 - Frontend site
 
@@ -148,5 +148,50 @@ END;
 $$ LANGUAGE plpgsql;
 ```
 
+To view the complete SQL code of the database, [click here](../backend/database/eventi.sql)
+
 ## Web App
-As mentioned earlier, the web app allows authorized users to have a web interface capable of properly managing all data related to management. In this regard, an intuitive and simple page structure must be ensured, along with appropriate protection of sensitive data to prevent attacks from malicious users.
+As mentioned earlier, the web app allows authorized users to have a web interface capable of properly managing all data related to management. In this regard, an intuitive and simple page structure must be ensured, along with appropriate protection of sensitive data to prevent attacks from malicious users.  
+To make the application responsive and suitable for viewing on smartphones or tablets, the [Bootstrap framework](https://getbootstrap.com/) has been used.
+
+### Structure
+As the first page the user sees, there is a login screen where they must enter the appropriate credentials (including email and password). Only authorized users can access the next screen.
+
+![LOGIN PAGE](/documentation/img/login_page.png)
+
+Once logged into the system, the screen presented to the user consists of a navigation bar, allowing them to move through all the pages that make up the application. In addition to this, there are specific input fields for entering a new event. At the bottom of the page, there is a table displaying upcoming events already stored in the database (past events can be viewed from the 'event archive' page). From this table, users can click on specific buttons to edit or delete the desired event.
+
+![HOMEPAGE](/documentation/img/home_page_backend.png)
+
+![TABLE](/documentation/img/table.png)
+
+All pages of the web application, including those related to comedians and musicians, have the same structure.  
+The only exception is the password change page, which features only a few input fields and a button to successfully update the password.
+
+![CHANGE PW PAGE](/documentation/img/change_pw_page.png)
+
+
+### Security & Encryption
+To ensure data protection and prevent malicious access, the system is equipped with specific tools capable of addressing these issues.  
+As a first step, it is necessary to make the input fields of the login screen "invulnerable" to attacks such as **SQL injection**; for this reason, they have been properly sanitized with PHP's method *pg_escape_string(sql_connection, string)*:
+
+```PHP
+$email = pg_escape_string($connection, $_POST['email']);
+
+$sql = "SELECT * FROM eventi.autenticazione($1)";
+$res = pg_prepare($connection, "get_all_esito_attesa_acc", $sql);
+
+$res = pg_execute($connection, "get_all_esito_attesa_acc", array($email));
+```
+
+As for the security of sensitive data, such as user passwords in the system, a dedicated string encryption system has been employed on the backend: [*password_hash()* method and *PASSWORD_DEFAULT*](https://www.php.net/manual/en/function.password-hash.php).
+
+```PHP
+$pw_enc = password_hash($pw, PASSWORD_DEFAULT);
+
+$query = "CALL eventi.insert_utente($1, $2)";
+$res = pg_prepare($connection, "esito", $query);
+$res = pg_execute($connection, "esito", array($email, $pw_enc));
+```
+
+All source codes of the web application are available for consultation by [clicking here](/backend/web%20app/)
