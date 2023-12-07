@@ -12,8 +12,8 @@
     - [Web App](#web-app)
         - [Structure](#structure)
         - [Security & Encryption](#security--encryption)
-    - API
-- Frontend site
+    - [API](#api)
+- [Frontend site](#frontend-site)
 
 ## Introduction
 This repository contains all source codes of the **"Events-Project"**.  
@@ -195,3 +195,13 @@ $res = pg_execute($connection, "esito", array($email, $pw_enc));
 ```
 
 All source codes of the web application are available for consultation by [clicking here](/backend/web%20app/)
+
+## API
+To supply the web application on the frontend side of the project with the necessary data to display to the public, an [**API** (*Application Programming Interface*)](https://it.wikipedia.org/wiki/Application_programming_interface) fulfills this need. Also written in PHP, the API provides all the data related to all the shows, comedians, and musicians. Additionally, it can return details of a single show (in case a user wants to learn more about a specific show and potentially go to the website to purchase the respective ticket).  
+The data is provided in [**JSON** (*JavaScript Object Notation*)](https://www.json.org/json-en.html) format like this:
+
+![JSON DATA](/documentation/img/json_datas.png)
+
+The source code of the API can be viewed by [clicking here](/backend/API_events.php)
+
+## Frontend Site
