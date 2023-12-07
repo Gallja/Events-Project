@@ -243,5 +243,5 @@ function displayEventi(eventi) {
 }
 ```
 
-To view only **JavaScript** codes of the frontend web application, [click here](/frontend/js/)
+To view only **JavaScript** codes of the frontend web application, [click here](/frontend/js/)  
 To view the entire source code of the frontend web application, [click here](/frontend/)
