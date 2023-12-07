@@ -205,3 +205,43 @@ The data is provided in [**JSON** (*JavaScript Object Notation*)](https://www.js
 The source code of the API can be viewed by [clicking here](/backend/API_events.php)
 
 ## Frontend Site
+The final part concerns the development of the web application open to the public, where users interested in **_E-O Management_** events can view them.  
+The pages, all following the same pattern, have been created using [**HTML**](https://developer.mozilla.org/en-US/docs/Web/HTML), [**CSS**](https://developer.mozilla.org/en-US/docs/Web/CSS), and [**JavaScript**](https://developer.mozilla.org/en-US/docs/Web/JavaScript). The latter, in particular, enabled the connection to the API endpoint to output all the necessary information to the page.  
+
+The homepage looks like this:
+
+![HOMEPAGE FRONTEND](/documentation/img/home_page_frontend.png)
+
+The structure consists of a navbar, a section dedicated to the description of **_E-O Management_**, upcoming shows, and finally a footer.  
+
+An example of a function written in **JavaScript** to dynamically retrieve data from the database is this:
+
+```Javascript
+function displayEventi(eventi) {
+    const eventiContainer = document.getElementById('contEventi');
+    eventiContainer.innerHTML = `
+        <h1 class="Heading-1 centerTitle">Prossimamente:</h1>
+    `;
+    eventi.forEach(evento => {
+        const eventoDiv = document.createElement('div');
+        eventoDiv.setAttribute('class', 'home-full-width-banner section container');
+        const nomeMaiusc = evento.nome_evento.toUpperCase();
+        eventoDiv.innerHTML = `
+            <div class="home-left1" id="third">
+                <div class="home-content">
+                    <span class="home-text29">${nomeMaiusc}</span>
+                    <span class="home-text30">${evento.descrizione}</span>
+                </div>
+                <div class="home-btn button border" onclick=mostraDett(${evento.codice})>
+                    <span class="home-text31">Mostra dettagli</span>
+                </div>
+            </div>
+            <img src="data:image/jpg;base64,${evento.immagine}" class="home-image6">
+        `;
+        eventiContainer.appendChild(eventoDiv);
+    });
+}
+```
+
+To view only **JavaScript** codes of the frontend web application, [click here](/frontend/js/)
+To view the entire source code of the frontend web application, [click here](/frontend/)
